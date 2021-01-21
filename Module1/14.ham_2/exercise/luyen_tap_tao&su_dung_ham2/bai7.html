@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="show()">
+<script>
+    let a = parseInt(prompt("Hay nhap vao so a"));
+    let b = parseInt(prompt("Hay nhap vao so b"));
+    let value;
+    if (isNaN(a) || isNaN(b)) {
+        alert("Ban nhap du lieu sai")
+    } else  function show() {
+        value = a;
+        a = b;
+        b = value;
+        alert("So a hien tai la  " + a + "\n" + "So b hien tai la  " + b)
+    }
+    // let alertShow=show();
+    // alert(alertShow);
+</script>
+</body>
+</html>

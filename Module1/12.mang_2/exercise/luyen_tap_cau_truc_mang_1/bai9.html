@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="demo"></p><br><br>
+<p id="demo1"></p><br><br>
+<button onclick="kick()">Xuất Mảng C</button>
+<br><br>
+<p id="demo2"></p>
+<script>
+    let arrayA = [];
+    for (let i = 0; i < 10; i++) {
+        arrayA[i] = parseInt(prompt("nhập phần tử thứ " + (i + 1) + " của A"));
+    }
+    document.getElementById("demo").innerHTML = arrayA.join();
+    let arrayB = [];
+    for (let i = 0; i < 10; i++) {
+        arrayB[i] = parseInt(prompt("nhập phần tử thứ " + (i + 1) + " của B"));
+    }
+    document.getElementById("demo1").innerHTML = arrayB.join();
+
+    function kick() {
+        let arrayC = arrayA.concat(arrayB);
+        document.getElementById("demo2").innerHTML = arrayC.join();
+
+    }
+</script>
+
+</body>
+</html>

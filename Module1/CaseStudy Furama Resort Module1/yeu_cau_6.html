@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    class Customer {
+        constructor(name, cardId, birthday, email, address, typeCustomer, discount, amountPeople, rentDay, service, room,) {
+            this.name = name;
+            this.cardId = cardId;
+            this.birthday = birthday;
+            this.email = email;
+            this.address = address;
+            this.typeCustomer = typeCustomer;
+            this.discount = discount;
+            this.amountPeople = amountPeople;
+            this.rentDay = rentDay;
+            this.service = service;
+            this.room = room;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        setName() {
+            this.name = name;
+        }
+
+        getCardId() {
+            return this.cardId;
+        }
+
+        setCardId() {
+            this.cardId = cardId;
+        }
+
+        getBirthday() {
+            return this.birthday;
+        }
+
+        setBirthday() {
+            this.birthday = birthday;
+        }
+
+        getEmail() {
+            return this.email;
+        }
+
+        setEmail() {
+            this.email = email;
+        }
+
+        getAddress() {
+            return this.address;
+        }
+
+        setAddress() {
+            this.address = address;
+        }
+
+        getTypeCustomer() {
+            return this.typeCustomer;
+        }
+
+        setTypeCustomer() {
+            this.typeCustomer = typeCustomer;
+        }
+
+        getDiscount() {
+            return this.discount;
+        }
+
+        setDiscount() {
+            this.discount = discount;
+        }
+
+        getAmountPeople() {
+            return this.amountPeople;
+        }
+
+        setAmountPeople() {
+            this.amountPeople = amountPeople;
+        }
+
+        getRentDay() {
+            return this.rentDay;
+        }
+
+        setRentDay() {
+            this.rentDay = rentDay;
+        }
+
+        getService() {
+            return this.service;
+        }
+
+        setService() {
+            this.service = service;
+        }
+
+        getRoom() {
+            return this.room;
+        }
+
+        setRoom() {
+            this.room = room;
+        }
+
+        methodAn() {
+
+        }
+
+    }
+
+    let customer1 = new Customer("Mary", 221451232, "20/07/1999", "mary2007@gmail.com", "Hue", "Diamond", 20, 4, 7, "Villa", "Vip");
+    let customer2 = new Customer("Henry", 221673452, "29/03/1998", "henry2903@gmail.com", "Ha Noi", "Diamond", 15, 3, 10, "Villa", "Vip");
+    let customer3 = new Customer("Tom", 268467473, "11/05/1994", "tom1105@gmail.com", "Sai Gon", "Platinum", 10, 4, 8, "Villa", "Vip");
+    let arrCustomer = [customer1, customer2, customer3];
+
+    function displayMainMenu() {
+        let check = false;
+        do {
+            let n = parseInt(prompt("1.Add new customer" + '\n' +
+                "2.Display information customer" + '\n' +
+                "3.Display total pay of customer" + '\n' +
+                "4.Edit information customer" + '\n' +
+                "5.Delete Customer" + '\n' +
+                "6.Exit"));
+            switch (n) {
+                case 1:
+                    AddCustomer();
+                    break;
+                case 2:
+                    displayCustomer();
+                    break;
+                case 3:
+                    displayTotalPay();
+                    break;
+                case 4:
+                    editCustomer();
+                    break;
+                case 5:
+                    deleteCustomer();
+                    break;
+                case 6:
+                    let a = confirm("Are you sure you want to exit Customers ?");
+                    if (a) {
+                        check = true
+                    }
+                    break;
+                default:
+                    alert("Re-Enter")
+            }
+        } while (!check)
+    }
+
+    displayMainMenu();
+
+    function AddCustomer() {
+        let n = parseInt(prompt("Enter the number of customers you want to add"));
+        if (!isNaN(n)) {
+            for (let i = 0; i < n; i++) {
+                let name = prompt("Customer Name: ");
+                name = name.toLowerCase();
+                let myArray = name.split(" ");
+                let fullName = "";
+                for (let i = 0; i < myArray.length; i++) {
+                    if (myArray[i] !== "") {
+                        myArray[i] = myArray[i].charAt(0).toUpperCase() + myArray[i].substr(1);
+                        fullName += myArray[i] + " ";
+                    }
+                }
+
+
+                // -----------------------cardId------------------------------
+
+                check = false;
+                let cardId;
+                do {
+                    cardId = prompt("Customer CarId: ");
+                    if (!isNaN(cardId)) {
+                        cardId = Number.parseFloat(cardId);
+                    }
+                    if (!Number.isInteger(cardId)) {
+                        alert("Invalid carId ");
+                        continue;
+                    }
+                    if (cardId < 100000000 || cardId > 999999999) {
+                        alert("Invalid carId");
+                        continue;
+                    } else {
+                        check = true;
+                    }
+                } while (!check);
+
+                // -----------------------birthday----------------------------------
+
+                let fix = false;
+                let fullBirthday;
+                do {
+                    let date = prompt("Enter Date");
+                    let birthDay = "";
+                    if (date.charAt(2) === "/" && date.charAt(5) === "/") {
+                        let day = date.substring(0, 2);
+                        let month = date.substring(3, 5);
+                        let year = date.substring(6);
+                        if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
+                            switch (month) {
+                                case "01":
+                                case "03":
+                                case "05":
+                                case "07":
+                                case "08":
+                                case "10":
+                                case "12":
+                                    if (day <= 31) {
+                                        if (year >= 1920 && year <= 2020) {
+                                            fix = true;
+                                            birthDay += day + "/" + month + "/" + year;
+                                            fullBirthday = birthDay;
+                                        }
+                                    }
+                                    break;
+                                case "02":
+                                    if (day <= 29) {
+                                        fix = true;
+                                        if (year >= 1920 && year <= 2020) {
+                                            birthDay += day + "/" + month + "/" + year;
+                                            fullBirthday = birthDay;
+                                        }
+                                    }
+                                    break;
+                                case "04":
+                                case "06":
+                                case "09":
+                                case "11":
+                                    if (day <= 30) {
+                                        fix = true;
+                                        if (year >= 1920 && year <= 2020) {
+                                            birthDay += day + "/" + month + "/" + year;
+                                            fullBirthday = birthDay;
+
+                                        }
+                                    }
+                                    break;
+                                default:
+                                    fix = false;
+
+                            }
+                        }
+                    }
+                    if (!fix) {
+                        alert("Please re-enter your date of birth");
+                    }
+                } while (!fix);
+                // -----------------------------email--------------------------------
+
+                let checkEmail = false;
+                let fullEmail;
+                do {
+                    let email = prompt("Customer Email: ");
+                    let count1 = 0;
+                    let count2 = 0;
+                    for (let i = 0; i < email.length; i++) {
+                        if (email.charAt(i) === "@") {
+                            count1++;
+                        }
+                    }
+                    for (let j = 0; j < email.length; j++) {
+                        if (email.charAt(j) === ".") {
+                            count2++;
+                        }
+                    }
+                    if (count1 !== 1 || count2 < 1) {
+                        alert("Invalid email");
+                    } else {
+                        checkEmail = true;
+                        fullEmail = email;
+                    }
+
+                } while (!checkEmail);
+
+                // --------------------------address---------------------------------------
+
+                let address = prompt("Customer Address: ");
+                address = address.toLowerCase();
+                let myAddress = address.split(" ");
+                let fullAddress = "";
+                for (let i = 0; i < myAddress.length; i++) {
+                    if (myAddress[i] !== "") {
+                        myAddress[i] = myAddress[i].charAt(0).toUpperCase() + myAddress[i].substr(1);
+                        fullAddress += myAddress[i] + " ";
+                    }
+                }
+
+                // -----------------------------typeCustomer----------------------------------
+
+                let checkTypeCustomer = false;
+                let fullTypeCustomer;
+                do {
+                    let typeCustomer = parseInt(prompt("Customer type (1.Diamond/2.Platinum/3.Gold/4.Silver/5.Member): "));
+                    switch (typeCustomer) {
+                        case 1:
+                            fullTypeCustomer = "Diamond";
+                            checkTypeCustomer = true;
+                            break;
+                        case 2:
+                            fullTypeCustomer = "Platinum";
+                            checkTypeCustomer = true;
+                            break;
+                        case 3:
+                            fullTypeCustomer = "Gold";
+                            checkTypeCustomer = true;
+                            break;
+                        case 4:
+                            fullTypeCustomer = "Silver";
+                            checkTypeCustomer = true;
+                            break;
+                        case 5:
+                            fullTypeCustomer = "Member";
+                            checkTypeCustomer = true;
+                            break;
+                        default:
+                            alert("Input is invalid");
+                            checkTypeCustomer = false;
+
+                    }
+                } while (!checkTypeCustomer);
+                // ---------------------------discount-----------------------------------
+
+                let discount;
+                do {
+                    discount = parseInt(prompt("Discount (%): "));
+                } while (discount <= 0 || !Number.isInteger(discount));
+
+                // -------------------------------amountPeople--------------------------------------
+
+                let amountPeople;
+                do {
+                    amountPeople = parseInt(prompt("How many people are with you?: "));
+                } while (amountPeople <= 0 || !Number.isInteger(amountPeople));
+
+                // ----------------------------------rantDay----------------------------------------
+
+                let rentDays;
+                do {
+                    rentDays = parseInt(prompt("Rent days: "));
+                } while (rentDays <= 0 || !Number.isInteger(rentDays));
+
+                // -------------------------------------service-----------------------------------------
+
+                let checkService = false;
+                let fullService;
+                do {
+                    let typeService = parseInt(prompt(" Service type (1.Villa/2.House/3.Room): "));
+                    switch (typeService) {
+                        case 1:
+                            fullService = "Villa";
+                            checkService = true;
+                            break;
+                        case 2:
+                            fullService = "House";
+                            checkService = true;
+                            break;
+                        case 3:
+                            fullService = "Room";
+                            checkService = true;
+                            break;
+                        default:
+                            alert("Input is invalid");
+                    }
+
+                } while (!checkService);
+
+                // -----------------------------------------room------------------------------------------
+
+                let checkRoom = false;
+                let fullRoom;
+                do {
+                    let typeRoom = parseInt(prompt("Room type rented (1.Vip/2.Business/3.Normal): "));
+                    switch (typeRoom) {
+                        case 1:
+                            fullRoom = "Vip";
+                            checkRoom = true;
+                            break;
+                        case 2:
+                            fullRoom = "Business";
+                            checkRoom = true;
+                            break;
+                        case 3:
+                            fullRoom = "Normal";
+                            checkRoom = true;
+                            break;
+                        default:
+                            alert("Input is invalid");
+                    }
+                } while (!checkRoom);
+                let customer = new Customer(fullName, cardId, fullBirthday, fullEmail, fullAddress, fullTypeCustomer, discount, amountPeople, rentDays, fullService, fullRoom);
+                arrCustomer.push(customer);
+            }
+        } else alert("Please re-enter")
+
+    }
+
+    function displayCustomer() {
+        let show = "";
+        for (let i = 0; i < arrCustomer.length; i++) {
+            show += (i + 1) + ".Name: " + arrCustomer[i].getName() + "  " + "CardId: " + arrCustomer[i].getCardId() + "  " + "Birthday: "
+                + arrCustomer[i].getBirthday() + "  " + "Email: " + arrCustomer[i].getEmail() + "  " + "Address: " + arrCustomer[i].getAddress() + "  " + "type of Customer: " + arrCustomer[i].getTypeCustomer()
+                + "  " + "Discount: " + arrCustomer[i].getDiscount() + "  " + "Amount People: " + arrCustomer[i].getAmountPeople() + "  " +
+                "Rent Day: " + arrCustomer[i].getRentDay() + "  " + "Service: " + arrCustomer[i].getService() + "  " + "Room: " + arrCustomer[i].getRoom()
+                + '\n' + '\n';
+        }
+        alert(show);
+    }
+
+    function displayTotalPay() {
+        let show = "";
+        for (let i = 0; i < arrCustomer.length; i++) {
+            show += (i + 1) + ". " + arrCustomer[i].getName() + '\n'
+        }
+        let moneyPay;
+        let n = parseInt(prompt(show));
+        for (let i = 0; i < arrCustomer.length; i++) {
+            if (n === (i + 1)) {
+                switch (arrCustomer[i].getService()) {
+                    case "Villa":
+                        moneyPay = 500 * arrCustomer[i].getRentDay() * (1 - arrCustomer[i].getDiscount() / 100);
+                        break;
+                    case "House":
+                        moneyPay = 300 * arrCustomer[i].getRentDay() * (1 - arrCustomer[i].getDiscount() / 100);
+                        break;
+                    case "Room":
+                        moneyPay = 100 * arrCustomer[i].getRentDay() * (1 - arrCustomer[i].getDiscount() / 100);
+                        break;
+                    default:
+                        moneyPay = 0;
+                }
+                switch (arrCustomer[i].getAddress()) {
+                    case "Da Nang":
+                        moneyPay -= 20;
+                        break;
+                    case "Hue":
+                        moneyPay -= 10;
+                        break;
+                    case "Quang Nam":
+                        moneyPay -= 5;
+                        break;
+                    default:
+                        moneyPay -= 0;
+
+                }
+                switch (arrCustomer[i].getTypeCustomer()) {
+                    case "Diamond":
+                        moneyPay -= 15;
+                        break;
+                    case "Platinum":
+                        moneyPay -= 10;
+                        break;
+                    case "Gold":
+                        moneyPay -= 5;
+                        break;
+                    case "Silver":
+                        moneyPay -= 2;
+                        break;
+                    default:
+                        moneyPay -= 0;
+
+                }
+                if (arrCustomer[i].getRentDay() > 7) {
+                    moneyPay -= 30;
+                } else if (arrCustomer[i].getRentDay() >= 5) {
+                    moneyPay -= 20;
+                } else if (arrCustomer[i].getRentDay() >= 2) {
+                    moneyPay -= 10;
+                } else moneyPay -= 0;
+            }
+        }
+        alert("The amount this customer needs to pay is: " + moneyPay)
+    }
+
+    function editCustomer() {
+        let show = "";
+        for (let i = 0; i < arrCustomer.length; i++) {
+            show += (i + 1) + ". " + arrCustomer[i].getName() + '\n'
+        }
+        let n = parseInt(prompt(show));
+        if (!isNaN(n)) {
+            for (let i = 0; i < arrCustomer.length; i++) {
+                if (n === (i + 1)) {
+                    let name = prompt("Customer Name: ");
+                    name = name.toLowerCase();
+                    let myArray = name.split(" ");
+                    let fullName = "";
+                    for (let i = 0; i < myArray.length; i++) {
+                        if (myArray[i] !== "") {
+                            myArray[i] = myArray[i].charAt(0).toUpperCase() + myArray[i].substr(1);
+                            fullName += myArray[i] + " ";
+                        }
+                    }
+                    arrCustomer[i].name = fullName;
+
+                    // -----------------------cardId------------------------------
+
+                    check = false;
+                    let cardId;
+                    do {
+                        cardId = prompt("Customer CarId: ");
+                        if (!isNaN(cardId)) {
+                            cardId = Number.parseFloat(cardId);
+                        }
+                        if (!Number.isInteger(cardId)) {
+                            alert("Invalid carId ");
+                            continue;
+                        }
+                        if (cardId < 100000000 || cardId > 999999999) {
+                            alert("Invalid carId");
+                            continue;
+                        } else {
+                            check = true;
+                        }
+                    } while (!check);
+                    arrCustomer[i].cardId = cardId;
+
+                    // -----------------------birthday----------------------------------
+
+                    let fix = false;
+                    do {
+                        let date = prompt("Enter Date");
+                        let birthDay = "";
+                        if (date.charAt(2) === "/" && date.charAt(5) === "/") {
+                            let day = date.substring(0, 2);
+                            let month = date.substring(3, 5);
+                            let year = date.substring(6);
+                            if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
+                                switch (month) {
+                                    case "01":
+                                    case "03":
+                                    case "05":
+                                    case "07":
+                                    case "08":
+                                    case "10":
+                                    case "12":
+                                        if (day <= 31) {
+                                            if (year >= 1920 && year <= 2020) {
+                                                fix = true;
+                                                birthDay += day + "/" + month + "/" + year;
+                                                arrCustomer[i].birthday = birthDay;
+                                            }
+                                        }
+                                        break;
+                                    case "02":
+                                        if (day <= 29) {
+                                            fix = true;
+                                            if (year >= 1920 && year <= 2020) {
+                                                birthDay += day + "/" + month + "/" + year;
+                                                arrCustomer[i].birthday = birthDay;
+                                            }
+                                        }
+                                        break;
+                                    case "04":
+                                    case "06":
+                                    case "09":
+                                    case "11":
+                                        if (day <= 30) {
+                                            fix = true;
+                                            if (year >= 1920 && year <= 2020) {
+                                                birthDay += day + "/" + month + "/" + year;
+                                                arrCustomer[i].birthday = birthDay;
+
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        fix = false;
+
+                                }
+                            }
+                        }
+                        if (!fix) {
+                            alert("Please re-enter your date of birth");
+                        }
+                    } while (!fix);
+                    // -----------------------------email--------------------------------
+
+                    let checkEmail = false;
+                    do {
+                        let email = prompt("Customer Email: ");
+                        let count1 = 0;
+                        let count2 = 0;
+                        for (let i = 0; i < email.length; i++) {
+                            if (email.charAt(i) === "@") {
+                                count1++;
+                            }
+                        }
+                        for (let j = 0; j < email.length; j++) {
+                            if (email.charAt(j) === ".") {
+                                count2++;
+                            }
+                        }
+                        if (count1 !== 1 || count2 < 1) {
+                            alert("Invalid email");
+                        } else {
+                            checkEmail = true;
+                            arrCustomer[i].email = email;
+                        }
+
+                    } while (!checkEmail);
+
+                    // --------------------------address---------------------------------------
+
+                    let address = prompt("Customer Address: ");
+                    address = address.toLowerCase();
+                    let myAddress = address.split(" ");
+                    let fullAddress = "";
+                    for (let i = 0; i < myAddress.length; i++) {
+                        if (myAddress[i] !== "") {
+                            myAddress[i] = myAddress[i].charAt(0).toUpperCase() + myAddress[i].substr(1);
+                            fullAddress += myAddress[i] + " ";
+                        }
+                    }
+                    arrCustomer[i].address = fullAddress;
+
+                    // -----------------------------typeCustomer----------------------------------
+
+                    let checkTypeCustomer = false;
+                    do {
+                        let typeCustomer = parseInt(prompt("Customer type (1.Diamond/2.Platinum/3.Gold/4.Silver/5.Member): "));
+                        switch (typeCustomer) {
+                            case 1:
+                                arrCustomer[i].typeCustomer = "Diamond";
+                                checkTypeCustomer = true;
+                                break;
+                            case 2:
+                                arrCustomer[i].typeCustomer = "Platinum";
+                                checkTypeCustomer = true;
+                                break;
+                            case 3:
+                                arrCustomer[i].typeCustomer = "Gold";
+                                checkTypeCustomer = true;
+                                break;
+                            case 4:
+                                arrCustomer[i].typeCustomer = "Silver";
+                                checkTypeCustomer = true;
+                                break;
+                            case 5:
+                                arrCustomer[i].typeCustomer = "Member";
+                                checkTypeCustomer = true;
+                                break;
+                            default:
+                                alert("Input is invalid");
+                                checkTypeCustomer = false;
+
+                        }
+                    } while (!checkTypeCustomer);
+                    // ---------------------------discount-----------------------------------
+
+                    let discount;
+                    do {
+                        discount = parseInt(prompt("Discount (%): "));
+                        arrCustomer[i].discount = discount;
+                    } while (discount <= 0 || !Number.isInteger(discount));
+
+                    // -------------------------------amountPeople--------------------------------------
+
+                    let amountPeople;
+                    do {
+                        amountPeople = parseInt(prompt("How many people are with you?: "));
+                        arrCustomer[i].amountPeople = amountPeople;
+                    } while (amountPeople <= 0 || !Number.isInteger(amountPeople));
+
+                    // ----------------------------------rantDay----------------------------------------
+
+                    let rentDays;
+                    do {
+                        rentDays = parseInt(prompt("Rent days: "));
+                        arrCustomer[i].rentDay = rentDays;
+                    } while (rentDays <= 0 || !Number.isInteger(rentDays));
+
+                    // -------------------------------------service-----------------------------------------
+
+                    let checkService = false;
+                    do {
+                        let typeService = prompt(" Service type (1.Villa/2.House/3.Room): ");
+                        switch (typeService) {
+                            case "1":
+                                arrCustomer[i].service = "Villa";
+                                checkService = true;
+                                break;
+                            case "2":
+                                arrCustomer[i].service = "House";
+                                checkService = true;
+                                break;
+                            case "3":
+                                arrCustomer[i].service = "Room";
+                                checkService = true;
+                                break;
+                            default:
+                                alert("Input is invalid");
+                        }
+
+                    } while (!checkService);
+
+                    // -----------------------------------------room------------------------------------------
+
+                    let checkRoom = false;
+                    do {
+                        let typeRoom = prompt("Room type rented (1.Vip/2.Business/3.Normal): ");
+                        switch (typeRoom) {
+                            case "1":
+                                arrCustomer[i].room = 'Vip';
+                                checkRoom = true;
+                                break;
+                            case "2":
+                                arrCustomer[i].room = 'Business';
+                                checkRoom = true;
+                                break;
+                            case "3":
+                                arrCustomer[i].room = 'Normal';
+                                checkRoom = true;
+                                break;
+                            default:
+                                alert("Input is invalid");
+                        }
+                    } while (!checkRoom)
+
+
+                }
+
+            }
+
+
+        }
+    }
+
+    function deleteCustomer() {
+        let show1 = "";
+        for (let i = 0; i < arrCustomer.length; i++) {
+            show1 += (i + 1) + ". " + arrCustomer[i].getName() + '\n';
+        }
+        let n = parseInt(prompt(show1));
+        if (!isNaN(n)) {
+            for (let i = 0; i < arrCustomer.length; i++) {
+                if (n === (i + 1)) {
+                    if (confirm("You sure ?")) {
+                        arrCustomer.splice(i, 1)
+                    }
+                }
+            }
+        }
+
+    }
+
+    // -------------------------------------------------------------------------------------------------------------
+
+
+    class Employee {
+        constructor(name, birthday, cardId, numberPhone, email, position, salary) {
+            this.name = name;
+            this.birthday = birthday;
+            this.cardId = cardId;
+            this.numberPhone = numberPhone;
+            this.email = email;
+            this.position = position;
+            this.salary = salary;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        setName() {
+            this.name = name;
+        }
+
+        getCardId() {
+            return this.cardId;
+        }
+
+        setCardId() {
+            this.cardId = cardId;
+        }
+
+        getBirthday() {
+            return this.birthday;
+        }
+
+        setBirthday() {
+            this.birthday = birthday;
+        }
+
+        getEmail() {
+            return this.email;
+        }
+
+        setEmail() {
+            this.email = email;
+        }
+
+        getNumberPhone() {
+            return this.numberPhone;
+        }
+
+        setNumberPhone() {
+            this.address = numberPhone;
+        }
+
+        getPosition() {
+            return this.position;
+        }
+
+        setPosition() {
+            this.discount = position;
+        }
+
+        getSalary() {
+            return this.salary;
+        }
+
+        setSalary() {
+            this.amountPeople = salary;
+        }
+
+    }
+
+    let listEmployee1 = new Employee("Matty", "23/06/2000", 33131241, 221421212, "matty2306@gmail.com", "Manager", 500);
+    let listEmployee2 = new Employee("Ken", "16/04/1997", 17302393, 236571213, "ken1604@gmail.com", "Sale", 300);
+    let listEmployee3 = new Employee("John", "07/05/1999", 2977212, 223185943, "jonh0705@gmail.com", "Sale", 300);
+    let arrayListEmployee = [listEmployee1, listEmployee2, listEmployee3];
+
+    ShowEmployee();
+
+    function ShowEmployee() {
+        let check = false;
+        do {
+            let select = parseInt(prompt("1. Add new employees" + '\n' +
+                "2. Display Information Employees" + '\n' +
+                "3. Salary of Employees" + '\n' +
+                "4. Exit"));
+            switch (select) {
+                case 1:
+                    AddEmployee();
+                    break;
+                case 2:
+                    DisplayEmployee();
+                    break;
+                case 3:
+                    SalaryEmployee();
+                    break;
+                case 4:
+                    let a = confirm("Are you sure you want to exit employees ?");
+                    if (a) {
+                        check = true
+                    }
+                    break;
+                default:
+            }
+        } while (!check)
+    }
+
+
+    function AddEmployee() {
+        let n = parseInt(prompt("How many employees do you want to add ?"));
+        for (let i = 0; i < n; i++) {
+            let name = prompt("Customer Name: ");
+            name = name.toLowerCase();
+            let myArray = name.split(" ");
+            let fullName = "";
+            for (let i = 0; i < myArray.length; i++) {
+                if (myArray[i] !== "") {
+                    myArray[i] = myArray[i].charAt(0).toUpperCase() + myArray[i].substr(1);
+                    fullName += myArray[i] + " ";
+                }
+            }
+
+            // -----------------------------------------------------------------------------------
+
+            let checkBirthday = false;
+            let fullBirthday;
+            do {
+                let date = prompt("Enter Date");
+                let birthDay = "";
+                if (date.charAt(2) === "/" && date.charAt(5) === "/") {
+                    let day = date.substring(0, 2);
+                    let month = date.substring(3, 5);
+                    let year = date.substring(6);
+                    if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
+                        switch (month) {
+                            case "01":
+                            case "03":
+                            case "05":
+                            case "07":
+                            case "08":
+                            case "10":
+                            case "12":
+                                if (day <= 31) {
+                                    if (year >= 1920 && year <= 2020) {
+                                        checkBirthday = true;
+                                        birthDay += day + "/" + month + "/" + year;
+                                        fullBirthday = birthDay;
+                                    }
+                                }
+                                break;
+                            case "02":
+                                if (day <= 29) {
+                                    if (year >= 1920 && year <= 2020) {
+                                        checkBirthday = true;
+                                        birthDay += day + "/" + month + "/" + year;
+                                        fullBirthday = birthDay;
+                                    }
+                                }
+                                break;
+                            case "04":
+                            case "06":
+                            case "09":
+                            case "11":
+                                if (day <= 30) {
+                                    if (year >= 1920 && year <= 2020) {
+                                        checkBirthday = true;
+                                        birthDay += day + "/" + month + "/" + year;
+                                        fullBirthday = birthDay;
+
+                                    }
+                                }
+                                break;
+                            default:
+                                checkBirthday = false;
+
+                        }
+                    }
+                }
+                if (!checkBirthday) {
+                    alert("Please re-enter your date of birth");
+                }
+            } while (!checkBirthday);
+
+            // --------------------------------------------------------------------------------------------------
+            let checkNumber = false;
+            let fullNumber;
+            do {
+                let number = parseInt(prompt("Enter number phone"));
+                if (!isNaN(number)) {
+                    if (number > 1000000 && number < 9999999) {
+                        checkNumber = true;
+                        fullNumber = number;
+                    }
+                }
+                if (!checkNumber) {
+                    alert("re-enter number phone");
+                }
+            } while (!checkNumber);
+
+            // -------------------------------------------------------------------------------------------------------
+
+            checkCardId = false;
+            let cardId;
+            do {
+                cardId = prompt("Customer CarId: ");
+                if (!isNaN(cardId)) {
+                    cardId = Number.parseFloat(cardId);
+                }
+                if (!Number.isInteger(cardId)) {
+                    alert("Invalid carId ");
+                    continue;
+                }
+                if (cardId < 100000000 || cardId > 999999999) {
+                    alert("Invalid carId");
+                    continue;
+                } else {
+                    checkCardId = true;
+                }
+            } while (!checkCardId);
+
+            // ----------------------------------------------------------------------------------------------------------
+
+            let checkEmail = false;
+            let fullEmail;
+            do {
+                let email = prompt("Customer Email: ");
+                let count1 = 0;
+                let count2 = 0;
+                for (let i = 0; i < email.length; i++) {
+                    if (email.charAt(i) === "@") {
+                        count1++;
+                    }
+                }
+                for (let j = 0; j < email.length; j++) {
+                    if (email.charAt(j) === ".") {
+                        count2++;
+                    }
+                }
+                if (count1 !== 1 || count2 < 1) {
+                    alert("Invalid email");
+                } else {
+                    checkEmail = true;
+                    fullEmail = email;
+                }
+
+            } while (!checkEmail);
+
+            // ----------------------------------------------------------------------------------------------------------
+
+            let checkType = false;
+            let salary;
+            let position;
+            while (!checkType) {
+                let n = parseInt(prompt("Position of employee new ?" + '\n' +
+                    "1. Manager" + '\n' +
+                    "2. Sale" + '\n' +
+                    "3.Marketing"));
+                switch (n) {
+                    case 1:
+                        position = "Manager";
+                        salary = 500;
+                        checkType = true;
+                        break;
+                    case 2:
+                        position = "Sale";
+                        salary = 300;
+                        checkType = true;
+                        break;
+                    case 3:
+                        position = "Marketing";
+                        salary = 200;
+                        checkType = true;
+                        break;
+                    default:
+                        alert("Re-Enter")
+
+                }
+            }
+            let ListEmployee = new Employee(fullName, fullBirthday, fullNumber, cardId, fullEmail, position, salary);
+            arrayListEmployee.push(ListEmployee);
+        }
+
+    }
+
+    function DisplayEmployee() {
+        let display = "";
+        for (let i = 0; i < arrayListEmployee.length; i++) {
+            display += (i + 1) + ".Name: " + arrayListEmployee[i].getName() + "  Birthday: " + arrayListEmployee[i].getBirthday() + "  " +
+                "CardId: " + arrayListEmployee[i].getCardId() + "  NumberPhone: " + arrayListEmployee[i].getNumberPhone() + "  " +
+                "Email: " + arrayListEmployee[i].getEmail() + "  " + "Position: " + arrayListEmployee[i].getPosition()
+                + "  " + "Salary: " + arrayListEmployee[i].getSalary() + '\n' + '\n'
+        }
+        alert(display);
+    }
+
+    function SalaryEmployee() {
+        let moneyPay;
+        let show = "";
+        for (let i = 0; i < arrayListEmployee.length; i++) {
+            show += (i + 1) + ". " + arrayListEmployee[i].getName() + "\n"
+        }
+        let n = parseInt(prompt(show));
+        for (let i = 0; i < arrayListEmployee.length; i++) {
+            if (n === (i + 1)) {
+                switch (arrayListEmployee[i].getPosition()) {
+                    case "Manager":
+                        moneyPay = 500;
+                        break;
+                    case "Sale"   :
+                        moneyPay = 300;
+                        break;
+                    case "Marketing":
+                        moneyPay = 200;
+                        break;
+                    default:
+                }
+            }
+        }
+        alert(moneyPay);
+    }
+
+</script>
+
+</body>
+</html>

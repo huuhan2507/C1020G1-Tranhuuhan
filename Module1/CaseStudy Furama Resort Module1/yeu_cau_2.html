@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Furama</title>
+</head>
+<body>
+<script>
+    let name = 'Trần Hữu Hân';
+    let cardId = '21304940';
+    let birthday = '25/07/2002';
+    let email = 'thh1@gmail.com';
+    let address = 'Đà Nẵng';
+    let typeCustomer = 'Diamond';
+    let discount = 10;
+    let amountPeople = 3;
+    let rentDay = 7;
+    let typeService = 'Villa';
+    let typeRoom = 'Vip';
+    let moneyPay;
+    let exist;
+
+    function showCustomer() {
+        switch (typeService) {
+            case "Villa":
+                moneyPay = 500 * rentDay * (1 - discount / 100);
+                break;
+            case "House":
+                moneyPay = 300 * rentDay * (1 - discount / 100);
+                break;
+            case "Room":
+                moneyPay = 100 * rentDay * (1 - discount / 100);
+                break;
+            default:
+                alert("Failed");
+        }
+        let beforeMoney = moneyPay;
+        switch (typeCustomer) {
+            case "Diamond":
+                moneyPay -= 15;
+                break;
+            case "Platinum":
+                moneyPay -= 10;
+                break;
+            case "Gold":
+                moneyPay -= 5;
+                break;
+            case "Silver":
+                moneyPay -= 2;
+                break;
+            default:
+                moneyPay -= 0
+        }
+        switch (address) {
+            case "Đà Nẵng":
+                moneyPay -= 20;
+                break;
+            case "Huế":
+                moneyPay -= 10;
+                break;
+            case "Quảng Nam":
+                moneyPay -= 5;
+                break;
+            default:
+                moneyPay -= 0;
+
+        }
+        if (rentDay > 7) {
+            moneyPay -= 30;
+        } else if (rentDay >= 5) {
+            moneyPay -= 20;
+        } else if (rentDay >= 2) {
+            moneyPay -= 10;
+        } else moneyPay -= 0;
+
+        let totalMoney = moneyPay;
+        let discountMoney = beforeMoney - totalMoney;
+        alert("1.Customer Name : " + name + "\n" +
+            "2.Customer CardId: " + cardId + "\n" +
+            "3.Customer Day of birth day : " + birthday + "\n" +
+            "4.Customer email : " + email + "\n" +
+            "5.Customer address : " + address + "\n" +
+            "6.Customer type : " + typeCustomer + "\n" +
+            "7.Discount (%) : " + discount + "\n" +
+            "8.Amount People : " + amountPeople + "\n" +
+            "9.Rent Day : " + rentDay + "\n" +
+            "10.Service type : " + typeService + "\n" +
+            "11.Room type : " + typeRoom+"\n"+
+        "Total Money : "+totalMoney+"\n"+
+        "Discount amount: "+discountMoney);
+
+    }
+
+    // -------------------------------------------------------------------------
+    function editCustomer() {
+        switch (typeService) {
+            case "Villa":
+                moneyPay = 500 * rentDay * (1 - discount / 100);
+                break;
+            case "House":
+                moneyPay = 300 * rentDay * (1 - discount / 100);
+                break;
+            case "Room":
+                moneyPay = 100 * rentDay * (1 - discount / 100);
+                break;
+            default:
+                alert("Failed");
+        }
+        let beforeMoney = moneyPay;
+        switch (typeCustomer) {
+            case "Diamond":
+                moneyPay -= 15;
+                break;
+            case "Platinum":
+                moneyPay -= 10;
+                break;
+            case "Gold":
+                moneyPay -= 5;
+                break;
+            case "Silver":
+                moneyPay -= 2;
+                break;
+            default:
+                moneyPay -= 0
+        }
+        switch (address) {
+            case "Đà Nẵng":
+                moneyPay -= 20;
+                break;
+            case "Huế":
+                moneyPay -= 10;
+                break;
+            case "Quảng Nam":
+                moneyPay -= 5;
+                break;
+            default:
+                moneyPay -= 0;
+
+        }
+        if (rentDay > 7) {
+            moneyPay -= 30;
+        } else if (rentDay >= 5) {
+            moneyPay -= 20;
+        } else if (rentDay >= 2) {
+            moneyPay -= 10;
+        } else moneyPay -= 0;
+
+        let totalMoney = moneyPay;
+        let discountMoney = beforeMoney - totalMoney;
+        exist = parseInt(prompt("CUSTOMER INFORMATION" + "\n" +
+            "1.Customer Name : " + name + "\n" +
+            "2.Customer CardId: " + cardId + "\n" +
+            "3.Customer Day of birth day : " + birthday + "\n" +
+            "4.Customer email : " + email + "\n" +
+            "5.Customer address : " + address + "\n" +
+            "6.Customer type : " + typeCustomer + "\n" +
+            "7.Discount (%) : " + discount + "\n" +
+            "8.Amount People : " + amountPeople + "\n" +
+            "9.Rent Day : " + rentDay + "\n" +
+            "10.Service type : " + typeService + "\n" +
+            "11.Room type : " + typeRoom+"\n"+
+            "Total Money : "+totalMoney+"\n"+
+            "Discount amount: "+discountMoney
+        ));
+    }
+
+    // -------------------@@---------------------------
+
+
+
+    // ------------------------------------------------------------------------------------------
+    let chose = parseInt(prompt("1. Show Information Customer" + "\n" +
+        "2.Edit Information Customer"
+    ));
+    switch (chose) {
+        case 1:
+            showCustomer();
+            break;
+        case 2:
+            editCustomer();
+            switch (exist) {
+                case 1:
+                    name = prompt("Customer Name(new) : ");
+                    showCustomer();
+                    break;
+                case 2:
+                    cardId = prompt("Customer CardId(new): ");
+                    showCustomer();
+                    break;
+                case 3:
+                    birthday = prompt("Customer Day of birth day(new) : ");
+                    showCustomer();
+                    break;
+                case 4:
+                    email = prompt("Customer email(new) : ");
+                    showCustomer();
+                    break;
+                case 5:
+                    address = prompt("Customer address(new) : ");
+                    showCustomer();
+                    break;
+                case 6:
+                    typeCustomer = prompt("Customer type (Diamond/Platinum/Gold/Silver/Member): ");
+                    showCustomer();
+                    break;
+                case 7:
+                    discount = prompt("Discount (%) : ");
+                    showCustomer();
+                    break;
+                case 8:
+                    amountPeople = prompt("Amount People : ");
+                    showCustomer();
+                    break;
+                case 9:
+                    rentDay = prompt("Rent Day : ");
+                    showCustomer();
+                    break;
+                case 10:
+                    typeService = prompt("Service type (Villa/House/Room) : ");
+                    showCustomer();
+                    break;
+                case 11:
+                    typeRoom = prompt("Room type (Vip/Business/Normal) : ");
+                    showCustomer();
+                    break;
+                default:
+                    alert("Failed")
+            }
+            break;
+        default:
+            alert("Failed")
+
+    }
+
+</script>
+
+</body>
+</html>

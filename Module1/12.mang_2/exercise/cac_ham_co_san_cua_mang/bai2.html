@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let number = prompt("Hay nhap so ban muon in ra: ");
+    let number1 = number.toString();
+    let result = [number1[0]];
+    for (let i = 1; i < number1.length; i++) {
+        if ((number1[i - 1] % 2 === 0) && (number1[i] % 2 === 0)) {
+            result.push("-", number[i])
+        } else result.push(number[i])
+    }
+    alert(result.join(''))
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .col-12 {
+            width: 100%;
+            margin: 0;
+            background-color: gray;
+        }
+
+        .col-2 {
+            width: 16.66%;
+            background-color: lightgray;
+            height: 800px;
+        }
+
+        .col-8 {
+            width: 66.66%;
+        }
+
+        body {
+            margin: 0;
+        }
+        #row1 {
+            width: 100%;
+            display: inline-block;
+            height: 60px;
+        }
+
+        a {
+            color: white;
+            font-size: 20px;
+            padding: 15px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        [class*="col-"] {
+            float: left;
+        }
+
+        ul li {
+            list-style: none;
+            color: blue;
+            font-size: 22px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        p {
+            font-size: 22px;
+        }
+
+        h1 {
+            font-size: 60px;
+        }
+
+        h2 {
+            font-size: 35px;
+        }
+
+        .text-1 {
+            float: left;
+        }
+        .text-2{
+            padding: 60px;
+            margin: 20px;
+            background-color: whitesmoke;
+            border-radius: 10px;
+            text-align: center;
+        }
+        a:hover{
+            background-color: black;
+        }
+        @media only screen and (max-width: 768px) {
+            [class*="col-"]{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-12">
+        <div id="row1">
+            <a class="text-1">LOGO</a>
+            <a class="text-1">HOME</a>
+            <a class="text-1">ABOUT</a>
+            <a class="text-1">PROJECT</a>
+            <a class="text-1">CONTACT</a>
+            <a style="float: right">LOGIN</a>
+        </div>
+    </div>
+</div>
+<div class="row-1">
+    <div class="col-2">
+            <ul>
+                <li>Link</li>
+                <li>Link</li>
+                <li>Link</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-8">
+        <div style="margin-left: 15px">
+            <h1>Welcome</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad mimin veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad mimin veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex ea commodo consequat.
+            </p>
+            <hr>
+            <h2>Test</h2>
+            <p>Lorem ipsum...</p>
+        </div>
+    </div>
+    <div class="col-2">
+        <div >
+            <p class="text-2">ADS</p>
+            <p class="text-2">ADS</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

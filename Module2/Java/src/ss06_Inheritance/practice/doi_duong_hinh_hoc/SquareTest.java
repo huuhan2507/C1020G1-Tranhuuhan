@@ -1,0 +1,20 @@
+package ss06_Inheritance.practice.doi_duong_hinh_hoc;
+
+public class SquareTest {
+    public static void main(String[] args) {
+        Square square = new Square();
+        System.out.println(square + "\n" + "" +
+                "Perimeter: " + square.getPerimeter() + "\n" +
+                "Area: " + square.getArea());
+
+        square = new Square(2.3);
+        System.out.println(square + "\n" + "" +
+                "Perimeter: " + square.getPerimeter() + "\n" +
+                "Area: " + square.getArea());
+
+        square = new Square(5.8, "yellow", true);
+        System.out.println(square + "\n" + "" +
+                "Perimeter: " + square.getPerimeter() + "\n" +
+                "Area: " + square.getArea());
+    }
+}

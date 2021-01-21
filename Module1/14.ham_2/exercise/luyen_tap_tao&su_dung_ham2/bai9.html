@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="show()">
+<script>
+    let character = prompt("Nhap ki tu bat ki");
+    let arrayA = [];
+    let count = 0;
+
+    function show() {
+        for (let i = 1; i <= 10; i++) {
+            arrayA[i] = prompt("Nhap ki thu " + i)
+        }
+        for (let j = 0; j < arrayA.length; j++) {
+            if (character === arrayA[j])
+                count += 1
+        }
+        alert("Ki tu " + character + " xuat hien " + count + " lan trong mang")
+    }
+</script>
+
+</body>
+</html>

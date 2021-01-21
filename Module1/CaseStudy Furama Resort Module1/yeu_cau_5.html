@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arrayName = ["Mary", "Andy", "Edison", "Tom"];
+    let arrayDate = ["17/09/1999", "18/12/1998", "3/04/2000", "24/3/1999"];
+    let arrayAddress = ["Ha Noi", "Hue", "Da Nang", "Sai Gon"];
+    let arrayCardId = [221435751, 221341414, 226231312, 223113214];
+    let check = false;
+
+    function displayMainMenu() {
+        while (!check) {
+            let n = parseInt(prompt("1.Add new customer" + '\n' +
+                "2.Display information customer" + '\n' +
+                "3.Edit Information customer" + '\n' +
+                "4.Delete Customer" + '\n' +
+                "5.Exit"));
+            switch (n) {
+                case 1:
+                    addCustomer();
+                    break;
+                case 2:
+                    displayCustomer();
+                    break;
+                case 3:
+                    editCustomer();
+                    break;
+                case 4:
+                    deleteCustomer();
+                    break;
+                case 5:
+                    check = true;
+                    break;
+                default:
+            }
+        }
+
+    }
+
+    displayMainMenu();
+
+    function addCustomer() {
+        let check = false;
+        do {
+            let n = parseInt(prompt("Enter the number of customers you want to add"));
+            if (!isNaN(n)) {
+                for (let i = 0; i < n; i++) {
+                    // -----------------Name-----------------
+
+                    let name = prompt("Customer Name: ");
+                    name = name.toLowerCase();
+                    let myArray = name.split(" ");
+                    let fullName = "";
+                    for (let i = 0; i < myArray.length; i++) {
+                        if (myArray[i] !== "") {
+                            myArray[i] = myArray[i].charAt(0).toUpperCase() + myArray[i].substr(1);
+                            fullName += myArray[i] + " ";
+                        }
+                    }
+                    arrayName.push(fullName);
+                    // ------------------BirthDay--------------------
+
+                    let check = false;
+                    do {
+                        let date = prompt("Enter Date");
+                        let birthDay = "";
+                        if (date.charAt(2) === "/" && date.charAt(5) === "/") {
+                            let day = date.substring(0, 2);
+                            let month = date.substring(3, 5);
+                            let year = date.substring(6);
+                            if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
+                                switch (month) {
+                                    case "01":
+                                    case "03":
+                                    case "05":
+                                    case "07":
+                                    case "08":
+                                    case "10":
+                                    case "12":
+                                        if (day <= 31) {
+                                            if (year >= 1920 && year <= 2020) {
+                                                check = true;
+                                                birthDay += day + "/" + month + "/" + year;
+                                                arrayDate.push(birthDay);
+                                            }
+                                        }
+                                        break;
+                                    case "02":
+                                        if (day <= 29) {
+                                            if (year >= 1920 && year <= 2020) {
+                                                check = true;
+                                                birthDay += day + "/" + month + "/" + year;
+                                                arrayDate.push(birthDay);
+                                            }
+                                        }
+                                        break;
+                                    case "04":
+                                    case "06":
+                                    case "09":
+                                    case "11":
+                                        if (day <= 30) {
+                                            if (year >= 1920 && year <= 2020) {
+                                                check = true;
+                                                birthDay += day + "/" + month + "/" + year;
+                                                arrayDate.push(birthDay);
+
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        check = false;
+
+                                }
+                            }
+                        }
+                        if (!check) {
+                            alert("Please re-enter your date of birth");
+                        }
+                    } while (!check);
+                    // ------------------------Address--------------------------
+
+                    let address = prompt("Customer Address: ");
+                    address = address.toLowerCase();
+                    let myAddress = address.split(" ");
+                    let fullAddress = "";
+                    for (let i = 0; i < myAddress.length; i++) {
+                        if (myAddress[i] !== "") {
+                            myAddress[i] = myAddress[i].charAt(0).toUpperCase() + myAddress[i].substr(1);
+                            fullAddress += myAddress[i] + " ";
+                        }
+                    }
+                    arrayAddress.push(fullAddress);
+                    // -------------------------CardId-------------------------------
+
+                    check = false;
+                    let cardId;
+                    do {
+                        cardId = prompt("Customer CarId: ");
+                        if (!isNaN(cardId)) {
+                            cardId = Number.parseFloat(cardId);
+                        }
+                        if (!Number.isInteger(cardId)) {
+                            alert("Invalid carId ");
+                            continue;
+                        }
+                        if (cardId < 100000000 || cardId > 999999999) {
+                            alert("Invalid carId");
+                            continue;
+                        } else {
+                            check = true;
+                        }
+                    } while (!check);
+                    arrayCardId.push(cardId);
+                }
+            }
+            check = true;
+
+
+        } while (!check)
+    }
+
+    function displayCustomer() {
+        let fullInformation = "";
+        for (let i = 0; i < arrayName.length; i++) {
+            fullInformation += (i + 1) + ".Name: " + arrayName[i] + "  " + "BirthDay: " + arrayDate[i] + "  " +
+                "Address: " + arrayAddress[i] + "  " + "CardId: " + arrayCardId[i] + '\n' + '\n';
+        }
+        alert(fullInformation);
+
+    }
+
+    function editCustomer() {
+        let note = "";
+        for (let i = 0; i < arrayName.length; i++) {
+            note += (i + 1) + "." + arrayName[i] + '\n';
+        }
+        let selectCustomer = parseInt(prompt(note));
+        if (!isNaN(selectCustomer)) {
+            for (let i = 0; i < arrayName.length; i++) {
+                if (selectCustomer === (i + 1)) {
+                    // -----------------Name-----------------
+
+                    let name = prompt("Customer Name: ");
+                    name = name.toLowerCase();
+                    let myArray = name.split(" ");
+                    let fullName = "";
+                    for (let i = 0; i < myArray.length; i++) {
+                        if (myArray[i] !== "") {
+                            myArray[i] = myArray[i].charAt(0).toUpperCase() + myArray[i].substr(1);
+                            fullName += myArray[i] + " ";
+                        }
+                    }
+                    arrayName[i] = fullName;
+                    // ------------------BirthDay--------------------
+
+                    let check = false;
+                    do {
+                        let date = prompt("Enter Date");
+                        let birthDay = "";
+                        if (date.charAt(2) === "/" && date.charAt(5) === "/") {
+                            let day = date.substring(0, 2);
+                            let month = date.substring(3, 5);
+                            let year = date.substring(6);
+                            if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
+                                switch (month) {
+                                    case "01":
+                                    case "03":
+                                    case "05":
+                                    case "07":
+                                    case "08":
+                                    case "10":
+                                    case "12":
+                                        if (day <= 31) {
+                                            if (year >= 1920 && year <= 2020) {
+                                                check = true;
+                                                birthDay += day + "/" + month + "/" + year;
+                                                arrayDate[i] = birthDay;
+                                            }
+                                        }
+                                        break;
+                                    case "02":
+                                        if (day <= 29) {
+                                            if (year >= 1920 && year <= 2020) {
+                                                check = true;
+                                                birthDay += day + "/" + month + "/" + year;
+                                                arrayDate[i] = birthDay;
+                                            }
+                                        }
+                                        break;
+                                    case "04":
+                                    case "06":
+                                    case "09":
+                                    case "11":
+                                        if (day <= 30) {
+                                            if (year >= 1920 && year <= 2020) {
+                                                check = true;
+                                                birthDay += day + "/" + month + "/" + year;
+                                                arrayDate[i] = birthDay;
+
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        check = false;
+
+                                }
+                            }
+                        }
+                        if (!check) {
+                            alert("Please re-enter your date of birth");
+                        }
+                    } while (!check);
+                    // ------------------------Address--------------------------
+
+                    let address = prompt("Customer Address: ");
+                    address = address.toLowerCase();
+                    let myAddress = address.split(" ");
+                    let fullAddress = "";
+                    for (let i = 0; i < myAddress.length; i++) {
+                        if (myAddress[i] !== "") {
+                            myAddress[i] = myAddress[i].charAt(0).toUpperCase() + myAddress[i].substr(1);
+                            fullAddress += myAddress[i] + " ";
+                        }
+                    }
+                    arrayAddress[i] = fullAddress;
+                    // -------------------------CardId-------------------------------
+
+                    check = false;
+                    let cardId;
+                    do {
+                        cardId = prompt("Customer CarId: ");
+                        if (!isNaN(cardId)) {
+                            cardId = Number.parseFloat(cardId);
+                        }
+                        if (!Number.isInteger(cardId)) {
+                            alert("Invalid carId ");
+                            continue;
+                        }
+                        if (cardId < 100000000 || cardId > 999999999) {
+                            alert("Invalid carId");
+                            continue;
+                        } else {
+                            check = true;
+                        }
+                    } while (!check);
+                    arrayCardId[i] = cardId;
+                }
+            }
+        }
+    }
+
+    function deleteCustomer() {
+        let note = "";
+        for (let i = 0; i < arrayName.length; i++) {
+            note += (i + 1) + "." + arrayName[i] + '\n';
+        }
+        let selectDelete = parseInt(prompt(note));
+        if (!isNaN(selectDelete)) {
+            for (let i = 0; i < arrayCardId.length; i++) {
+                if (selectDelete === (i + 1)) {
+                    if (confirm("You sure ?")) {
+                        arrayName.splice(i, 1);
+                        arrayDate.splice(i, 1);
+                        arrayAddress.splice(i, 1);
+                        arrayName.splice(i, 1);
+                    }
+
+                }
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

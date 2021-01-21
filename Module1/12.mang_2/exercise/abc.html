@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="abc"></p>
+<script>
+    let name;
+    let age;
+    let cardID;
+    let birthDay;
+    let show = "";
+    let array = [["Han", 13, 1223112, "25/07/2002"], ["Hien", 15, 213236, "11/04/1996"], ["adada", 26, 21313, "12/2/1999"]];
+    for (let i = 0; i < array.length; i++) {
+        name = array[i][0];
+        age = array[i][1];
+        cardID = array[i][2];
+        birthDay = array[i][3];
+        show += "Name: " + name + "<br>" + "Age: " + age + "<br>"+ "CardId: " + cardID + "<br>" + "Birthday: " + birthDay+"<br>"+"<br>"
+    }
+    document.getElementById("abc").innerHTML = show;
+</script>
+
+</body>
+</html>

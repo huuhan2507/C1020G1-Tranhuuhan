@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <canvas id="myCanvas" width="700px" height="300px"></canvas>
+    <br>
+    <button onclick="kick()">Result</button>
+    <button onclick="kick1()">Edit</button>
+</div>
+<p id="text"></p>
+<script>
+    class Rectangle {
+        constructor(width, height) {
+            this.width = width;
+            this.height = height;
+        }
+
+        getWidth() {
+            return this.width;
+        }
+
+        getHeight() {
+            return this.height;
+        }
+    }
+
+    let hcn = new Rectangle(300, 200);
+    let width = hcn.getWidth();
+    let height = hcn.getHeight();
+    let c = document.getElementById("myCanvas");
+    let ctx = c.getContext("2d");
+    ctx.fillStyle = "red";
+    ctx.fillRect(0, 0, width, height);
+
+    function kick() {
+        let periMeter = (width + height) * 2;
+        let area = width * height;
+        alert("Chu vi hinh chu nhat la " + periMeter + "\n" +
+            "Dien tich hinh chu nhat la " + area);
+
+    }
+
+    function kick1() {
+        width = parseInt(prompt("Nhap chieu dai"));
+        height = parseInt(prompt("Nhap chieu rong"));
+        if (width === height || width < 0 || height < 0 || isNaN(width) || isNaN(height) || height > width) {
+            alert("Ban nhap du lieu sai")
+        } else {
+            c = document.getElementById("myCanvas");
+            ctx = c.getContext("2d");
+            ctx.fillStyle = "red";
+            ctx.fillRect(0, 0, width, height);
+        }
+
+    }
+
+
+</script>
+</body>
+</html>
