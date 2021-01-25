@@ -15,6 +15,8 @@
     <input type="text" placeholder="product name ..." name="name"><br><br>
     <input type="number" placeholder="Price.." name="price"><br><br>
     <input type="number" placeholder="discount percent.." name="percent"><br><br>
+    <p>Discount amount: <%= request.getAttribute("discount_amount")%></p>
+    <p>Discount price: <%= request.getAttribute("discount_price")%></p>
     <input type="submit" value="Enter">
   </form>
   </body>
