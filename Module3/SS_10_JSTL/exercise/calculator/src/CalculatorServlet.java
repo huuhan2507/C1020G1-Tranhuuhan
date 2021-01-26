@@ -23,11 +23,7 @@ public class CalculatorServlet extends HttpServlet {
                 result= operaFirst * operaSecond;
                 break;
             case "Division":
-                try {
-                    result= operaFirst / operaSecond;
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+                result = operaFirst / operaSecond;
                 break;
             default:
         }
