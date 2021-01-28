@@ -13,4 +13,5 @@ public interface UserRepository {
      void updateUser(User user) ;
      List<User> sortNameUser();
      List<User> searhCountryUser(String search);
+
 }

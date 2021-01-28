@@ -3,6 +3,7 @@ package repository.impl;
 import bean.User;
 import repository.UserRepository;
 
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,6 +19,8 @@ public class UserRepositoryImpl implements UserRepository {
     public static final String SELECT_ONE_USER = "select * from users where id = ?";
     public static final String SELECT_SORT_NAME_USER = "select * from users order by `name`";
     public static final String SEARCH_COUNTRY_USER = "select * from users where (country like concat('%',?,'%')) ";
+    public static final String SEARCH_ID_USER = "call get_user_by_id(?)";
+    public static final String CREAT_USER_SP = "call create_user(?,?,?)";
     private BaseRepository baseRepository = new BaseRepository();
 
     @Override
@@ -140,5 +143,7 @@ public class UserRepositoryImpl implements UserRepository {
         }
         return userList;
     }
+
+
 
 }

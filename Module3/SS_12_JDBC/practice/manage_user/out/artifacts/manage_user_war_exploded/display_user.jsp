@@ -7,13 +7,76 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/userServlet?actionUser=null">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                        data-whatever="@mdo">Create user</button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="post" action="/userServlet">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">CREATE USER</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <input type="hidden" value="1" name="id">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Name User</label>
+                                        <input type="text" name="name" class="form-control" id="recipient-name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-email" class="col-form-label">Email User</label>
+                                        <input type="text" name="email" class="form-control" id="recipient-email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-country" class="col-form-label">Country</label>
+                                        <input type="text" name="country" class="form-control" id="recipient-country">
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary"name="action" value="create">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary" href="/userServlet?actionUser=sort" role="button" style="margin-left: 30px">
+                    Sort Name User
+                </a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="/userServlet">
+            <input type="hidden" name="actionUser" value="search">
+            <input class="form-control mr-sm-2" type="text" name="country" placeholder="Search" value="${country}" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
 <table class="table table-dark">
     <thead>
     <tr>
@@ -35,19 +98,16 @@
                 <a href="/userServlet?actionUser=update&id=${users.id}">
                     <button type="button" class="btn btn-primary">Edit</button>
                 </a>
-
             <td>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
                     Delete
                 </button>
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel" style="color: red">Notification</h5>
+                                <h5 class="modal-title" id="exampleModalLabel1" style="color: red">Notification</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -71,18 +131,6 @@
     </c:forEach>
     </tbody>
 </table>
-<a href="/userServlet?actionUser=create">
-    <button type="button" class="btn btn-primary">Add new user</button>
-</a>
-<a href="/userServlet?actionUser=sort">
-    <button type="button" class="btn btn-primary">Sort Name User</button>
-</a>
-<form method="get" action="/userServlet">
-    <input type="text" placeholder="Search..." width="300px" style="margin-left: 30px " name="search_country">
-</form>
-<a href="/userServlet?actionUser=search">
-    <button type="submit" class="btn btn-primary mb-2">Enter</button>
-</a>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
