@@ -14,7 +14,7 @@
 </head>
 <body>
 <h2>Dictionary</h2>
-<form action="/home" method="post">
+<form action="/search" method="post">
     <input type="text" name="search" value="${search}">
     <button type="submit">Search</button>
 </form>
