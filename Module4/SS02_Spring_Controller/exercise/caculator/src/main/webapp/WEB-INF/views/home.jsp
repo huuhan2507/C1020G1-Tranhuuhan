@@ -23,7 +23,11 @@
     <input type="submit" name="calculation" value="Mul">
     <input type="submit" name="calculation" value="Div">
 </form>
-<h4 style="color: #ff001b"><c:out value="${message}"/></h4>
-<h3><c:out value="${result}"/></h3>
+<c:if test="${result =='None'}">
+    <h3 style="color: red"><c:out value="Cannot be divided by 0"/></h3>
+</c:if>
+<c:if test="${result != 'None'}">
+    <h3><c:out value="${result}"/></h3>
+</c:if>
 </body>
 </html>

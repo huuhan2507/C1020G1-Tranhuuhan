@@ -13,7 +13,7 @@
 </head>
 <body>
 <h2>Sandwich Condiments</h2>
-<form action="/select" method="get">
+<form action="/sandwich" method="get">
     <input type="checkbox" name="select" value="Lettuce " >Lettuce
     <input type="checkbox" name="select" value="Tomato " >Tomato
     <input type="checkbox" name="select" value="Mustard " >Mustard
@@ -21,6 +21,6 @@
     <hr>
     <input type="submit" value="Save">
 </form>
-<h3><c:out value="${sandwich}"/></h3>
+<h3><c:out value="${condiment}"/></h3>
 </body>
 </html>

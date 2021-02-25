@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.TreeMap;
 @Service
 public class DictionaryServiceImpl implements DictionaryService {
+
     @Override
     public Map<String, String> dictionary() {
         Map<String, String> map = new TreeMap<>();

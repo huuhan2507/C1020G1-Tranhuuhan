@@ -11,9 +11,9 @@ public class SandwichController {
     public String goHome(){
         return "/home";
     }
-    @GetMapping("/select")
-    public String selectCondiment(@RequestParam String select, Model model){
-        model.addAttribute( "sandwich", "Condiment: "+ select );
+    @GetMapping("/sandwich")
+    public String selectCondiment(@RequestParam String condiments, Model model){
+        model.addAttribute( "condiment", "Condiment: "+ condiments );
         return "/home";
     }
 }
