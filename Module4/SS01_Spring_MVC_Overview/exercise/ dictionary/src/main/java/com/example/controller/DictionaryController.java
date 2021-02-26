@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 
 public class DictionaryController {
+    @Autowired
+    private DictionaryService dictionaryService;
 
     @GetMapping("/home")
     public String goHome(){
         return "/home";
     }
 
-    @Autowired
-    private DictionaryService dictionaryService;
     @PostMapping("/search")
     public String search(@RequestParam String search, Model model){
         String result = dictionaryService.search( search );
