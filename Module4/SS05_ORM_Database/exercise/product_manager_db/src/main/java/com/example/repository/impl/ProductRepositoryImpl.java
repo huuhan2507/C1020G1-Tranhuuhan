@@ -6,11 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-@Transactional
 public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public List<Product> showAllProduct() {
