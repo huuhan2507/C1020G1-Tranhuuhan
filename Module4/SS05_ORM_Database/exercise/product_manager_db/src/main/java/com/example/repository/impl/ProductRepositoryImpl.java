@@ -14,48 +14,35 @@ import java.util.List;
 public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public List<Product> showAllProduct() {
-        Query typedQuery = BaseRepository.entityManager.createNativeQuery( "select * from product",Product.class );
+        Query typedQuery = BaseRepository.entityManager.createNativeQuery( "select * from product", Product.class );
         return typedQuery.getResultList();
     }
 
     @Override
-    public void createProduct(Product product) {
-        EntityTransaction entityTransaction =BaseRepository.entityManager.getTransaction();
-        entityTransaction.begin();
-        BaseRepository.entityManager.persist( product );
-        entityTransaction.commit();
-    }
-
-    @Override
     public void deleteProduct(Integer id) {
-        EntityTransaction entityTransaction =BaseRepository.entityManager.getTransaction();
+        EntityTransaction entityTransaction = BaseRepository.entityManager.getTransaction();
         entityTransaction.begin();
         BaseRepository.entityManager.remove( findProductById( id ) );
         entityTransaction.commit();
     }
 
     @Override
-    public void editProduct(Product product) {
-        EntityTransaction entityTransaction =BaseRepository.entityManager.getTransaction();
-        entityTransaction.begin();
-        BaseRepository.entityManager.merge( product );
-        entityTransaction.commit();
-    }
-
-    @Override
     public Product findProductById(Integer id) {
-       return BaseRepository.entityManager.find( Product.class,id );
+        return BaseRepository.entityManager.find( Product.class, id );
     }
 
     @Override
-    public void saveProduct(String action , Product product) {
-        switch (action){
+    public void saveProduct(String action, Product product) {
+        EntityTransaction entityTransaction = BaseRepository.entityManager.getTransaction();
+        entityTransaction.begin();
+        switch (action) {
             case "edit":
-                editProduct( product );
+                BaseRepository.entityManager.merge( product );
                 break;
             case "create":
-                createProduct( product );
+                BaseRepository.entityManager.persist( product );
                 break;
         }
+        entityTransaction.commit();
     }
 }

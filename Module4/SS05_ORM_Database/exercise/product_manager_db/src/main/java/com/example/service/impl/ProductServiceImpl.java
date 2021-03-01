@@ -15,12 +15,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> showAllProduct() {
-       return productRepository.showAllProduct();
-    }
-
-    @Override
-    public void createProduct(Product product) {
-        productRepository.createProduct( product );
+        return productRepository.showAllProduct();
     }
 
     @Override
@@ -29,17 +24,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void editProduct(Product product) {
-        productRepository.editProduct( product );
-    }
-
-    @Override
     public Product findProductById(Integer id) {
-       return productRepository.findProductById( id );
+        return productRepository.findProductById( id );
     }
 
     @Override
     public void saveProduct(String action, Product product) {
-        productRepository.saveProduct( action,product );
+        productRepository.saveProduct( action, product );
     }
 }

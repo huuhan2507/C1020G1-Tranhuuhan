@@ -15,7 +15,7 @@ public class BaseRepository {
     static {
         try {
             sessionFactory = new Configuration()
-                    .configure("hibernate.conf.xml")
+                    .configure( "hibernate.conf.xml" )
                     .buildSessionFactory();
             entityManager = sessionFactory.createEntityManager();
         } catch (HibernateException e) {
