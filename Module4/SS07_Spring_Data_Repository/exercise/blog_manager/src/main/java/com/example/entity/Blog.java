@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String name;
     private String blogger;
 
@@ -18,7 +18,7 @@ public class Blog {
     private String content;
 
     @ManyToOne
-    @JoinColumn(name = "category")
+    @JoinColumn( name = "category", referencedColumnName = "id")
     private Category category;
 
 

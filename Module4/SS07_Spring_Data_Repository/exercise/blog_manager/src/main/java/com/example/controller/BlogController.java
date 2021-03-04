@@ -5,13 +5,11 @@ import com.example.service.BlogService;
 import com.example.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 
 @Controller
 public class BlogController {
@@ -68,6 +66,7 @@ public class BlogController {
     public String search(@RequestParam String search, Model model,Pageable pageable){
         model.addAttribute( "listBlog",blogService.findBlogByNameContains( search, pageable) );
         model.addAttribute( "listCategory",categoryService.findAllCategory() );
+        model.addAttribute( "search",search );
         return "/blog/home";
     }
 

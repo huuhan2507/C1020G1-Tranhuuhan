@@ -17,7 +17,7 @@
     </thead>
     <tbody>
     <tr th:each="category,categoryStat : ${listCategory}">
-        <td th:text="${category.id}"></td>
+        <td th:text="${categoryStat.index+1}"></td>
         <td th:text="${category.name}"></td>
         <td><a th:href="@{/category/edit/{id}(id=${category.getId()})}"><button class="btn btn-primary">Edit</button></a>
             <a th:href="@{/category/delete/{id}(id=${category.getId()})}"><button class="btn btn-danger">Delete</button></a>
