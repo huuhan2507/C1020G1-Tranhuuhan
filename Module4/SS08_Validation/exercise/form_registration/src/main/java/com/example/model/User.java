@@ -6,13 +6,12 @@ import javax.validation.constraints.*;
 
 @Data
 public class User {
-    //    @Pattern( regexp = "\\w{5}",message = "Tên phải là chữ và từ 5 đến 45 kí tự")
-    @Size(min = 5, max = 45)
-    private String firstname;
-    //    @Pattern( regexp = "\\w{5}",message = "Tên phải là chữ và từ 5 đến 45 kí tự")
-    @Size(min = 5, max = 45)
 
+    @Size(min = 5, max = 45, message = "Tên phải lớn hơn 5 kí tự và bé hơn 45 kí tự")
+    private String firstname;
+    @Size(min = 5, max = 45, message = "Tên phải lớn hơn 5 kí tự và bé hơn 45 kí tự")
     private String lastname;
+
     @Pattern(regexp = "(0)[0-9]{9,10}", message = "Số điện thoại phải bắt đầu là 0 và có 10 hoặc 11 kí tự số")
     private String phone;
 
