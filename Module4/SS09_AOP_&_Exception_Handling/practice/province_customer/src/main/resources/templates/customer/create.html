@@ -7,7 +7,7 @@
 <body>
 <h1>Create customer</h1>
 <p>
-    <a href="/customers">Customer list</a>
+    <a th:href="@{/}">Customer list</a>
 </p>
 <th:block th:if="${message}">
     <p th:text="${message}"></p>
@@ -23,10 +23,16 @@
             <td><input type="text" th:field="*{lastName}"/></td>
         </tr>
         <tr>
+            <td>Email:</td>
+            <td><input type="text" th:field="*{email}"/></td>
+        </tr>
+        <tr>
             <td>Province:</td>
             <td>
                 <select th:field="*{province}">
-                    <option th:each="p : ${provinces}" th:value="${p.id}" th:text="${p.name}"></option>
+                    <div th:each="p : ${provinces}">
+                        <option th:value="${p.id}" th:text="${p.name}"></option>
+                    </div>
                 </select>
             </td>
         </tr>

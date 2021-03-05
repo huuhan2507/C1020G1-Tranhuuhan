@@ -20,7 +20,7 @@ public class User {
     @Max(value = 120, message = "Số tuổi của bạn thật thần kì")
     private Integer age;
 
-    @Pattern( regexp = "\\w{5,}(@)\\w{3,}(.)\\w{3,}", message = "Email mà bạn nhập không đúng định dạng ")
+    @Email(message = "Email không đúng định dạng ")
     private String email;
 
 }

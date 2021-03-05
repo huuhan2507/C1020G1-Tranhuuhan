@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table >
+    <tr>
+        <td>First name:</td>
+        <td><input type="text" th:field="${customer.get().firstName}"/></td>
+    </tr>
+    <tr>
+        <td>Last name:</td>
+        <td><input type="text" th:field="${customer.get().lastName}"/></td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td><input type="text" th:field="${customer.get().email}"/></td>
+    </tr>
+    <tr>
+        <td>Province:</td>
+        <td>
+            <input type="text" th:field="${customer.get().province.name}"/>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input type="submit" value="Create customer"></td>
+    </tr>
+</table>
+</body>
+</html>

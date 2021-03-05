@@ -4,6 +4,7 @@ import com.example.entity.Customer;
 import com.example.entity.Province;
 import com.example.service.CustomerService;
 import com.example.service.ProvinceService;
+import com.example.service.exception.DuplicateEmailException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,12 +24,11 @@ public class CustomerController {
     @Autowired
     private ProvinceService provinceService;
 
-    @ModelAttribute("provinces")
     public Iterable<Province> provinces(){
         return provinceService.findAll();
     }
 
-    @GetMapping("/customers")
+    @GetMapping("/")
     public ModelAndView listCustomers(@PageableDefault(size = 5) Pageable pageable){
         Page<Customer> customers = customerService.findAll( pageable );
         ModelAndView modelAndView = new ModelAndView("/customer/list");
@@ -40,16 +40,18 @@ public class CustomerController {
     public ModelAndView showCreateForm(){
         ModelAndView modelAndView = new ModelAndView("/customer/create");
         modelAndView.addObject("customer", new Customer());
+        modelAndView.addObject( "provinces",provinces() );
         return modelAndView;
     }
 
     @PostMapping("/create-customer")
-    public ModelAndView saveCustomer(@ModelAttribute("customer") Customer customer){
+    public ModelAndView saveCustomer(@ModelAttribute("customer") Customer customer) throws DuplicateEmailException {
         customerService.save(customer);
-        ModelAndView modelAndView = new ModelAndView("/customer/create");
-        modelAndView.addObject("customer", new Customer());
-        modelAndView.addObject("message", "New customer created successfully");
-        return modelAndView;
+        return new ModelAndView("redirect:/");
+    }
+    @ExceptionHandler(DuplicateEmailException.class)
+    public ModelAndView showInputNotAcceptable() {
+        return new ModelAndView("customer/inputs-not-acceptable");
     }
 
     @GetMapping("/edit-customer/{id}")
@@ -57,9 +59,9 @@ public class CustomerController {
         Optional<Customer> customer = customerService.findById(id);
         if(customer != null) {
             ModelAndView modelAndView = new ModelAndView("/customer/edit");
-            modelAndView.addObject("customer", customer);
+            modelAndView.addObject("customer", customer.get());
+            modelAndView.addObject( "provinces",provinces() );
             return modelAndView;
-
         }else {
             ModelAndView modelAndView = new ModelAndView("/error.404");
             return modelAndView;
@@ -67,12 +69,16 @@ public class CustomerController {
     }
 
     @PostMapping("/edit-customer")
-    public ModelAndView updateCustomer(@ModelAttribute("customer") Customer customer){
-        customerService.save(customer);
+    public ModelAndView updateCustomer(@ModelAttribute("customer") Customer customer) throws DuplicateEmailException {
         ModelAndView modelAndView = new ModelAndView("/customer/edit");
         modelAndView.addObject("customer", customer);
-        modelAndView.addObject("message", "Customer updated successfully");
-        return modelAndView;
+        modelAndView.addObject( "provinces",provinces() );
+        try {
+            customerService.save(customer);
+            return modelAndView;
+        } catch (DuplicateEmailException e) {
+            return new ModelAndView("customer/inputs-not-acceptable");
+        }
     }
 
     @GetMapping("/delete-customer/{id}")
@@ -92,6 +98,18 @@ public class CustomerController {
     @PostMapping("/delete-customer")
     public String deleteCustomer(@ModelAttribute("customer") Customer customer){
         customerService.remove(customer.getId());
-        return "redirect:customers";
+        return "redirect:/customer";
+    }
+    @GetMapping("/customer/view/{id}")
+    public ModelAndView showInformation(@PathVariable Long id) {
+        try {
+            ModelAndView modelAndView = new ModelAndView("/customer/view");
+            Optional<Customer> customer;
+            customer = customerService.findById( id );
+            modelAndView.addObject("customer", customer);
+            return modelAndView;
+        } catch (Exception e) {
+            return new ModelAndView("redirect:/customer");
+        }
     }
 }
