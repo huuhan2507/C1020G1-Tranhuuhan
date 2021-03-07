@@ -10,16 +10,16 @@ public class Cart {
         carts = new HashMap<>();
     }
 
+    public Map<Product,Integer> getCarts(){
+        return carts;
+    }
+
     public void save(Product product){
         if (carts.containsKey(product)){
             carts.replace(product, carts.get(product), carts.get(product)+1);
         } else {
             carts.put(product,1);
         }
-    }
-
-    public void deleteAll(){
-        carts.clear();
     }
 
     public void delete(Product product){
@@ -30,7 +30,11 @@ public class Cart {
         }
     }
 
-    public Map<Product,Integer> getCarts(){
-        return carts;
+    public void deleteAll(){
+        carts.clear();
     }
+
+
+
+
 }
