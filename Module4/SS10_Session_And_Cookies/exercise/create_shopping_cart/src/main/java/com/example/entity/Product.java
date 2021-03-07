@@ -11,12 +11,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
-    private String image;
     private String description;
     private Integer price;
     private Double discount;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Cart cart;
-}
+   }

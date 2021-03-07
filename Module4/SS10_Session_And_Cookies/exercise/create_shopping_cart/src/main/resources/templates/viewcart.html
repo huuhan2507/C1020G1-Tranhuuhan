@@ -2,12 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Product</title>
+    <title>Cart</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
 </head>
 <body>
+<h1 style="text-align: center;font-size: 60px; color: green" >Your Cart</h1>
 <table class="table table-dark">
     <thead>
     <tr>
@@ -16,42 +17,31 @@
         <th scope="col">DESCRIPTION</th>
         <th scope="col">PRICE</th>
         <th scope="col">DISCOUNT</th>
+        <th scope="col">AMOUNT</th>
         <th scope="col">ACTION</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="product,productStat : ${products}">
+    <tr th:each="product,productStat : ${cart.getCarts()}">
         <td th:text="${productStat.index+1}"></td>
-        <td th:text="${product.name}"></td>
-        <td th:text="${product.description}"></td>
-        <td th:text="${product.price}"></td>
-        <td th:text="${product.discount}"></td>
-        <td><a th:href="@{/view/{id}(id=${product.getId()})}">
-                <button class="btn btn-success">View</button>
-            </a></td>
+        <td th:text="${product.key.name}"></td>
+        <td th:text="${product.key.description}"></td>
+        <td th:text="${product.key.price}"></td>
+        <td th:text="${product.key.discount}"></td>
+        <td th:text="${product.getValue()}"></td>
+        <td><a th:href="@{/deletecart/{id}(id=${product.key.id})}">
+            <button class="btn btn-success">Delete</button>
+        </a></td>
     </tr>
     </tbody>
 </table>
+<br><br>
 <div>
-    <a th:href="@{'/'(page=${products.number - 1})}" th:if="${products.hasPrevious()}">
-        <button class="btn btn-info">Previous</button>
-    </a>
-    <span style="color: red" th:text="${products.number + 1}"></span>/
-    <span style="color: red" th:text="${products.totalPages}"></span>
-    <a th:href="@{'/'(page=${products.number + 1})}" th:if="${products.hasNext()}">
-        <button class="btn btn-info">Next</button>
+    <a th:href="@{/deleteallcart}">
+        <button class="btn btn-info" style="width: 300px">Delete All</button>
     </a>
 </div>
 <br><br>
-<div>
-    <a th:href="@{/view/cart}">
-        <button class="btn btn-info" style="width: 300px">View Cart</button>
-    </a>
-</div>
-<br><br>
-<div>
-    <h4 style="color: green" th:text="${message}"></h4>
-</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

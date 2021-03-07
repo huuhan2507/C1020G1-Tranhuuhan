@@ -1,13 +1,36 @@
 package com.example.entity;
 
-import lombok.Data;
+import java.util.HashMap;
+import java.util.Map;
 
-
-
-@Data
 public class Cart {
-    
-    private Integer id;
+    private Map<Product,Integer> carts;
 
-    private Product product;
+    public Cart(){
+        carts = new HashMap<>();
+    }
+
+    public void save(Product product){
+        if (carts.containsKey(product)){
+            carts.replace(product, carts.get(product), carts.get(product)+1);
+        } else {
+            carts.put(product,1);
+        }
+    }
+
+    public void deleteAll(){
+        carts.clear();
+    }
+
+    public void delete(Product product){
+        if (carts.get(product) == 1){
+            carts.remove(product);
+        } else {
+            carts.replace(product, carts.get(product), carts.get(product)-1);
+        }
+    }
+
+    public Map<Product,Integer> getCarts(){
+        return carts;
+    }
 }
