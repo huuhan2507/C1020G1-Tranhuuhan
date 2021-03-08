@@ -8,7 +8,7 @@
 
 </head>
 <body>
-<h1 style="text-align: center;font-size: 60px; color: green" >Your Cart</h1>
+<h1 style="text-align: center;font-size: 60px; color: green">Your Cart</h1>
 <table class="table table-dark">
     <thead>
     <tr>
@@ -29,16 +29,25 @@
         <td th:text="${product.key.price}"></td>
         <td th:text="${product.key.discount}"></td>
         <td th:text="${product.getValue()}"></td>
-        <td><a th:href="@{/deletecart/{id}(id=${product.key.id})}">
-            <button class="btn btn-success">Delete</button>
-        </a></td>
+        <td><a th:href="@{/editcart/{id}(id=${product.key.id})}">
+            <button class="btn btn-success">Edit</button>
+        </a>
+            <a th:href="@{/deletecart/{id}(id=${product.key.id})}">
+                <button class="btn btn-success">Delete</button>
+            </a>
+        </td>
     </tr>
     </tbody>
 </table>
+<br>
+<h2 style="color: green;text-align: center" th:text="${'Total Money: '+ cart.totalMoney()}"></h2>
 <br><br>
 <div>
     <a th:href="@{/deleteallcart}">
         <button class="btn btn-info" style="width: 300px">Delete All</button>
+    </a>
+    <a th:href="@{/}">
+        <button class="btn btn-danger" style="width: 300px">Return Home Products</button>
     </a>
 </div>
 <br><br>

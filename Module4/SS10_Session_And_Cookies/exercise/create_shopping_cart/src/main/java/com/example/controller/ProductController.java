@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.entity.Cart;
+import com.example.service.Cart;
 import com.example.entity.Product;
 import com.example.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,36 +37,49 @@ public class ProductController {
     }
 
     @PostMapping("/addcart")
-    public String addCart(@ModelAttribute Product product, @ModelAttribute Cart cart, RedirectAttributes redirectAttributes) {
-        cart.save( product );
+    public String addCart(@ModelAttribute Product product,@RequestParam Integer amount,
+                          @ModelAttribute Cart cart, RedirectAttributes redirectAttributes) {
+        cart.save( product,amount );
         redirectAttributes.addFlashAttribute( "message",
-                "Has successfully added the "+ product.getName() +" product to the cart !" );
+                "Has successfully added the " + product.getName() + " product to the cart !" );
         return "redirect:/";
     }
 
     @GetMapping("/view/cart")
-    public String viewCart(@ModelAttribute Cart cart ) {
+    public String viewCart(@ModelAttribute Cart cart) {
         return "/viewcart";
     }
 
     @GetMapping("/deletecart/{id}")
-    public String delete(@PathVariable Integer id,@ModelAttribute("cart") Cart cart,RedirectAttributes redirectAttributes){
+    public String delete(@PathVariable Integer id, @ModelAttribute("cart") Cart cart, RedirectAttributes redirectAttributes) {
         Product product = productService.findById( id );
         cart.delete( product );
         redirectAttributes.addFlashAttribute( "message",
-                "The "+product.getName()+" product has been successfully deleted from your shopping cart");
+                "The " + product.getName() + " product has been successfully deleted from your shopping cart" );
         return "redirect:/";
     }
+
     @GetMapping("/deleteallcart")
-    public String deleteAll(@ModelAttribute("cart") Cart cart,RedirectAttributes redirectAttributes){
+    public String deleteAll(@ModelAttribute("cart") Cart cart, RedirectAttributes redirectAttributes) {
         redirectAttributes.addFlashAttribute( "message",
                 "The shopping cart has been successfully deleted" );
         cart.deleteAll();
         return "redirect:/";
     }
 
+    @GetMapping("/editcart/{id}")
+    public String editCart(@PathVariable Integer id, Model model , @ModelAttribute Cart cart){
+        model.addAttribute( "product",productService.findById( id ) );
+        return "/editcart";
+    }
+    @PostMapping("/editcartitem")
+    public String editCartItem(@RequestParam Integer amount,@ModelAttribute Product product,@ModelAttribute Cart cart){
+        cart.edit( product,amount );
+        return "redirect:/";
+    }
+
     @ModelAttribute("cart")
-    public Cart cart(){
+    public Cart cart() {
         return new Cart();
     }
 

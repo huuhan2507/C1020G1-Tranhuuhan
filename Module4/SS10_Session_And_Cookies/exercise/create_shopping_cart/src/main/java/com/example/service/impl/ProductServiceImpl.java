@@ -12,9 +12,10 @@ import org.springframework.stereotype.Service;
 public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductRepository productRepository;
+
     @Override
     public Page<Product> findAllProduct(Pageable pageable) {
-       return productRepository.findAll( pageable );
+        return productRepository.findAll( pageable );
     }
 
     @Override
