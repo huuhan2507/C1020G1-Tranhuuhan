@@ -1,7 +1,5 @@
 package com.example.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,8 +17,6 @@ public class Blog {
     private String date;
     private String content;
 
-
-    @JsonManagedReference
     @ManyToOne
     @JoinColumn( name = "category", referencedColumnName = "id")
     private Category category;
