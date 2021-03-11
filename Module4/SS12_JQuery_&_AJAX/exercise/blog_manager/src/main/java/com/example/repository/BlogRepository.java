@@ -15,8 +15,7 @@ public interface BlogRepository extends JpaRepository<Blog,Integer> {
 
     Page<Blog> findBlogByCategory_Id(Integer id, Pageable pageable);
 
-
-    Page<Blog> findBlogByNameContains(String search, Pageable pageable);
+    List<Blog> findBlogByNameContains(String search);
 
    Page<Blog> findBlogByOrderByDateAsc(Pageable pageable);
 

@@ -18,7 +18,7 @@ public interface BlogService {
 
     Page<Blog> findBlogByCategory_Id(Integer id, Pageable pageable);
 
-    Page<Blog> findBlogByNameContains(String search, Pageable pageable);
+    List<Blog> findBlogByNameContains(String search, Integer number);
 
     Page<Blog> findBlogByOrderByDateAsc(Pageable pageable);
 

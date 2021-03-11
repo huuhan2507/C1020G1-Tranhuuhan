@@ -1,10 +1,9 @@
 package com.example.repository;
 
-import com.example.entity.Category;
+import com.example.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Integer> {
-    Category findCategoryById(Integer id);
+public interface CustomerRepository extends JpaRepository<Customer,Integer> {
 }

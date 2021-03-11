@@ -65,17 +65,18 @@ public class BlogController {
         return "redirect:/";
     }
     @GetMapping("/blog/search")
-    public String search(@RequestParam("query") String search, Model model,Pageable pageable){
-        model.addAttribute( "listBlog",blogService.findBlogByNameContains( search, pageable) );
+    public String search(@RequestParam String search, Model model,@RequestParam("number") Integer number){
+        model.addAttribute( "listBlog",blogService.findBlogByNameContains( search, number ) );
         model.addAttribute( "listCategory",categoryService.findAllCategory() );
+        model.addAttribute( "number",number );
         model.addAttribute( "search",search );
         return "/blog/home";
     }
-    @GetMapping("/blog/viewblogs")
-    public String goHome(@RequestParam Integer number ,Model model){
-        model.addAttribute( "listBlog",blogService.findAllBlogByNumber( number ));
+    @GetMapping("/blog/seemore")
+    public String seeMore(@RequestParam String search, Model model,@RequestParam("number") Integer number){
+        model.addAttribute( "listBlog",blogService.findBlogByNameContains( search, number ) );
         model.addAttribute( "listCategory",categoryService.findAllCategory() );
-        model.addAttribute( "number", number );
+        model.addAttribute( "search",search );
         return "/blog/home";
     }
 

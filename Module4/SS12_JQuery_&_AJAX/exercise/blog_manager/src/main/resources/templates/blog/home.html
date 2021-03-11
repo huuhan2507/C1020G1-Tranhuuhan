@@ -39,12 +39,14 @@
         </li>
     </ul>
     <form class="d-flex" method="get" th:action="@{/blog/search}">
-        <input class="form-control mr-2" id="search" type="text" th:name="search" th:value="${search}"
+        <input class="form-control mr-2" id="search" type="text" th:value="${search}"
                placeholder="Search"
                aria-label="Search">
+        <input type="hidden" id="number1" th:value="5">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
 </nav>
+<h1 style="color: green;text-align: center">Blog</h1>
 </body>
 <body id="blog-list">
 <table class="table table-dark">
@@ -76,8 +78,7 @@
     </tbody>
 </table>
 <div>
-    <button class="btn btn-outline-info" id="view">See more</button>
-    <input type="hidden" value="" id="number" th:value="${number}">
+    <button class="btn btn-outline-info" id="number" th:value="${number}">See more</button>
 </div>
 <br><br>
 <div>
@@ -104,9 +105,10 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#search').on("keyup", function () {
-            let query = $(this).val();
+            let search = $('#search').val();
+            let number = $('#number1').val()*1;
             $.ajax({
-                url: "/blog/search?query=" + query,
+                url: "/blog/search?search=" + search+"&number="+number,
                 type: "GET",
                 dataType: "HTML",
                 success: function (data) {
@@ -119,15 +121,15 @@
         });
     });
     $(document).ready(function () {
-        $('#view').click(function () {
-            let number = $('#number').val()+5;
+        $('#number').click(function () {
+            let number = $('#number').val() * 1 + 5;
+            let search = $('#search').val();
             $.ajax({
-                url: "/blog/viewblogs?number="+number,
+                url: "/blog/seemore?search=" + search+"&number="+number,
                 type: "GET",
                 dataType: "HTML",
                 success: function (data) {
                     $('#blog-list').html(data);
-                    console.log("han")
                 },
                 error: function () {
                     console.log("error")

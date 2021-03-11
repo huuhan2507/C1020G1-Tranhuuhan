@@ -44,8 +44,18 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public Page<Blog> findBlogByNameContains(String search, Pageable pageable) {
-        return blogRepository.findBlogByNameContains( search,pageable );
+    public List<Blog> findBlogByNameContains(String search, Integer number) {
+        List<Blog> list;
+        if (search.equals("")){
+            return findAllBlogByNumber( number );
+        }
+        list = blogRepository.findBlogByNameContains( search );
+        if ((list.size()-number)<1){
+            return list;
+        }else {
+            return list.subList( 0,number );
+        }
+
     }
 
     @Override
@@ -56,10 +66,10 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public List<Blog> findAllBlogByNumber(Integer number) {
         List<Blog> list = findAllBlog();
-        if (list.size()-number<0){
+        if ((list.size()-number)<1){
             return list;
         }else {
-            return list.subList( 0 , number );
+            return list.subList( 0,number );
         }
     }
 
