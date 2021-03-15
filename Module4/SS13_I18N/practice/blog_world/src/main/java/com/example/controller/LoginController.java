@@ -21,6 +21,6 @@ public class LoginController {
         User user = new User();
         user.setUserName(credential.getUsername());
         model.addAttribute("user", user);
-        return "redirect:/view_haw";
+        return "/view_haw";
     }
 }

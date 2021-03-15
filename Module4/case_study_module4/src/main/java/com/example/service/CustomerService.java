@@ -1,0 +1,15 @@
+package com.example.service;
+
+
+import com.example.entity.customer.Customer;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+public interface CustomerService {
+    Page<Customer> findAll(Pageable pageable);
+    void save(Customer customer);
+    void delete(Integer id);
+    Customer findById(Integer id);
+    void deleteAll();
+    Page<Customer> searchByName(String name,Pageable pageable);
+}
