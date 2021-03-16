@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{/common/layout::header}">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
@@ -10,11 +10,11 @@
 <div th:replace="~{common/layout::navbar}">
 </div>
 <body id="customer-list" >
-<a style="margin-left: 30px" th:href="@{/customer/create}">
-    <button class="btn btn-info">Add Customer</button>
+<a style="margin-left: 30px" th:href="@{/employee/create}">
+    <button class="btn btn-info">Add Employee</button>
 </a>
 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal1">
-    Delete All Customer
+    Delete All Employee
 </button>
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
@@ -31,50 +31,52 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <a th:href="@{/customer/deleteAll}">
+                <a th:href="@{/employee/deleteAll}">
                     <button type="submit" class="btn btn-primary">Yes</button>
                 </a>
             </div>
         </div>
     </div>
 </div>
-<label style="margin-left: 180px;font-size: 40px"> CUSTOMER LIST</label>
+<label style="margin-left: 180px;font-size: 40px"> EMPLOYEE LIST</label>
 <table  class="table table-dark">
     <thead>
     <tr>
         <th scope="col">NO</th>
-        <th scope="col">CODE</th>
         <th scope="col">NAME</th>
-        <th scope="col">TYPE</th>
         <th scope="col">BIRTHDAY</th>
-        <th scope="col">GENDER</th>
         <th scope="col">CARD ID</th>
+        <th scope="col">SALARY</th>
         <th scope="col">PHONE NUMBER</th>
         <th scope="col">EMAIL</th>
         <th scope="col">ADDRESS</th>
+        <th scope="col">POSITION</th>
+        <th scope="col">EDUCATION DEGREE</th>
+        <th scope="col">DIVISION</th>
         <th scope="col">ACTION</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="customer,customerStat : ${customers}">
-        <td th:text="${customerStat.index+1}"></td>
-        <td th:text="${customer.customerCode}"></td>
-        <td th:text="${customer.customerName}"></td>
-        <td th:text="${customer.customerType.customerTypeName}"></td>
-        <td th:text="${customer.customerBirthday}"></td>
-        <td th:text="${customer.customerGender}"></td>
-        <td th:text="${customer.customerCardId}"></td>
-        <td th:text="${customer.customerPhone}"></td>
-        <td th:text="${customer.customerEmail}"></td>
-        <td th:text="${customer.customerAddress}"></td>
-        <td><a th:href="@{/customer/edit/{id}(id=${customer.getCustomerId()})}">
+    <tr th:each="employee,employeeStat : ${employees}">
+        <td th:text="${employeeStat.index+1}"></td>
+        <td th:text="${employee.employeeName}"></td>
+        <td th:text="${employee.employeeBirthday}"></td>
+        <td th:text="${employee.employeeCardId}"></td>
+        <td th:text="${employee.employeeSalary}"></td>
+        <td th:text="${employee.employeePhone}"></td>
+        <td th:text="${employee.employeeEmail}"></td>
+        <td th:text="${employee.employeeAddress}"></td>
+        <td th:text="${employee.position.positionName}"></td>
+        <td th:text="${employee.educationDegree.educationDegreeName}"></td>
+        <td th:text="${employee.division.divisionName}"></td>
+        <td><a th:href="@{/employee/edit/{id}(id=${employee.getEmployeeId()})}">
             <button class="btn btn-warning">Edit</button>
         </a>
-            <a th:href="@{/customer/view/{id}(id=${customer.getCustomerId()})}">
+            <a th:href="@{/eployee/view/{id}(id=${employee.getEmployeeId()})}">
                 <button class="btn btn-success">View</button>
             </a>
             <a href="#">
-                <button  type="submit" th:id="${customer.customerId}" class="btn btn-danger delete">Delete</button>
+                <button  type="submit" th:id="${employee.employeeId}" class="btn btn-danger delete">Delete</button>
             </a>
         </td>
     </tr>
@@ -84,7 +86,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" style="color: black">Delete Customer</h5>
+                <h5 class="modal-title" style="color: black">Delete Employee</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -94,18 +96,18 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <a id="delete" type="button" class="btn btn-primary">Delete</a>
+                <a href="#" id="delete" type="button" class="btn btn-primary">Delete</a>
             </div>
         </div>
     </div>
 </div>
 <div>
-    <a th:href="@{'/customer/'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}">
+    <a th:href="@{'/employee/'(page=${employees.number - 1})}" th:if="${employees.hasPrevious()}">
         <button class="btn btn-info">Previous</button>
     </a>
-    <span style="color: red" th:text="${customers.number + 1}"></span>/
-    <span style="color: red" th:text="${customers.totalPages}"></span>
-    <a th:href="@{'/customer/'(page=${customers.number + 1})}" th:if="${customers.hasNext()}">
+    <span style="color: red" th:text="${employees.number + 1}"></span>/
+    <span style="color: red" th:text="${employees.totalPages}"></span>
+    <a th:href="@{'/employee/'(page=${employees.number + 1})}" th:if="${employees.hasNext()}">
         <button class="btn btn-info">Next</button>
     </a>
 </div>
@@ -117,7 +119,7 @@
         $('#search').on("keyup", function () {
             let search = $('#search').val();
             $.ajax({
-                url: "/customer/search?search=" + search,
+                url: "/employee/search?search=" + search,
                 type: "GET",
                 dataType: "HTML",
                 success: function (data) {
@@ -133,7 +135,7 @@
     $(document).ready(function () {
         $('.delete').click(function () {
             let tag = $(this)[0];
-            document.getElementById("delete").href = "/customer/delete/"+ tag.id;
+            document.getElementById("delete").href = "/employee/delete/"+ tag.id;
             $("#modelId").modal('show');
         })
     })

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/common/layout::header}">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+</head>
+<div th:replace="~{common/layout::navbar}">
+</div>
+<body id="customer-list" >
+<a style="margin-left: 30px" th:href="@{/service/create}">
+    <button class="btn btn-info">Add Service</button>
+</a>
+<label style="margin-left: 400px;font-size: 40px"> List House</label>
+<table  class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col">NO</th>
+        <th scope="col">NAME</th>
+        <th scope="col">CODE</th>
+        <th scope="col">AREA</th>
+        <th scope="col">COST</th>
+        <th scope="col">MAX PEOPLE</th>
+        <th scope="col">SERVICE TYPE</th>
+        <th scope="col">RENT TYPE</th>
+        <th scope="col">STANDARD ROOM</th>
+        <th scope="col">DESCRIPTION</th>
+        <th scope="col">NUMBER OF FLOOR</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="house,houseStat : ${houses}">
+        <td th:text="${houseStat.index+1}"></td>
+        <td th:text="${house.serviceCode}"></td>
+        <td th:text="${house.serviceName}"></td>
+        <td th:text="${house.serviceArea}"></td>
+        <td th:text="${house.serviceCost}"></td>
+        <td th:text="${house.serviceMaxPeople}"></td>
+        <td th:text="${house.serviceType.serviceTypeName}"></td>
+        <td th:text="${house.rentType.rentTypeName}"></td>
+        <td th:text="${house.standardRoom}"></td>
+        <td th:text="${house.descriptionOtherConvenience}"></td>
+        <td th:text="${house.numberOfFloors}"></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{'/service/house'(page=${houses.number - 1})}" th:if="${houses.hasPrevious()}">
+        <button class="btn btn-info">Previous</button>
+    </a>
+    <span style="color: red" th:text="${houses.number + 1}"></span>/
+    <span style="color: red" th:text="${houses.totalPages}"></span>
+    <a th:href="@{'/service/house'(page=${houses.number + 1})}" th:if="${houses.hasNext()}">
+        <button class="btn btn-info">Next</button>
+    </a>
+</div>
+</body>
+<div th:replace="~{/common/layout::footer}">
+</div>
+</html>

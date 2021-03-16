@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/common/layout::header}">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+</head>
+<div th:replace="~{common/layout::navbar}">
+</div>
+<body id="customer-list" >
+<a style="margin-left: 30px" th:href="@{/contract/create}">
+    <button class="btn btn-info">Add Service</button>
+</a>
+<label style="margin-left: 410px;font-size: 40px"> List Contract</label>
+<table  class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col">NO</th>
+        <th scope="col">START DATE</th>
+        <th scope="col">END DATE</th>
+        <th scope="col">DEPOSIT</th>
+        <th scope="col">TOTAL MONEY</th>
+        <th scope="col">EMPLOYEE</th>
+        <th scope="col">CUSTOMER CODE</th>
+        <th scope="col">CUSTOMER</th>
+        <th scope="col">SERVICE CODE</th>
+        <th scope="col">SERVICE</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="contract,contractStat : ${contracts}">
+        <td th:text="${contractStat.index+1}"></td>
+        <td th:text="${contract.contractStartDate}"></td>
+        <td th:text="${contract.contractEndDate}"></td>
+        <td th:text="${contract.contractDeposit}"></td>
+        <td th:text="${contract.contractTotalMoney}"></td>
+        <td th:text="${contract.employee.employeeName}"></td>
+        <td th:text="${contract.customer.customerCode}"></td>
+        <td th:text="${contract.customer.customerName}"></td>
+        <td th:text="${contract.service.serviceCode}"></td>
+        <td th:text="${contract.service.serviceName}"></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{'/contract/'(page=${contracts.number - 1})}" th:if="${contracts.hasPrevious()}">
+        <button class="btn btn-info">Previous</button>
+    </a>
+    <span style="color: red" th:text="${contracts.number + 1}"></span>/
+    <span style="color: red" th:text="${contracts.totalPages}"></span>
+    <a th:href="@{'/contract/'(page=${contracts.number + 1})}" th:if="${contracts.hasNext()}">
+        <button class="btn btn-info">Next</button>
+    </a>
+</div>
+</body>
+<div th:replace="~{/common/layout::footer}">
+</div>
+</html>
