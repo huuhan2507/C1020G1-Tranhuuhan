@@ -40,7 +40,7 @@ public class Employee {
     @JoinColumn(name = "educationDegree", referencedColumnName = "educationDegreeId")
     private EducationDegree educationDegree;
 
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
     private Set<Contract> contracts;
 
     @ManyToOne

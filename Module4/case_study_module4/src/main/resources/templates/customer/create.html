@@ -17,13 +17,14 @@
 </head>
 <body>
 <p style="color: green;margin-left: 40px; font-size: 30px">Create Customer</p>
-<form th:action="@{/customer/save}" method="post" th:object="${customer}">
+<form th:action="@{/customer/save/create}" method="post" th:object="${customer}">
     <div class="form-group">
         <input type="text" class="form-control" id="formId" hidden th:field="*{customerId}">
     </div>
     <div class="form-group">
         <label for="formCode">Code: </label>
         <input type="text" class="form-control" id="formCode" required th:field="*{customerCode}">
+        <p class="text-danger" th:if="${#fields.hasErrors('customerCode')}" th:errors="*{customerCode}"></p>
     </div>
     <div class="form-group">
         <label for="formName">Name: </label>
@@ -44,18 +45,22 @@
     <div class="form-group">
         <label for="formCardId">Card Id: </label>
         <input type="text" class="form-control" id="formCardId" required th:field="*{customerCardId}">
+        <p class="text-danger" th:if="${#fields.hasErrors('customerCardId')}" th:errors="*{customerCardId}"></p>
     </div>
     <div class="form-group">
         <label for="formPhone">Phone: </label>
         <input type="text" class="form-control" id="formPhone" required th:field="*{customerPhone}">
+        <p class="text-danger" th:if="${#fields.hasErrors('customerPhone')}" th:errors="*{customerPhone}"></p>
     </div>
     <div class="form-group">
         <label for="formEmail">Email: </label>
         <input type="text" class="form-control" id="formEmail" required th:field="*{customerEmail}">
+        <p class="text-danger" th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}"></p>
     </div>
     <div class="form-group">
         <label for="formAddress">Address: </label>
         <input type="text" class="form-control" id="formAddress" required th:field="*{customerAddress}">
+        <p class="text-danger" th:if="${#fields.hasErrors('customerAddress')}" th:errors="*{customerAddress}"></p>
     </div>
     <div class="form-group">
         <label >Type Of Customer: </label>

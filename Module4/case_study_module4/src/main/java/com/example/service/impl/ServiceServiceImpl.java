@@ -54,4 +54,14 @@ public class ServiceServiceImpl implements ServiceService {
     public ServiceType findTypeById(Integer id) {
         return serviceTypeRepository.findById( id ).orElse( null );
     }
+
+    @Override
+    public void deleteById(Integer id) {
+        serviceRepository.deleteById( id );
+    }
+
+    @Override
+    public boolean checkServiceCode(String code) {
+        return serviceRepository.findServiceByServiceCode( code )==null;
+    }
 }

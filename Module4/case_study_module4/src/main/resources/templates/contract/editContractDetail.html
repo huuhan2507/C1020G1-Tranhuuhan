@@ -16,23 +16,26 @@
     </style>
 </head>
 <body>
-<p style="color: green;margin-left: 40px; font-size: 30px">Create Contract Detail</p>
+<p style="color: green;margin-left: 40px; font-size: 30px">Edit Contract Detail</p>
 <form th:action="@{/contractdetail/save}" method="post" th:object="${contractDetail}">
     <div class="form-group">
-        <input type="text" class="form-control" id="formId" hidden th:field="*{contractDetailId}">
+        <label for="formId">Id: </label>
+        <input type="text" class="form-control" id="formId" readonly th:field="*{contractDetailId}">
     </div>
     <div class="form-group">
-        <label for="inputState" >Contract: </label>
-        <select  id="inputState" th:field="*{contract}" class="form-control" >
-            <option  th:each="con,conStat : ${contracts}" th:value="${con.contractId}"
-                    th:text="'Id: '+${con.contractId}+' - Start Date: '+${con.contractStartDate}+' - End Date: '+${con.contractEndDate}"></option>
+        <label>Contract: </label>
+        <select th:field="*{contract}" class="form-control">
+            <option th:each="con,conStat : ${contracts}" th:value="${con.contractId}"
+                    th:text="'Id: '+${con.contractId}+' - Start Date: '+${con.contractStartDate}+' - End Date: '+${con.contractEndDate}"
+                    th:selected="(${con.contractId}==${contractDetail.contract.contractId})"></option>
         </select>
     </div>
-    <div class="form-group ">class="form-control"
-        <label for="inputState1" >Attach Service: </label>
-        <select id="inputState1"  th:field="*{attachService}" class="form-control" >
+    <div class="form-group">
+        <label>Attach Service: </label>
+        <select th:field="*{attachService}" class="form-control">
             <option th:each="att,attStat : ${attachServices}" th:value="${att.attachServiceId}"
-                    th:text="${att.attachServiceName}+'/'+${att.attachServiceCost}+'$'"></option>
+                    th:text="${att.attachServiceName}+'/'+${att.attachServiceCost}+'$'"
+                    th:selected="(${att.attachServiceId}==${contractDetail.attachService.attachServiceId})"></option>
         </select>
     </div>
     <div class="form-group">
@@ -40,7 +43,7 @@
         <input type="text" class="form-control" id="formQuantity" required th:field="*{quantity}">
     </div>
 
-    <button style="margin-left: 30px" type="submit" class="btn btn-primary" name="action" value="create">Create</button>
+    <button style="margin-left: 30px" type="submit" class="btn btn-primary" name="action" value="create">Update</button>
     <a th:href="@{/contractdetail/}" style="margin-left: 30px" class="btn btn-secondary" role="button">Close
     </a>
 </form>

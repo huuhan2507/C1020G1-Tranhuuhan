@@ -21,4 +21,20 @@ public class ContractServiceImpl implements ContractService {
     public void save(Contract contract) {
         contractRepository.save( contract );
     }
+
+    @Override
+    public void delete(Integer id) {
+        contractRepository.deleteById( id );
+    }
+
+    @Override
+    public Contract findById(Integer id) {
+        return contractRepository.findById( id ).orElse( null );
+    }
+
+    @Override
+    public Page<Contract> CustomerUserService(Pageable pageable) {
+        return contractRepository.findCustomerUseService( pageable );
+    }
+
 }

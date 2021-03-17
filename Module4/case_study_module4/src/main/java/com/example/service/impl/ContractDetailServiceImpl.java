@@ -33,4 +33,14 @@ public class ContractDetailServiceImpl implements ContractDetailService {
     public void save(ContractDetail contractDetail) {
         contractDetailRepository.save( contractDetail );
     }
+
+    @Override
+    public void delete(Integer id) {
+        contractDetailRepository.deleteById( id );
+    }
+
+    @Override
+    public ContractDetail findById(Integer id) {
+        return contractDetailRepository.findById( id ).orElse( null );
+    }
 }

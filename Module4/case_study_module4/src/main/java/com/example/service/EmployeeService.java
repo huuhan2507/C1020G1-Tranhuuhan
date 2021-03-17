@@ -18,7 +18,7 @@ public interface EmployeeService {
 
     void deleteAll();
 
-    Page<Employee> findEmployeeByEmployeeNameContains(String name, Pageable pageable);
+    Page<Employee> search(String search, Pageable pageable);
 
     Employee findById(Integer id);
 

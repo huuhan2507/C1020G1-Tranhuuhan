@@ -53,7 +53,7 @@ public class EmployeeController {
 
     @GetMapping("/search")
     public String search(@RequestParam String search,Model model,@PageableDefault(size = 4) Pageable pageable){
-        model.addAttribute( "employees", employeeService.findEmployeeByEmployeeNameContains( search,pageable ) );
+        model.addAttribute( "employees", employeeService.search( search,pageable ) );
         model.addAttribute( "search",search );
         return "/employee/list";
     }

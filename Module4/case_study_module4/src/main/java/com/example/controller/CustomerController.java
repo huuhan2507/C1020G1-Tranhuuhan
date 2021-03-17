@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -45,7 +47,7 @@ public class CustomerController {
 
     @GetMapping("/search")
     public String search(@RequestParam String search,@PageableDefault(size = 4) Pageable pageable, Model model){
-        model.addAttribute( "customers",customerService.searchByName( search,pageable ) );
+        model.addAttribute( "customers",customerService.search( search,pageable ) );
         model.addAttribute( "search",search );
         return "/customer/list";
     }
@@ -61,9 +63,27 @@ public class CustomerController {
         return  "redirect:/customer/";
     }
 
-    @PostMapping("/save")
-    public String save(@ModelAttribute Customer customer) {
-        customerService.save( customer );
-        return "redirect:/customer/";
+    @PostMapping("/save/create")
+    public String save(@Validated @ModelAttribute Customer customer, BindingResult bindingResult,Model model) {
+        if (bindingResult.hasErrors()){
+            model.addAttribute( "customer",customer );
+            model.addAttribute( "types", customerService.findAllCustomerType() );
+            return "/customer/create";
+        }else {
+            customerService.save( customer );
+            return "redirect:/customer/";
+        }
     }
+    @PostMapping("/save/edit")
+    public String save1(@Validated @ModelAttribute Customer customer, BindingResult bindingResult,Model model) {
+        if (bindingResult.hasErrors()){
+            model.addAttribute( "customer",customer );
+            model.addAttribute( "types", customerService.findAllCustomerType() );
+            return "/customer/edit";
+        }else {
+            customerService.save( customer );
+            return "redirect:/customer/";
+        }
+    }
+
 }

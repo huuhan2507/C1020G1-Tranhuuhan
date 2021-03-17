@@ -13,4 +13,8 @@ public interface ContractDetailService {
     List<AttachService> findAllAttachService();
 
     void save(ContractDetail contractDetail);
+
+    void delete(Integer id);
+
+    ContractDetail findById(Integer id);
 }

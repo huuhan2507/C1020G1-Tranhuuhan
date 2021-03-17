@@ -19,7 +19,9 @@ public interface CustomerService {
 
     void deleteAll();
 
-    Page<Customer> searchByName(String name, Pageable pageable);
+    Page<Customer> search(String search, Pageable pageable);
 
     List<CustomerType> findAllCustomerType();
+
+    boolean checkCustomerCode(String code);
 }

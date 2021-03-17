@@ -36,7 +36,7 @@ public class Service {
     @JoinColumn(name = "rentTypeId", referencedColumnName = "rentTypeId")
     private RentType rentType;
 
-    @OneToMany(mappedBy = "service")
+    @OneToMany(mappedBy = "service",cascade = CascadeType.ALL)
     private Set<Contract> contracts;
 
 }

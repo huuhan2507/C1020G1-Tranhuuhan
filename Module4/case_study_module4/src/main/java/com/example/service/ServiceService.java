@@ -21,4 +21,8 @@ public interface ServiceService {
     List<ServiceType> findAllServiceType();
 
     ServiceType findTypeById(Integer id);
+
+    void deleteById(Integer id);
+
+    boolean checkServiceCode(String code);
 }

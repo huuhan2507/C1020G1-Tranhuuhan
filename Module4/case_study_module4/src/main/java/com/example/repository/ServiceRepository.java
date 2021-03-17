@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ServiceRepository extends JpaRepository<Service,Integer> {
     Page<Service> findServiceByServiceType(ServiceType serviceType, Pageable pageable);
+
+    Service findServiceByServiceCode(String code);
 }

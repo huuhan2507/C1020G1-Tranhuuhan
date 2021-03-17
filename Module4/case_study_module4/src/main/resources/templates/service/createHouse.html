@@ -49,14 +49,14 @@
     </div>
     <div class="form-group">
         <label>Rent Type: </label>
-        <select th:field="*{rentType}">
+        <select th:field="*{rentType}" class="form-control">
             <option th:each="rentType1,typeStat : ${rentTypes}" th:value="${rentType1.rentTypeId}"
                     th:text="${rentType1.rentTypeName}"></option>
         </select>
     </div>
     <div class="form-group">
         <label>Standard Room: </label>
-        <select th:field="*{standardRoom}">
+        <select th:field="*{standardRoom}" class="form-control">
             <option th:value="Vip">Vip</option>
             <option th:value="Business">Business</option>
             <option th:value="Normal">Normal</option>

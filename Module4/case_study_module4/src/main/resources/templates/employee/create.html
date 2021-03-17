@@ -55,19 +55,19 @@
     </div>
     <div class="form-group">
         <label >Position: </label>
-        <select th:field="*{position}">
+        <select th:field="*{position}" class="form-control">
             <option th:each="posi,posiStat : ${positions}" th:value="${posi.positionId}" th:text="${posi.positionName}"></option>
         </select>
     </div>
     <div class="form-group">
         <label >Education Degree: </label>
-        <select th:field="*{educationDegree}">
+        <select th:field="*{educationDegree}" class="form-control">
             <option th:each="edu,eduStat : ${educations}" th:value="${edu.educationDegreeId}" th:text="${edu.educationDegreeName}"></option>
         </select>
     </div>
     <div class="form-group">
         <label >Division: </label>
-        <select th:field="*{division}">
+        <select th:field="*{division}" class="form-control">
             <option th:each="divi,diviStat : ${divisions}" th:value="${divi.divisionId}" th:text="${divi.divisionName}"></option>
         </select>
     </div>

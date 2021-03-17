@@ -71,8 +71,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Page<Employee> findEmployeeByEmployeeNameContains(String name, Pageable pageable) {
-        return employeeRepository.findEmployeeByEmployeeNameContains( name,pageable );
+    public Page<Employee> search(String search, Pageable pageable) {
+        return employeeRepository.findByContaining( search,pageable );
     }
 
     @Override

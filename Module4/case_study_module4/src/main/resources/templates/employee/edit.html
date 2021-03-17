@@ -51,14 +51,14 @@
     </div>
     <div class="form-group">
         <label>Position: </label>
-        <select th:field="*{position}">
+        <select th:field="*{position}" class="form-control">
             <option th:each="posi,posiStat : ${positions}" th:value="${posi.positionId}" th:text="${posi.positionName}"
                     th:selected="(${posi.positionId}==${employee.position.positionId})"></option>
         </select>
     </div>
     <div class="form-group">
         <label>Education Degree: </label>
-        <select th:field="*{educationDegree}">
+        <select th:field="*{educationDegree}" class="form-control">
             <option th:each="edu,eduStat : ${educations}" th:value="${edu.educationDegreeId}"
                     th:text="${edu.educationDegreeName}"
                     th:selected="(${edu.educationDegreeId}==${employee.educationDegree.educationDegreeId})"></option>
@@ -66,12 +66,12 @@
     </div>
     <div class="form-group">
         <label>Division: </label>
-        <select th:field="*{division}">
+        <select th:field="*{division}" class="form-control">
             <option th:each="divi,diviStat : ${divisions}" th:value="${divi.divisionId}" th:text="${divi.divisionName}"
                     th:selected="(${divi.divisionId}==${employee.division.divisionId})"></option>
         </select>
     </div>
-    <button style="margin-left: 30px" type="submit" class="btn btn-primary" name="action" value="create">Create</button>
+    <button style="margin-left: 30px" type="submit" class="btn btn-primary" name="action" value="create">Update</button>
     <a th:href="@{/employee/}" style="margin-left: 30px" class="btn btn-secondary" role="button">Close
     </a>
 </form>

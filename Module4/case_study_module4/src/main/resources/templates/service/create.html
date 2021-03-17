@@ -21,7 +21,7 @@
 <p style="color: green;margin-left: 40px; font-size: 30px">Create Service </p>
 <div style="margin-left: 30px">
     <label for="formName">Type Service: </label>
-    <select style="background-color: yellow" id="serviceType">
+    <select style="background-color: yellow" id="serviceType" class="form-control">
         <option th:each="type : ${serviceTypes}" th:value="${type.serviceTypeId}"
                 th:text="${type.serviceTypeName}"
                 th:selected="(${type.serviceTypeId}==${type})"></option>
@@ -53,14 +53,14 @@
     </div>
     <div class="form-group">
         <label>Rent Type : </label>
-        <select th:field="*{rentType}">
+        <select th:field="*{rentType}" class="form-control">
             <option th:each="type,typeStat : ${rentTypes}" th:value="${type.rentTypeId}"
                     th:text="${type.rentTypeName}"></option>
         </select>
     </div>
     <div class="form-group">
         <label>Standard Room: </label>
-        <select th:field="*{standardRoom}">
+        <select th:field="*{standardRoom}" class="form-control">
             <option th:value="Vip">Vip</option>
             <option th:value="Business">Business</option>
             <option th:value="Normal">Normal</option>
