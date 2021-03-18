@@ -1,4 +1,4 @@
-package bean;
+package bean.employee;
 
 public class Division {
     private int divisionId;

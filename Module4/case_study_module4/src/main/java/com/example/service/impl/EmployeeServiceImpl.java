@@ -36,10 +36,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void save(Employee employee,String password) {
+    public void save(Employee employee,String password,String username) {
         User user = new User();
         user.setPassWord( password );
-        user.setUserName( employee.getEmployeeEmail() );
+        user.setUserName( username );
         userRepository.save( user );
         UserRole userRole = new UserRole();
         if (employee.getPosition().getPositionId()==5|employee.getPosition().getPositionId()==5){
@@ -68,6 +68,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void deleteAll() {
         employeeRepository.deleteAll();
+    }
+
+    @Override
+    public List<Employee> findAll() {
+        return employeeRepository.findAll();
     }
 
     @Override

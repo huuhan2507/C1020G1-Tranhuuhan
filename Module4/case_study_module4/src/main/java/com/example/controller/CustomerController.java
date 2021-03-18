@@ -1,8 +1,12 @@
 package com.example.controller;
 
 
+import com.example.annotation.customer.CardIdDuplicateCustomer;
 import com.example.entity.customer.Customer;
 import com.example.service.CustomerService;
+import com.example.validation.customer.CardDuplicateCustomerValidation;
+import com.example.validation.customer.CodeCustomerValidation;
+import com.example.validation.customer.EmailDuplicateCustomerValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -11,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @Controller
@@ -42,6 +48,9 @@ public class CustomerController {
     public String edit(@PathVariable Integer id, Model model) {
         model.addAttribute( "customer", customerService.findById( id ) );
         model.addAttribute( "types", customerService.findAllCustomerType() );
+        CodeCustomerValidation.codeCustomer = customerService.findById( id ).getCustomerCode();
+        EmailDuplicateCustomerValidation.emailCustomer = customerService.findById( id ).getCustomerEmail();
+        CardDuplicateCustomerValidation.cardIdCustomer = customerService.findById( id ).getCustomerCardId();
         return "/customer/edit";
     }
 
@@ -64,7 +73,7 @@ public class CustomerController {
     }
 
     @PostMapping("/save/create")
-    public String save(@Validated @ModelAttribute Customer customer, BindingResult bindingResult,Model model) {
+    public String save(@Validated @ModelAttribute Customer customer,BindingResult bindingResult,Model model) {
         if (bindingResult.hasErrors()){
             model.addAttribute( "customer",customer );
             model.addAttribute( "types", customerService.findAllCustomerType() );
@@ -75,7 +84,7 @@ public class CustomerController {
         }
     }
     @PostMapping("/save/edit")
-    public String save1(@Validated @ModelAttribute Customer customer, BindingResult bindingResult,Model model) {
+    public String save1(@ModelAttribute @Validated Customer customer,BindingResult bindingResult,Model model) {
         if (bindingResult.hasErrors()){
             model.addAttribute( "customer",customer );
             model.addAttribute( "types", customerService.findAllCustomerType() );

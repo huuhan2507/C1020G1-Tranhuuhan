@@ -1,4 +1,4 @@
 package repository.impl;
 
-public class ContractDetailRepository {
+public class ContractDetailRepositoryImpl {
 }

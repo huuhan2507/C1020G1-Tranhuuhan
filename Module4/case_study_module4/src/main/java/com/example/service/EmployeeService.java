@@ -12,11 +12,13 @@ import java.util.List;
 public interface EmployeeService {
     Page<Employee> findAll(Pageable pageable);
 
-    void save(Employee employee, String password);
+    void save(Employee employee, String password,String username);
 
     void deleteById(Integer id);
 
     void deleteAll();
+
+    List<Employee> findAll();
 
     Page<Employee> search(String search, Pageable pageable);
 

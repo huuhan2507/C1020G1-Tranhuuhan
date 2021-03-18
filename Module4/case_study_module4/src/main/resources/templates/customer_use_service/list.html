@@ -9,12 +9,9 @@
 </head>
 <div th:replace="~{common/layout::navbar}">
 </div>
-<body id="customer-list" >
-<a style="margin-left: 30px" th:href="@{/contract/create}">
-    <button class="btn btn-info">Add Service</button>
-</a>
-<label style="margin-left: 320px;font-size: 40px"> List Customer Use Service</label>
-<table  class="table table-dark">
+<body id="customer-list">
+<label style="margin-left: 360px;font-size: 40px"> List Customer Use Service</label>
+<table class="table table-dark">
     <thead>
     <tr>
         <th scope="col">NO</th>
@@ -23,7 +20,6 @@
         <th scope="col">CUSTOMER TYPE</th>
         <th scope="col">CUSTOMER BIRTHDAY</th>
         <th scope="col">ATTACH SERVICE</th>
-        <th scope="col">USE SERVICE CODE</th>
         <th scope="col">USE SERVICE NAME</th>
         <th scope="col">ACTION</th>
     </tr>
@@ -39,10 +35,13 @@
         <td th:text="${contract.service.serviceName}"></td>
         <td>
             <a th:href="@{/contract/useService/edit/{id}(id=${contract.service.getServiceId()})}">
-                <button class="btn btn-warning">Edit Service</button>
+                <button class="btn btn-warning"><i class="material-icons">miscellaneous_services</i>Edit Service
+                </button>
             </a>
             <a href="#">
-                <button  type="submit" th:id="${contract.service.getServiceId()}" class="btn btn-danger delete">Delete Service</button>
+                <button type="submit" th:id="${contract.service.getServiceId()}" class="btn btn-danger delete"><i
+                        class="material-icons">delete</i>Delete Service
+                </button>
             </a>
         </td>
     </tr>
@@ -84,7 +83,7 @@
     $(document).ready(function () {
         $('.delete').click(function () {
             let tag = $(this)[0];
-            document.getElementById("delete").href = "/contract/useService/delete/"+ tag.id;
+            document.getElementById("delete").href = "/contract/useService/delete/" + tag.id;
             $("#modelId").modal('show');
         })
     })

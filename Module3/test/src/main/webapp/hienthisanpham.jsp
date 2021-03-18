@@ -8,14 +8,69 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 <body>
-
+<nav class="navbar" style="background-color: lightblue">
+    <h1 style=" color: black;font-family: 'Agency FB'">Danh Sách Sản Phẩm</h1>
+</nav>
+<a href="themsanpham.jsp"
+   style="color: black">
+    <button type="button" class="btn btn-primary">
+        Thêm mới
+    </button>
+</a>
+<form>
+    <a> Danh sách top</a>
+    <select>
+        <option>3</option>
+        <option>5</option>
+        <option>10</option>
+    </select>
+    <a>Sản phẩm được đặt hàng nhiều nhất:</a>
+    <a href="#">
+        <button type="submit" class="btn btn-primary" name="" > Xem</button>
+    </a>
+</form>
+<form action="/sanPhamServlet">
+    <a>Danh sách đặt hàng từ:</a>
+    <input type="date" name="startdate">
+    <a>đến:</a>
+    <input type="date" name="#">
+    <button type="submit" class="btn btn-primary" value="">Xem</button>
+</form>
+<div class="container-fluid">
+    <div class="row">
+        <table class="table table-dark" id="tableEmployee">
+            <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Tên</th>
+                <th scope="col">Giá</th>
+                <th scope="col">Mức Giảm Giá</th>
+                <th scope="col">Số Lượng</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="sanPham" items="${danhSachSanPham}">
+            <tr>
+                <td><c:out value="${sanPham.idSanPham}"/></td>
+                <td><c:out value="${sanPham.tenSanPham}"/></td>
+                <td><c:out value="${sanPham.giaSanPham}"/></td>
+                <td><c:out value="${sanPham.mucGiamGia}"/></td>
+                <td><c:out value="${sanPham.tonKho}"/></td>
+            </tr>
+             </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
 
 
 </body>

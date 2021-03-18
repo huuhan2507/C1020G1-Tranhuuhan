@@ -19,12 +19,22 @@
 </head>
 <body>
 <form id="formService" th:action="@{/service/save}" method="post" th:object="${service}">
+    <p style="color: green; font-size: 30px">Create Service </p>
+    <div class="form-group">
+    <label for="formName">Type Service: </label>
+    <select style="background-color: yellow" id="serviceType" class="form-control">
+        <option th:value="1" >Villa</option>
+        <option th:value="2" >House</option>
+        <option th:value="3" selected>Room</option>
+    </select>
+    </div>
     <div class="form-group">
         <input type="text" class="form-control" id="formId" hidden th:field="*{serviceId}">
     </div>
     <div class="form-group">
         <label for="formName">Code: </label>
         <input type="text" class="form-control" id="formCode" required th:field="*{serviceCode}">
+        <p class="text-danger" th:if="${#fields.hasErrors('serviceCode')}" th:errors="*{serviceCode}"></p>
     </div>
     <div class="form-group">
         <label for="formName">Name: </label>
@@ -44,7 +54,7 @@
     </div>
     <div class="form-group">
         <select hidden th:field="*{serviceType}">
-            <option th:value="${type.serviceTypeId}"></option>
+            <option th:value="${3}"></option>
         </select>
     </div>
     <div class="form-group">

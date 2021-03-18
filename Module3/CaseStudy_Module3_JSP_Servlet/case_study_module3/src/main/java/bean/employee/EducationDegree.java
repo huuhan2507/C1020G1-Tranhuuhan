@@ -1,27 +1,27 @@
-package bean;
+package bean.employee;
 
 public class EducationDegree {
-    private int EducationDegreeId;
-    private String EducationDegreeName;
+    private int educationDegreeId;
+    private String educationDegreeName;
 
     public EducationDegree(int educationDegreeId, String educationDegreeName) {
-        EducationDegreeId = educationDegreeId;
-        EducationDegreeName = educationDegreeName;
+        this.educationDegreeId = educationDegreeId;
+        this.educationDegreeName = educationDegreeName;
     }
 
     public int getEducationDegreeId() {
-        return EducationDegreeId;
+        return educationDegreeId;
     }
 
     public void setEducationDegreeId(int educationDegreeId) {
-        EducationDegreeId = educationDegreeId;
+        this.educationDegreeId = educationDegreeId;
     }
 
     public String getEducationDegreeName() {
-        return EducationDegreeName;
+        return educationDegreeName;
     }
 
     public void setEducationDegreeName(String educationDegreeName) {
-        EducationDegreeName = educationDegreeName;
+        this.educationDegreeName = educationDegreeName;
     }
 }

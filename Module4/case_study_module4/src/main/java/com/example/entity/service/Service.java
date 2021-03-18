@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.Set;
 
 
@@ -18,6 +20,8 @@ public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer serviceId;
+
+    @Pattern( regexp = "(DV-)[0-9]{4}", message = "The format of the service code is DV-XXXX where X is a number from 0-9 !")
     private String serviceCode;
     private String serviceName;
     private Integer serviceArea;

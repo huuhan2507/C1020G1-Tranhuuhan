@@ -10,18 +10,25 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
     CustomerRepository customerRepository;
+
     @Autowired
     CustomerTypeRepository customerTypeRepository;
 
     @Override
     public Page<Customer> findAll(Pageable pageable) {
         return customerRepository.findAll( pageable );
+    }
+
+    @Override
+    public List<Customer> findAll() {
+        return customerRepository.findAll();
     }
 
     @Override
@@ -52,10 +59,5 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<CustomerType> findAllCustomerType() {
         return customerTypeRepository.findAll();
-    }
-
-    @Override
-    public boolean checkCustomerCode(String code) {
-        return customerRepository.findCustomerByCustomerCode( code ) == null;
     }
 }

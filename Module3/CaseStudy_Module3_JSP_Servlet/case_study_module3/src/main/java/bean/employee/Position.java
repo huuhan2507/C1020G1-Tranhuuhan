@@ -1,4 +1,4 @@
-package bean;
+package bean.employee;
 
 public class Position {
     private int positionId;
@@ -24,5 +24,4 @@ public class Position {
     public void setPositionName(String positionName) {
         this.positionName = positionName;
     }
-    
 }

@@ -25,4 +25,6 @@ public interface ServiceService {
     void deleteById(Integer id);
 
     boolean checkServiceCode(String code);
+
+    Service findById(Integer id);
 }

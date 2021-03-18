@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -48,7 +50,7 @@ public class ServiceController {
         model.addAttribute( "service", new Service() );
         model.addAttribute( "serviceTypes", serviceService.findAllServiceType() );
         model.addAttribute( "rentTypes", serviceService.findAllRentType() );
-        return "/service/create";
+        return "/service/createVilla";
     }
     @GetMapping("/createService")
     public String create(@RequestParam("service") Integer type , Model model) {
@@ -65,10 +67,21 @@ public class ServiceController {
         }
     }
 
-
     @PostMapping("/save")
-    public String save(@ModelAttribute Service service) {
-        serviceService.save( service );
-        return "redirect:/service/villa";
+    public String save(@Validated @ModelAttribute Service service, BindingResult bindingResult,Model model) {
+        model.addAttribute( "service",service );
+        model.addAttribute( "rentTypes", serviceService.findAllRentType() );
+        if (bindingResult.hasErrors()){
+            if (service.getServiceType().getServiceTypeId()==1){
+                return "service/createVilla";
+            }else if (service.getServiceType().getServiceTypeId()==2){
+                return "service/createHouse";
+            }else {
+                return "service/createRoom";
+            }
+        }else {
+            serviceService.save( service );
+            return "redirect:/service/villa";
+        }
     }
 }

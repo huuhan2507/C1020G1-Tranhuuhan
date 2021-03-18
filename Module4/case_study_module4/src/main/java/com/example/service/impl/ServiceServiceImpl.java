@@ -64,4 +64,9 @@ public class ServiceServiceImpl implements ServiceService {
     public boolean checkServiceCode(String code) {
         return serviceRepository.findServiceByServiceCode( code )==null;
     }
+
+    @Override
+    public com.example.entity.service.Service findById(Integer id) {
+        return serviceRepository.findById( id ).orElse( null);
+    }
 }

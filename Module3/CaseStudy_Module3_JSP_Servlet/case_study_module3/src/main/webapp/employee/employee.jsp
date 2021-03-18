@@ -13,6 +13,7 @@
     <title>Furama Resort</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
 </head>
 <style>
     .nav-link {
@@ -20,8 +21,8 @@
     }
 
     .image1 {
-        width: 50px;
-        height: 50px;
+        width: 100px;
+        height: 100px;
     }
 
     .nav-link:hover {
@@ -32,23 +33,38 @@
         color: white;
     }
 
-    .col-10 {
-        padding: 0;
-        margin: 0;
-    }
-
     button:hover {
         background-color: lightblue;
         text-decoration: none;
     }
+
+    .table {
+        margin: 0;
+    }
+
+    .image-2 {
+        width: 100%;
+        height: 45px;
+    }
+
+    .col-12 {
+        padding: 0;
+        margin: 0;
+    }
+
+    #a1 {
+        padding: 0;
+        margin: 0;
+    }
 </style>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar" style="background-color: lightblue">
     <img class="image1" src="../image/furama.jpg" style="margin-left: 40px">
-    <h4 style="margin-left: 1200px; color: green;font-family: 'Agency FB'">C1020G1</h4>
+    <p style="margin-left: 150px;color: green ; font-family: 'Agency FB';font-size: 50px">WELCOME FURAMA RESORT</p>
+    <h4 style="margin-left: 200px; color: green;font-family: 'Agency FB'">C1020G1</h4>
 </nav>
 <nav class="navbar navbar-expand-lg " style="background-color: black">
-    <a class="navbar-brand" href="#" style="margin-left: 150px">Home</a>
+    <a class="navbar-brand" href="../home.jsp" style="margin-left: 150px">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -68,131 +84,23 @@
                 <a class="nav-link " href="/contractServlet" tabindex="-1" aria-disabled="true">Contract</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" style="margin-right: 150px">
+        <form class="form-inline my-2 my-lg-0" style="margin-right: 150px" action="/employeeServlet">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-                   style="border-radius: 20px; width: 240px">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                   style="border-radius: 20px; width: 240px" name="search" value="${search}">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="action" value="search">Search
+            </button>
         </form>
     </div>
 </nav>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-2">
-            <div class="text" style="padding-top: 50px">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-                        data-whatever="@mdo">Create New Employee
-                </button>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form method="post" action="/employeeServlet">
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <input type="hidden" value="1" name="id">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputName">Name</label>
-                                        <input type="text" class="form-control" id="inputName" name="name">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputBirthday">Birth Day</label>
-                                        <input type="text" class="form-control" id="inputBirthday" name="birthday">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputCardId">Card Id</label>
-                                        <input type="text" class="form-control" id="inputCardId" name="cardId">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputSalary">Salary</label>
-                                        <input type="text" class="form-control" id="inputSalary" name="salary">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPhone">Phone</label>
-                                        <input type="text" class="form-control" id="inputPhone" name="phone">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail">Email</label>
-                                        <input type="text" class="form-control" id="inputEmail" name="email">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputAddress">Address</label>
-                                        <input type="text" class="form-control" id="inputAddress" name="address">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPositionId">Position Id</label>
-                                        <input type="text" class="form-control" id="inputPositionId" name="position">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEducationDegreeId">Education Id</label>
-                                        <input type="text" class="form-control" id="inputEducationDegreeId"
-                                               name="education">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputDivisionId">Division Id</label>
-                                        <input type="text" class="form-control" id="inputDivisionId" name="division">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputUserName">User name</label>
-                                        <input type="text" class="form-control" id="inputUserName" name="user">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" name="action" value="create">Submit
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                </a>
-            </div>
-            <div style="padding-top: 30px">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1"
-                >
-                    Delete All Customer
-                </button>
-                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel2" style="color: red">Notification</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body" style="color: blue">
-                                Are you sure ?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" data-dismiss="modal">No</button>
-                                <a href="/employeeServlet?action=deleteAll&id=${users.id}" style="color: black">
-                                    <button type="button" class="btn btn-primary">
-                                        Yes
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="col-2" style="background-color: lightblue;height: 535px">
+            <nav class="nav flex-column" style="padding: 0;margin: 0">
+                <a class="nav-link active" href="employee/create_employee.jsp">Create New Employee(+)</a>
+            </nav>
         </div>
-
         <div class="col-10">
-            <table class="table table-dark">
+            <table class="table table-primary" id="tableEmployee">
                 <thead>
                 <tr>
                     <th scope="col">Id</th>
@@ -203,7 +111,7 @@
                     <th scope="col">Phone</th>
                     <th scope="col">Email</th>
                     <th scope="col">Address</th>
-                    <th scope="col" colspan="2">Action</th>
+                    <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -219,13 +127,13 @@
                         <td><c:out value="${employee.employeeAddress}"/></td>
                         <td><a href="/employeeServlet?action=update&id=${employee.employeeId}">
                             <button type="button" class="btn btn-primary">Edit</button>
-                        </a></td>
-                        <td>
+                        </a>
                             <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#exampleModal1">
+                                    data-target="#exampleModal${employee.employeeId}">
                                 Delete
                             </button>
-                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            <div class="modal fade" id="exampleModal${employee.employeeId}" tabindex="-1"
+                                 aria-labelledby="exampleModalLabel"
                                  aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -260,11 +168,12 @@
         </div>
     </div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="a1">
     <div class="col-12">
-
+        <img class="image-2" src="../image/image-footer.PNG">
     </div>
 </div>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -275,4 +184,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
         integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
         crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('#tableEmployee').dataTable({
+            "dom": 'lrtip',
+            "lengthChange": false,
+            "pageLength": 6
+        });
+    });
+</script>
+
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 </html>
