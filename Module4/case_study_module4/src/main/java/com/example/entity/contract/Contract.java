@@ -7,8 +7,10 @@ import com.example.entity.service.Service;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.Set;
 
 
@@ -25,7 +27,12 @@ public class Contract {
     private String contractStartDate;
     @Column(columnDefinition = "DATE")
     private String contractEndDate;
+
+    @NumberFormat
+    @Min( value = 1,message = "Deposit must be greater than 0")
     private Double contractDeposit;
+    @NumberFormat
+    @Min( value = 1,message = "Total Money must be greater than 0")
     private Double contractTotalMoney;
 
     @ManyToOne

@@ -18,6 +18,6 @@ public class Role {
     private Integer roleId;
     private String roleName;
 
-    @OneToMany(mappedBy = "role")
+    @OneToMany(mappedBy = "role",cascade = CascadeType.ALL)
     private Set<UserRole> userRoleSet;
 }

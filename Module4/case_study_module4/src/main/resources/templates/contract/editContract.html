@@ -32,11 +32,13 @@
     </div>
     <div class="form-group">
         <label for="formCardId">Deposit: </label>
-        <input type="text" class="form-control" id="formCardId" required th:field="*{contractDeposit}">
+        <input type="number" class="form-control" id="formCardId" required th:field="*{contractDeposit}">
+        <p class="text-danger" th:if="${#fields.hasErrors('contractDeposit')}" th:errors="*{contractDeposit}"></p>
     </div>
     <div class="form-group">
         <label for="formSalary">Total Money: </label>
-        <input type="text" class="form-control" id="formSalary" required th:field="*{contractTotalMoney}">
+        <input type="number" class="form-control" id="formSalary" required th:field="*{contractTotalMoney}">
+        <p class="text-danger" th:if="${#fields.hasErrors('contractTotalMoney')}" th:errors="*{contractTotalMoney}"></p>
     </div>
     <div class="form-group">
         <label>Customer: </label>
@@ -62,7 +64,7 @@
                     th:selected="(${ser.serviceId}==${contract.service.serviceId})"></option>
         </select>
     </div>
-    <button style="margin-left: 30px" type="submit" class="btn btn-primary" name="action" value="create">Update</button>
+    <button style="margin-left: 30px" type="submit" class="btn btn-primary" name="action" value="update">Update</button>
     <a th:href="@{/contract/}" style="margin-left: 30px" class="btn btn-secondary" role="button">Close
     </a>
 </form>

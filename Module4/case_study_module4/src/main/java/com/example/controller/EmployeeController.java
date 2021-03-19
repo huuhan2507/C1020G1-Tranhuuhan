@@ -43,7 +43,6 @@ public class EmployeeController {
         model.addAttribute( "divisions", employeeService.findAllDivision() );
         EmailEmployeeValidation.emailCustomer = employeeService.findById( id ).getEmployeeEmail();
         CardIdDuplicateEmployeeValidation.cardIdEmployee = employeeService.findById( id ).getEmployeeCardId();
-        model.addAttribute( "username", employeeService.findById( id ).getUser().getUserName() );
         model.addAttribute( "password", employeeService.findById( id ).getUser().getPassWord());
         return "/employee/edit";
     }
@@ -69,11 +68,10 @@ public class EmployeeController {
 
     @PostMapping("/save")
     public String save(@Validated @ModelAttribute Employee employee, BindingResult bindingResult,
-                       @RequestParam String password, @RequestParam String username, @RequestParam String action, Model model) {
+                       @RequestParam String password, @RequestParam String action, Model model) {
         model.addAttribute( "positions", employeeService.findAllPosition() );
         model.addAttribute( "educations", employeeService.findAllEducation() );
         model.addAttribute( "divisions", employeeService.findAllDivision() );
-        model.addAttribute( "username",username );
         model.addAttribute( "password",password );
         if (bindingResult.hasErrors()) {
             if (action.equals( "create" )) {
@@ -83,7 +81,7 @@ public class EmployeeController {
                 return "employee/edit";
             }
         }
-        employeeService.save( employee, password, username );
+        employeeService.save( employee, password);
         return "redirect:/employee/";
     }
 }

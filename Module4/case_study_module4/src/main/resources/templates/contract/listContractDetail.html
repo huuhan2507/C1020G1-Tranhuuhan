@@ -13,15 +13,15 @@
 <a style="margin-left: 30px" th:href="@{/contractdetail/create}">
     <button class="btn btn-info"><i class="material-icons">create</i>Add Contract Detail</button>
 </a>
-<label style="margin-left: 410px;font-size: 40px"> List Contract Detail</label>
+<label style="margin-left: 290px;font-size: 40px"> List Contract Detail</label>
 <table  class="table table-dark">
     <thead>
     <tr>
         <th scope="col">NO</th>
+        <th scope="col">CONTRACT ID</th>
         <th scope="col">START DATE</th>
         <th scope="col">END DATE</th>
         <th scope="col">DEPOSIT</th>
-        <th scope="col">TOTAL MONEY</th>
         <th scope="col">QUANTITY</th>
         <th scope="col">ATTACH SERVICE </th>
         <th scope="col">ACTION </th>
@@ -30,10 +30,10 @@
     <tbody>
     <tr th:each="contract,contractStat : ${contractDetails}">
         <td th:text="${contractStat.index+1}"></td>
+        <td th:text="${contract.contract.contractId}"></td>
         <td th:text="${contract.contract.contractStartDate}"></td>
         <td th:text="${contract.contract.contractEndDate}"></td>
         <td th:text="${contract.contract.contractDeposit}"></td>
-        <td th:text="${contract.contract.contractTotalMoney}"></td>
         <td th:text="${contract.quantity}"></td>
         <td th:text="${contract.attachService.attachServiceName}"></td>
         <td>
@@ -43,6 +43,9 @@
             <a href="#">
                 <button  type="submit" th:id="${contract.contractDetailId}" class="btn btn-danger delete"><i
                         class="material-icons">delete</i>Delete</button>
+            </a>
+            <a th:href="@{/contractdetail/totalMoney/{id}(id=${contract.getContractDetailId()})}">
+                <button class="btn btn-warning"><i class="material-icons">visibility</i>View Total Money</button>
             </a>
         </td>
     </tr>

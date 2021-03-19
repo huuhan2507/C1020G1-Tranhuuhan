@@ -7,6 +7,7 @@ import com.example.service.ContractService;
 import com.example.service.CustomerService;
 import com.example.service.EmployeeService;
 import com.example.service.ServiceService;
+import com.example.validation.service.CodeDuplicateServiceValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -35,76 +36,95 @@ public class ContractController {
     }
 
     @GetMapping("/create")
-    public String create(Model model,Pageable pageable){
-        model.addAttribute( "customers",customerService.findAll( pageable ) );
-        model.addAttribute( "employees",employeeService.findAll( pageable ) );
-        model.addAttribute( "services",serviceService.findAll() );
-        model.addAttribute( "contract",new Contract() );
+    public String create(Model model, Pageable pageable) {
+        model.addAttribute( "customers", customerService.findAll( pageable ) );
+        model.addAttribute( "employees", employeeService.findAll( pageable ) );
+        model.addAttribute( "services", serviceService.findAll() );
+        model.addAttribute( "contract", new Contract() );
         return "/contract/createContract";
     }
+
     @GetMapping("/edit/{id}")
-    public String edit(Model model,@PathVariable Integer id,Pageable pageable){
+    public String edit(Model model, @PathVariable Integer id, Pageable pageable) {
         model.addAttribute( "contract", contractService.findById( id ) );
-        model.addAttribute( "customers",customerService.findAll( pageable ) );
-        model.addAttribute( "employees",employeeService.findAll( pageable ) );
-        model.addAttribute( "services",serviceService.findAll() );
+        model.addAttribute( "customers", customerService.findAll( pageable ) );
+        model.addAttribute( "employees", employeeService.findAll( pageable ) );
+        model.addAttribute( "services", serviceService.findAll() );
         return "/contract/editContract";
     }
+
     @PostMapping("/save")
-    public String save(@ModelAttribute Contract contract){
-        contractService.save( contract );
-        return "redirect:/contract/";
+    public String save(@Validated @ModelAttribute Contract contract, BindingResult bindingResult,
+                       @RequestParam String action, Model model, Pageable pageable) {
+        model.addAttribute( "customers", customerService.findAll( pageable ) );
+        model.addAttribute( "employees", employeeService.findAll( pageable ) );
+        model.addAttribute( "services", serviceService.findAll() );
+        model.addAttribute( "contract",contract );
+        if (bindingResult.hasErrors()) {
+            if (action.equals( "create" )) {
+                return "/contract/createContract";
+            }else {
+               return  "/contract/editContract";
+            }
+        } else {
+            contractService.save( contract );
+            return "redirect:/contract/";
+        }
     }
+
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable Integer id){
+    public String delete(@PathVariable Integer id) {
         contractService.delete( id );
         return "redirect:/contract/";
     }
 
     @GetMapping("/useService")
-    public String pageUseService(Model model,Pageable pageable){
-        model.addAttribute( "userService",contractService.CustomerUserService( pageable ) );
+    public String pageUseService(Model model, Pageable pageable) {
+        model.addAttribute( "userService", contractService.CustomerUserService( pageable ) );
         return "/customer_use_service/list";
     }
 
     @GetMapping("/useService/delete/{id}")
-    public String deleteService(@PathVariable Integer id){
+    public String deleteService(@PathVariable Integer id) {
         serviceService.deleteById( id );
         return "redirect:/contract/useService";
     }
+
     @GetMapping("/useService/edit/{id}")
-    public String edit(@PathVariable Integer id, Model model){
+    public String edit(@PathVariable Integer id, Model model) {
         Service service = serviceService.findById( id );
-        if (service.getServiceId()==1){
-            model.addAttribute( "service",service );
-            model.addAttribute( "type",serviceService.findTypeById( id ));
-            model.addAttribute( "rentTypes",serviceService.findAllRentType() );
+        CodeDuplicateServiceValidation.codeService = service.getServiceCode();
+        if (service.getServiceId() == 1) {
+            model.addAttribute( "service", service );
+            model.addAttribute( "type", serviceService.findTypeById( id ) );
+            model.addAttribute( "rentTypes", serviceService.findAllRentType() );
             return "/service/editVilla";
-        }else if (service.getServiceId()==2){
-            model.addAttribute( "service",service );
-            model.addAttribute( "type",serviceService.findTypeById( id ));
-            model.addAttribute( "rentTypes",serviceService.findAllRentType() );
+        } else if (service.getServiceId() == 2) {
+            model.addAttribute( "service", service );
+            model.addAttribute( "type", serviceService.findTypeById( id ) );
+            model.addAttribute( "rentTypes", serviceService.findAllRentType() );
             return "/service/editHouse";
-        }else {
-            model.addAttribute( "service",service );
-            model.addAttribute( "type",serviceService.findTypeById( id ));
-            model.addAttribute( "rentTypes",serviceService.findAllRentType());
+        } else {
+            model.addAttribute( "service", service );
+            model.addAttribute( "type", serviceService.findTypeById( id ) );
+            model.addAttribute( "rentTypes", serviceService.findAllRentType() );
             return "/service/editRoom";
         }
     }
+
     @PostMapping("/service/save")
-    public String saveService(@Validated @ModelAttribute Service service, BindingResult bindingResult, Model model){
-        model.addAttribute( "service",service );
+    public String saveService(@Validated @ModelAttribute Service service, BindingResult bindingResult, Model model) {
+        model.addAttribute( "service", service );
         model.addAttribute( "rentTypes", serviceService.findAllRentType() );
-        if (bindingResult.hasErrors()){
-            if (service.getServiceType().getServiceTypeId()==1){
+        if (bindingResult.hasErrors()) {
+            if (service.getServiceType().getServiceTypeId() == 1) {
                 return "service/editVilla";
-            }else if (service.getServiceType().getServiceTypeId()==2){
+            } else if (service.getServiceType().getServiceTypeId() == 2) {
                 return "service/editHouse";
-            }else {
+            } else {
                 return "service/editRoom";
             }
-        }else {
+        } else {
             serviceService.save( service );
             return "redirect:/contract/useService";
         }

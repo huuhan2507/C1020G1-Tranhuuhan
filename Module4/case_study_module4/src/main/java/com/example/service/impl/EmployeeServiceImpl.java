@@ -12,6 +12,7 @@ import com.example.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,35 +31,44 @@ public class EmployeeServiceImpl implements EmployeeService {
     private UserRepository userRepository;
     @Autowired
     private UserRoleRepository userRoleRepository;
+
     @Override
     public Page<Employee> findAll(Pageable pageable) {
         return employeeRepository.findAll( pageable );
     }
 
     @Override
-    public void save(Employee employee,String password,String username) {
-        User user = new User();
-        user.setPassWord( password );
-        user.setUserName( username );
-        userRepository.save( user );
-        UserRole userRole = new UserRole();
-        if (employee.getPosition().getPositionId()==5|employee.getPosition().getPositionId()==5){
-            Role role = new Role();
+    public void save(Employee employee, String password) {
+        Role role = new Role();
+        if (employee.getPosition().getPositionId()==5||employee.getPosition().getPositionId()==6){
             role.setRoleId( 1 );
             role.setRoleName( "ROLE_MANAGER" );
-            userRole.setRole( role );
-            userRole.setUser( user );
         }else {
-            Role role = new Role();
             role.setRoleId( 2 );
             role.setRoleName( "ROLE_EMPLOYEE" );
-            userRole.setRole( role );
-            userRole.setUser( user );
         }
-        employee.setUser( user );
-        userRoleRepository.save( userRole );
+        if (employee.getEmployeeId()==null){
+            User user = new User();
+            user.setUserName( employee.getEmployeeEmail() );
+            user.setPassWord( new BCryptPasswordEncoder(  ).encode( password ) );
+            UserRole userRole = new UserRole();
+            userRole.setUser( user );
+            userRole.setRole( role );
+            userRepository.save( user );
+            userRoleRepository.save( userRole );
+            employee.setUser( user );
+        }else {
+            Employee employee1 = employeeRepository.findById( employee.getEmployeeId() ).orElse( null );
+            User user = userRepository.findUserByUserName( employee1.getUser().getUserName() );
+            UserRole userRole = userRoleRepository.findUserRoleByUser( user );
+            userRole.setRole( role );
+            userRepository.save( user );
+            userRoleRepository.save( userRole );
+            employee.setUser( user );
+        }
         employeeRepository.save( employee );
     }
+
 
     @Override
     public void deleteById(Integer id) {
@@ -77,7 +87,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Page<Employee> search(String search, Pageable pageable) {
-        return employeeRepository.findByContaining( search,pageable );
+        return employeeRepository.findByContaining( search, pageable );
     }
 
     @Override

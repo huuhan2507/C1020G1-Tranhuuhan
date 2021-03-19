@@ -33,15 +33,18 @@
     </div>
     <div class="form-group">
         <label for="formArea">Area: </label>
-        <input type="text" class="form-control" id="formArea" required th:field="*{serviceArea}">
+        <input type="number" class="form-control" id="formArea" required th:field="*{serviceArea}">
+        <p class="text-danger" th:if="${#fields.hasErrors('serviceArea')}" th:errors="*{serviceArea}"></p>
     </div>
     <div class="form-group">
         <label for="formCost">Cost: </label>
-        <input type="text" class="form-control" id="formCost" required th:field="*{serviceCost}">
+        <input type="number" class="form-control" id="formCost" required th:field="*{serviceCost}">
+        <p class="text-danger" th:if="${#fields.hasErrors('serviceCost')}" th:errors="*{serviceCost}"></p>
     </div>
     <div class="form-group">
         <label for="formPeople">Max People: </label>
-        <input type="text" class="form-control" id="formPeople" required th:field="*{serviceMaxPeople}">
+        <input type="number" class="form-control" id="formPeople" required th:field="*{serviceMaxPeople}">
+        <p class="text-danger" th:if="${#fields.hasErrors('serviceMaxPeople')}" th:errors="*{serviceMaxPeople}"></p>
     </div>
     <div class="form-group">
         <select hidden th:field="*{serviceType}">
@@ -70,11 +73,13 @@
     </div>
     <div class="form-group">
         <label for="formPool">Pool Area: </label>
-        <input type="text" class="form-control" id="formPool" required th:field="*{poolArea}">
+        <input type="number" class="form-control" id="formPool" required th:field="*{poolArea}">
+        <p class="text-danger" th:if="${#fields.hasErrors('poolArea')}" th:errors="*{poolArea}"></p>
     </div>
     <div class="form-group">
         <label for="formFloor">Number Of Floor: </label>
-        <input type="text" class="form-control" id="formFloor" required th:field="*{numberOfFloors}">
+        <input type="number" class="form-control" id="formFloor" required th:field="*{numberOfFloors}">
+        <p class="text-danger" th:if="${#fields.hasErrors('numberOfFloors')}" th:errors="*{numberOfFloors}"></p>
     </div>
     <button style="margin-left: 30px" type="submit" class="btn btn-primary" name="action" value="create">Update</button>
     <a th:href="@{/contract/useService}" style="margin-left: 30px" class="btn btn-secondary" role="button">Close

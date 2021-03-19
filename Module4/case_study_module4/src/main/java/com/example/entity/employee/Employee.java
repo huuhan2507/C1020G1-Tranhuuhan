@@ -37,7 +37,7 @@ public class Employee {
     private String employeeCardId;
 
     @NumberFormat()
-    @Min( value = 1,message = "Salary invalid")
+    @Min( value = 1,message = "Salary must be greater than 0")
     private Double employeeSalary;
 
     @Pattern(regexp = "(09)(0|1)[0-9]{7}|(84\\+)(09)(0|1)[0-9]{7}", message = "Format phone number is 091xxxxxxx or 090xxxxxxx or (84+) 09xxxxxxx or (84+) 09xxxxxxx !")

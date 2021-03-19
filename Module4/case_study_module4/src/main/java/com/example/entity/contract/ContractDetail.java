@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 
 @NoArgsConstructor
@@ -15,6 +16,8 @@ public class ContractDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer contractDetailId;
+
+    @Min( value = 1,message = "Quantity must be greater than 0")
     private Integer quantity;
 
     @ManyToOne

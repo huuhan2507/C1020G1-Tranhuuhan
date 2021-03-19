@@ -1,6 +1,5 @@
 package com.example.annotation.employee;
 
-import com.example.validation.customer.BirthdayCustomerValidation;
 import com.example.validation.employee.BirthdayEmployeeValidation;
 
 import javax.validation.Constraint;

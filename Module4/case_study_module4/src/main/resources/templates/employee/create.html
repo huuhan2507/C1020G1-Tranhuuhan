@@ -56,10 +56,6 @@
         <p class="text-danger" th:if="${#fields.hasErrors('employeeAddress')}" th:errors="*{employeeAddress}"></p>
     </div>
     <div class="form-group">
-        <label for="formUserName">User Name: </label>
-        <input type="text" class="form-control" id="formUserName" required name="username" th:value="${username}">
-    </div>
-    <div class="form-group">
         <label for="formPassword">Password: </label>
         <input type="password" class="form-control" id="formPassword" required name="password" th:value="${password}">
     </div>

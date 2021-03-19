@@ -12,7 +12,7 @@ import java.util.List;
 public interface EmployeeService {
     Page<Employee> findAll(Pageable pageable);
 
-    void save(Employee employee, String password,String username);
+    void save(Employee employee, String password);
 
     void deleteById(Integer id);
 

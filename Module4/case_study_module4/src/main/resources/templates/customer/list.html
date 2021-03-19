@@ -91,7 +91,7 @@
                 </button>
             </div>
             <div class="modal-body" style="color: red">
-                Are you sure?
+                <span> Are you sure you will remove ABC from the list?</span>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -100,11 +100,7 @@
         </div>
     </div>
 </div>
-<nav aria-label="Page navigation example">
-    <ul class="pagination">
 
-    </ul>
-</nav>
 <div>
     <a th:href="@{'/customer/'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}">
         <button class="btn btn-info">Previous</button>
@@ -137,6 +133,7 @@
         });
     });
     $(document).ready(function () {
+        let abc = "acv";
         $('.delete').click(function () {
             let tag = $(this)[0];
             document.getElementById("delete").href = "/customer/delete/" + tag.id;
