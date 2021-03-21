@@ -5,6 +5,7 @@ import com.example.entity.service.ServiceType;
 import com.example.service.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,7 +20,7 @@ public class ServiceController {
     private ServiceService serviceService;
 
     @GetMapping("/villa")
-    public String pageServiceVilla(Model model, Pageable pageable) {
+    public String pageServiceVilla(Model model,@PageableDefault(size = 5) Pageable pageable) {
         ServiceType serviceType = new ServiceType();
         serviceType.setServiceTypeId( 1 );
         serviceType.setServiceTypeName( "Villa" );
@@ -28,7 +29,7 @@ public class ServiceController {
     }
 
     @GetMapping("/house")
-    public String pageServiceHouse(Model model, Pageable pageable) {
+    public String pageServiceHouse(Model model,@PageableDefault(size = 5) Pageable pageable) {
         ServiceType serviceType = new ServiceType();
         serviceType.setServiceTypeId( 2 );
         serviceType.setServiceTypeName( "House" );
@@ -37,7 +38,7 @@ public class ServiceController {
     }
 
     @GetMapping("/room")
-    public String pageServiceRoom(Model model, Pageable pageable) {
+    public String pageServiceRoom(Model model,@PageableDefault(size = 5) Pageable pageable) {
         ServiceType serviceType = new ServiceType();
         serviceType.setServiceTypeId( 3 );
         serviceType.setServiceTypeName( "Room" );

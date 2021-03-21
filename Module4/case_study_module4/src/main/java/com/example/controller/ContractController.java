@@ -30,7 +30,7 @@ public class ContractController {
     private ServiceService serviceService;
 
     @GetMapping("/")
-    public String pageContract(@PageableDefault(size = 6) Pageable pageable, Model model) {
+    public String pageContract(@PageableDefault(size = 4) Pageable pageable, Model model) {
         model.addAttribute( "contracts", contractService.findAll( pageable ) );
         return "/contract/listContract";
     }
@@ -79,7 +79,7 @@ public class ContractController {
     }
 
     @GetMapping("/useService")
-    public String pageUseService(Model model, Pageable pageable) {
+    public String pageUseService(Model model,@PageableDefault(size = 4) Pageable pageable) {
         model.addAttribute( "userService", contractService.CustomerUserService( pageable ) );
         return "/customer_use_service/list";
     }

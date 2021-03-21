@@ -11,9 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface ContractRepository extends JpaRepository<Contract, Integer> {
     Page<Contract> findAll(Pageable pageable);
 
-    @Query(value = "select *\n" +
-            "from contract c\n" +
-            "where date(now())-date(c.contract_end_date)<0\n" +
-            "group by c.customer_id", nativeQuery = true)
+    @Query(value = "select * from contract c where date(now())-date(c.contract_end_date)<0 group by c.customer_id", nativeQuery = true)
     Page<Contract> findCustomerUseService(Pageable pageable);
 }

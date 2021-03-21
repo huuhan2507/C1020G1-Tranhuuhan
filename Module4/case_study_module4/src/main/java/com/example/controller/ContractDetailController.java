@@ -6,6 +6,7 @@ import com.example.service.ContractDetailService;
 import com.example.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,7 +23,7 @@ public class ContractDetailController {
     private ContractService contractService;
 
     @GetMapping("/")
-    public String pageContractDetail(Model model, Pageable pageable) {
+    public String pageContractDetail(Model model,@PageableDefault(size = 4) Pageable pageable) {
         model.addAttribute( "contractDetails", contractDetailService.findAll( pageable ) );
         return "/contract/listContractDetail";
     }

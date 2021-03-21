@@ -9,11 +9,18 @@
 </head>
 <div th:replace="~{common/layout::navbar}">
 </div>
-<body id="customer-list" >
 <a style="margin-left: 30px" th:href="@{/service/create}">
     <button class="btn btn-info"><i class="material-icons">create</i>Add Service</button>
 </a>
-<label style="margin-left: 400px;font-size: 40px"> List Room</label>
+<div class="dropdown btn-group">
+    <select id="service" class="btn btn-success">
+        <option  th:value="villa" >Villa</option>
+        <option  th:value="house" >House</option>
+        <option  th:value="room" selected>Room</option>
+    </select>
+</div>
+<body id="service-list" >
+<label style="margin-left: 260px;font-size: 40px"> List Room</label>
 <table  class="table table-dark">
     <thead>
     <tr>
@@ -62,4 +69,23 @@
 </body>
 <div th:replace="~{/common/layout::footer}">
 </div>
+<script>
+    $(document).ready(function () {
+        $("#service").on("click",function () {
+            var service = $("#service").val();
+            $.ajax({
+                url: "/service/"+service,
+                type: "GET",
+                dataType: "HTML",
+                success: function (data) {
+                    $('#service-list').html(data);
+                    console.log("abc")
+                },
+                error: function () {
+                    console.log("error")
+                }
+            });
+        })
+    })
+</script>
 </html>
