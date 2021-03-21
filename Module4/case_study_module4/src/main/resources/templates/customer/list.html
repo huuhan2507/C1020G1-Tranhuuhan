@@ -100,16 +100,20 @@
         </div>
     </div>
 </div>
-
 <div>
-    <a th:href="@{'/customer/'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}">
-        <button class="btn btn-info">Previous</button>
-    </a>
-    <span style="color: red" th:text="${customers.number + 1}"></span>/
-    <span style="color: red" th:text="${customers.totalPages}"></span>
-    <a th:href="@{'/customer/'(page=${customers.number + 1})}" th:if="${customers.hasNext()}">
-        <button class="btn btn-info">Next</button>
-    </a>
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item" th:if="${customers.hasPrevious()}">
+                <a class="page-link" th:href="@{'/customer/'(page=${customers.number - 1})}" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" style="color: red" th:text="${customers.number + 1}">1</a></li>
+            <li class="page-item"><a class="page-link">/</a></li>
+            <li class="page-item"><a class="page-link" style="color: red" th:text="${customers.totalPages}">1</a></li>
+            <li class="page-item" th:if="${customers.hasNext()}">
+                <a class="page-link" th:href="@{'/customer/'(page=${customers.number + 1})}">Next</a>
+            </li>
+        </ul>
+    </nav>
 </div>
 </body>
 <div th:replace="~{/common/layout::footer}">

@@ -43,14 +43,21 @@
     </tbody>
 </table>
 <div>
-    <a th:href="@{'/service/room'(page=${rooms.number - 1})}" th:if="${rooms.hasPrevious()}">
-        <button class="btn btn-info">Previous</button>
-    </a>
-    <span style="color: red" th:text="${rooms.number + 1}"></span>/
-    <span style="color: red" th:text="${rooms.totalPages}"></span>
-    <a th:href="@{'/service/room'(page=${rooms.number + 1})}" th:if="${rooms.hasNext()}">
-        <button class="btn btn-info">Next</button>
-    </a>
+    <div>
+        <nav aria-label="...">
+            <ul class="pagination">
+                <li class="page-item" th:if="${rooms.hasPrevious()}">
+                    <a class="page-link" th:href="@{'/service/room'(page=${rooms.number - 1})}" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" style="color: red" th:text="${rooms.number + 1}"></a></li>
+                <li class="page-item"><a class="page-link">/</a></li>
+                <li class="page-item"><a class="page-link" style="color: red" th:text="${rooms.totalPages}"></a></li>
+                <li class="page-item" th:if="${rooms.hasNext()}">
+                    <a class="page-link" th:href="@{'/service/room'(page=${rooms.number + 1})}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
 </body>
 <div th:replace="~{/common/layout::footer}">

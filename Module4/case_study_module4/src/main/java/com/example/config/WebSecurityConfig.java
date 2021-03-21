@@ -28,42 +28,43 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         // Sét đặt dịch vụ để tìm kiếm User trong Database.
         // Và sét đặt PasswordEncoder.
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService( userDetailsService ).passwordEncoder( passwordEncoder() );
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.csrf().disable();
-        http.authorizeRequests().antMatchers( "/","/login" ).permitAll();
+        http.authorizeRequests().antMatchers( "/", "/login" ).permitAll();
         // Trang /userInfo yêu cầu phải login với vai trò ROLE_USER hoặc ROLE_ADMIN.
         // Nếu chưa login, nó sẽ redirect tới trang /login.
-        http.authorizeRequests().antMatchers("/user").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+        http.authorizeRequests().antMatchers( "/customer/*", "/customer/*/*", "/contract/*", "/contract/*/*",
+                "/contract/*/*/*", "/contractdetail/*", "/contractdetail/*/*", "service/*", "/logout", "/changePassword",
+                "/saveChangePassword" ).access( "hasAnyRole('ROLE_EMPLOYEE', 'ROLE_MANAGER')" );
 
         // Trang chỉ dành cho ADMIN
-        http.authorizeRequests().antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
+        http.authorizeRequests().antMatchers( "/employee/*", "employee/*/*" ).access( "hasRole('ROLE_MANAGER')" );
 
         // Khi người dùng đã login, với vai trò XX.
         // Nhưng truy cập vào trang yêu cầu vai trò YY,
         // Ngoại lệ AccessDeniedException sẽ ném ra.
-        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
+        http.authorizeRequests().and().exceptionHandling().accessDeniedPage( "/error403" );
 
         // Cấu hình cho Login Form.
         http.authorizeRequests().and().formLogin()//
                 // Submit URL của trang login
-                .loginProcessingUrl("/j_spring_security_check") // Submit URL
-                .loginPage("/login")//
-                .defaultSuccessUrl("/")//
-                .failureUrl("/login?error=true")//
-                .usernameParameter("username")//
-                .passwordParameter("password")
+                .loginProcessingUrl( "/check_login" ) // Submit URL
+                .loginPage( "/login" )//
+                .defaultSuccessUrl( "/" )//
+                .failureForwardUrl( "/login?username=true" )
+                .failureUrl( "/login?error=true" )//
+                .usernameParameter( "username" )//
+                .passwordParameter( "password" )
                 // Cấu hình cho Logout Page.
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/");
+                .and().logout().logoutUrl( "/logout" ).logoutSuccessUrl( "/" );
 
         // Cấu hình Remember Me.
         http.authorizeRequests().and() //
-                .rememberMe().rememberMeParameter( "remember-me" ).tokenRepository(this.persistentTokenRepository()) //
-                .tokenValiditySeconds(1 * 24 * 60 * 60); // 24h
+                .rememberMe().key( "uniqueAndSecret" ).tokenValiditySeconds( 60 * 60 * 24 ); // 24h
 
     }
 

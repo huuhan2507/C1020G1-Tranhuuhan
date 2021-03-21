@@ -74,14 +74,21 @@
     </div>
 </div>
 <div>
-    <a th:href="@{'/contract/'(page=${contracts.number - 1})}" th:if="${contracts.hasPrevious()}">
-        <button class="btn btn-info">Previous</button>
-    </a>
-    <span style="color: red" th:text="${contracts.number + 1}"></span>/
-    <span style="color: red" th:text="${contracts.totalPages}"></span>
-    <a th:href="@{'/contract/'(page=${contracts.number + 1})}" th:if="${contracts.hasNext()}">
-        <button class="btn btn-info">Next</button>
-    </a>
+    <div>
+        <nav aria-label="...">
+            <ul class="pagination">
+                <li class="page-item" th:if="${contracts.hasPrevious()}">
+                    <a class="page-link" th:href="@{'/contract/'(page=${contracts.number - 1})}" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" style="color: red" th:text="${contracts.number + 1}">1</a></li>
+                <li class="page-item"><a class="page-link">/</a></li>
+                <li class="page-item"><a class="page-link" style="color: red" th:text="${contracts.totalPages}">1</a></li>
+                <li class="page-item" th:if="${contracts.hasNext()}">
+                    <a class="page-link" th:href="@{'/contract/'(page=${contracts.number + 1})}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
 </body>
 <div th:replace="~{/common/layout::footer}">
