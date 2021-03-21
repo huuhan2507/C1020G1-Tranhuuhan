@@ -7,7 +7,6 @@ public interface UserService {
 
     User findByUserName(String username);
 
-    boolean checkOldPassword(User user,String password);
 
     boolean checkNewPassword(String newPassword, String confirmPassword);
 }

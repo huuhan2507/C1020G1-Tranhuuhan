@@ -22,16 +22,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean checkOldPassword(User user, String password) {
-        String passwordBC= new BCryptPasswordEncoder(  ).encode( password );
-        String passwordUser = new BCryptPasswordEncoder(  ).encode( user.getPassWord() );
-        return passwordUser.equals( new BCryptPasswordEncoder(  ).encode( password ) );
-    }
-
-    @Override
     public boolean checkNewPassword(String newPassword, String confirmPassword) {
-        String newPasswordBC = new BCryptPasswordEncoder(  ).encode( newPassword );
-        String confirmPasswordBC = new BCryptPasswordEncoder(  ).encode( confirmPassword );
-        return newPasswordBC.equals( confirmPasswordBC );
+        return newPassword.equals( confirmPassword );
     }
 }

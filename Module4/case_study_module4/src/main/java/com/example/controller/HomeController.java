@@ -38,18 +38,21 @@ public class HomeController {
     }
 
     @PostMapping("/saveChangePassword")
-    public String saveChangePassword(Model model,Principal principal, @RequestParam String oldPassword,
+    public String saveChangePassword(Model model, Principal principal, @RequestParam String oldPassword,
                                      @RequestParam String newPassword, @RequestParam String confirmPassword) {
+        BCryptPasswordEncoder cryptPasswordEncoder = new BCryptPasswordEncoder();
         User user = userService.findByUserName( principal.getName() );
-        System.out.println(user.getPassWord());
-        System.out.println(new BCryptPasswordEncoder(  ).encode( oldPassword ));
-        if (!userService.checkOldPassword( user,oldPassword )){
-            model.addAttribute( "message","Password incorrect! Please re-enter." );
+        if (!cryptPasswordEncoder.matches( oldPassword, user.getPassWord() )) {
+            model.addAttribute( "message", "Password incorrect! Please re-enter." );
             return "/home/changePassword";
-        }else if (!userService.checkNewPassword( newPassword,confirmPassword )){
-            model.addAttribute( "message1","The new password you entered does not match !" );
+        } else if (cryptPasswordEncoder.matches( newPassword, user.getPassWord() )) {
+            model.addAttribute( "message1", "The new password must be different from the old password !" );
+            return "/home/changePassword";
+        } else if (!userService.checkNewPassword( newPassword, confirmPassword )) {
+            model.addAttribute( "message2", "The new password you entered does not match !" );
+            return "/home/changePassword";
         }
-        user.setPassWord( new BCryptPasswordEncoder(  ).encode( newPassword ) );
+        user.setPassWord( new BCryptPasswordEncoder().encode( newPassword ) );
         userService.save( user );
         return "redirect:/";
     }
