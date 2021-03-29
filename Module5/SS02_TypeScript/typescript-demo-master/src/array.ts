@@ -53,4 +53,4 @@ x[5] = 100.25;
 console.log(x[5].toString());
 // OK, 'string' and 'number' both have 'toString'
 
-// x[6] = true; // Error, 'boolean' isn't 'string | number'
+// x[6] = true; // Error, 'boolean' isn't 'string | number'fu
