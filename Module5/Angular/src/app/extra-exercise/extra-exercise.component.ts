@@ -7,21 +7,10 @@ import {IStudent} from '../model/Student';
   styleUrls: ['./extra-exercise.component.scss']
 })
 export class ExtraExerciseComponent implements OnInit {
-  student: IStudent = {
-    id: 1,
-    name: 'Trần Hữu Hân',
-    age: 19,
-    mark: 100,
-    image: 'https://www.w3schools.com/howto/img_avatar.png'
-  };
 
   constructor() {
   }
 
   ngOnInit(): void {
-  }
-
-  changeMark(value: any) {
-    this.student.mark = value;
   }
 }

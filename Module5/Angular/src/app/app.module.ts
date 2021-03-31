@@ -10,6 +10,11 @@ import {InfoPetComponent} from './SS03_Angular_Overview/practice/info-pet/info-p
 import {CalculatorComponent} from './SS03_Angular_Overview/exercise/calculator/calculator.component';
 import {SelectColorComponent} from './SS03_Angular_Overview/exercise/select-color/select-color.component';
 import {ExtraExerciseComponent} from './extra-exercise/extra-exercise.component';
+import {HackernewsComponent} from './SS04_Angular_Component&Template/practice/hackernews/hackernews.component';
+import {LikesComponent} from './SS04_Angular_Component&Template/exercise/hackernews-exercise/likes/likes.component';
+import {StudentComponent} from './extra-exercise/student/student.component';
+import {ListStudentComponent} from './extra-exercise/list-student/list-student.component';
+import {HackernewsExerciseComponent} from './SS04_Angular_Component&Template/exercise/hackernews-exercise/hackernews-exercise.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,12 @@ import {ExtraExerciseComponent} from './extra-exercise/extra-exercise.component'
     InfoPetComponent,
     CalculatorComponent,
     SelectColorComponent,
-    ExtraExerciseComponent
+    ExtraExerciseComponent,
+    HackernewsComponent,
+    LikesComponent,
+    StudentComponent,
+    ListStudentComponent,
+    HackernewsExerciseComponent
   ],
   imports: [
     FormsModule,
@@ -29,7 +39,10 @@ import {ExtraExerciseComponent} from './extra-exercise/extra-exercise.component'
         {path: 'SS03_Angular_Overview/practice/info_pet', component: InfoPetComponent},
         {path: 'SS03_Angular_Overview/exercise/calculator', component: CalculatorComponent},
         {path: 'SS03_Angular_Overview/exercise/select_color', component: SelectColorComponent},
-        {path: 'extra-exercise', component: ExtraExerciseComponent}
+        {path: 'extra-exercise', component: ExtraExerciseComponent},
+        {path: 'extra-exercise/student', component: StudentComponent},
+        {path: 'SS04_Angular_Component&Template/practice/hackernews', component: HackernewsComponent},
+        {path: 'SS04_Angular_Component&Template/exercise/hackernews-exercise', component: HackernewsExerciseComponent}
       ]
     )]
   ],

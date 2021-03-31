@@ -1,0 +1,22 @@
+<table class="table table-dark table-hover">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Link</th>
+    <th>Like</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let art of articles">
+    <td>{{art.title}}</td>
+    <td><a [href]="art.url" >{{art.url}}</a></td>
+    <td><app-likes></app-likes></td>
+    <td>
+      <button class="btn btn-warning">Detail</button>
+      <button class="btn btn-danger">Delete</button>
+      <button class="btn btn-success">Update</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

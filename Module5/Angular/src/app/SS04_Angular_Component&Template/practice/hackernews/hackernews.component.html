@@ -1,0 +1,9 @@
+<h2>Today's article</h2>
+<hr>
+<div *ngFor="let art of articles">
+  <label>*</label>
+  <a href="{{art.url}}" target="_blank">{{art.title}}</a>
+  <app-likes style="margin-left: 30px"></app-likes>
+</div>
+<hr>
+<p>@CodeGym, 2019</p>
