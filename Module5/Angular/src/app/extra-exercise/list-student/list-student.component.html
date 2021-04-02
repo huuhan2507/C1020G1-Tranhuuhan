@@ -89,7 +89,7 @@
         </div>
         <div>
           <label for="age">Age: </label>
-          <input [ngClass]="formControl+' '+getClass('age')" type="number" name="age" id="age" formControlName="age">
+          <input [ngClass]="formControl+' '+getClass('age') " type="number" name="age" id="age" formControlName="age">
           <div *ngIf="age.invalid && (age.dirty||age.touched)" class="text-danger">
             <div [hidden]="!age.errors.required" class="text-danger">
               Age cannot be left blank !

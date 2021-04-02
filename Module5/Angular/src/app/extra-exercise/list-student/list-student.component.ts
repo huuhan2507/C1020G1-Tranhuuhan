@@ -13,6 +13,7 @@ import {FormGroup, FormControl, Validators, AbstractControl} from '@angular/form
 export class ListStudentComponent implements OnInit {
   constructor(private modalService: NgbModal) {
   }
+
   formControl = 'form-control';
   valid = 'is-valid';
   invalid = 'is-invalid';
@@ -57,9 +58,12 @@ export class ListStudentComponent implements OnInit {
   }
 
   getClass(property: string) {
-    if (this.createStudent.invalid && (this.createStudent.dirty || this.createStudent.touched)) {
+    if ((this.createStudent.get(property).invalid && this.createStudent.get(property).dirty) || this.createStudent.get(property).touched)
+    {
       return this.createStudent.get(property).valid ? this.valid : this.invalid;
-    }else {
+    }
+  else
+    {
       return '';
     }
   }
