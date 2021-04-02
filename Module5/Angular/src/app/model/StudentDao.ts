@@ -1,4 +1,4 @@
-import {IStudent} from './Student';
+import {IStudent} from './StudentIn';
 
 export const studentDao: IStudent[] = [
   {id: 1, name: 'Trần Hữu Hân', age: 19, mark: 8, image: ''},

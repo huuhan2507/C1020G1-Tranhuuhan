@@ -1,10 +1,11 @@
-<form class="form-group ml-lg-5">
+<form class="form-group">
   <img [src]="student.image">
-  <div class="col-4">
+  <div >
     <p class="form-control">Id: {{student.id}}</p>
     <p class="form-control">Name: {{student.name}}</p>
     <p class="form-control">Age: {{student.age}}</p>
     <p class="form-control">Mark: {{student.mark}}</p>
   </div>
+  <input class="form-control" type="number" min="0" max="100" (change)="changeMark($event.target.value)">
 </form>
-<input class="form-control col-4 ml-lg-5" type="number" min="0" max="100" (change)="changeMark($event.target.value)">
+

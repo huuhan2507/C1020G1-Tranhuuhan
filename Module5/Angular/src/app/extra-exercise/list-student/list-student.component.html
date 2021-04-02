@@ -1,3 +1,6 @@
+<button class="btn btn-success" (click)="openWindowCustomClass2(content2)">Add Student</button>
+<br>
+<br>
 <table class="table table-dark table-hover">
   <thead>
   <tr>
@@ -18,10 +21,112 @@
     <td *ngIf="student.mark>=5">Pass</td>
     <td *ngIf="student.mark<5">Fail</td>
     <td>
-      <button class="btn btn-warning" (click)="change(student)">Detail</button>
-      <button class="btn btn-danger">Delete</button>
+      <button class="btn btn-outline-warning" (click)="change(student);openWindowCustomClass(content)">Detail</button>
+      <button class="btn btn-outline-danger" (click)="change(student);openWindowCustomClass1(content1)">Delete</button>
     </td>
   </tr>
   </tbody>
 </table>
-<app-student [student]="student"></app-student>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Student Information</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-student [student]="student"></app-student>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<ng-template #content1 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Delete Student</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      Are you sure ?
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="delete(student);modal.close('Close click')">Delete</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<ng-template #content2 let-modal>
+  <form class="form-group" [formGroup]="createStudent" (ngSubmit)="modal.close('Close click')">
+    <div class="modal-header">
+      <h4 class="modal-title">Create Student</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div>
+        <label for="id">Id: </label>
+        <input [ngClass]="formControl+' '+getClass('id')" type="text" id="id" name="id" formControlName="id">
+        <div *ngIf="id.invalid && (id.dirty||id.touched)" class="text-danger">
+          Id cannot be left blank !
+        </div>
+      </div>
+      <div>
+        <label for="name">Name: </label>
+        <input [ngClass]="formControl+' '+getClass('name')" type="text" name="name" id="name" formControlName="name">
+        <div *ngIf="name.invalid && (name.dirty||name.touched)">
+          <div [hidden]="!name.errors.required" class="text-danger">
+            Name cannot be left blank !
+          </div>
+          <div [hidden]="!name.errors.pattern" class="text-danger">
+            Name invalid !
+          </div>
+        </div>
+        <div>
+          <label for="age">Age: </label>
+          <input [ngClass]="formControl+' '+getClass('age')" type="number" name="age" id="age" formControlName="age">
+          <div *ngIf="age.invalid && (age.dirty||age.touched)" class="text-danger">
+            <div [hidden]="!age.errors.required" class="text-danger">
+              Age cannot be left blank !
+            </div>
+            <div [hidden]="!age.errors.max" class="text-danger">
+              The age you entered is too large !
+            </div>
+            <div [hidden]="!age.errors.min" class="text-danger">
+              The age you entered is too small !
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="mark">Mark: </label>
+          <input [ngClass]="formControl+' '+getClass('mark')" type="number" name="mark" id="mark"
+                 formControlName="mark">
+          <div *ngIf="mark.invalid && (mark.dirty||mark.touched)" class="text-danger">
+            <div [hidden]="!mark.errors.required" class="text-danger">
+              Mark cannot be left blank !
+            </div>
+            <div [hidden]="!mark.errors.max" class="text-danger">
+              The maximum score is 10!
+            </div>
+            <div [hidden]="!mark.errors.min" class="text-danger">
+              The score you entered is already less than 0 !
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="image">Image: </label>
+          <input class="form-control" type="number" id="image" formControlName="image">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-info" [disabled]="!createStudent.valid" (click)="create()">Create</button>
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </form>
+</ng-template>

@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -12,9 +12,21 @@ import {SelectColorComponent} from './SS03_Angular_Overview/exercise/select-colo
 import {ExtraExerciseComponent} from './extra-exercise/extra-exercise.component';
 import {HackernewsComponent} from './SS04_Angular_Component&Template/practice/hackernews/hackernews.component';
 import {LikesComponent} from './SS04_Angular_Component&Template/exercise/hackernews-exercise/likes/likes.component';
-import {StudentComponent} from './extra-exercise/student/student.component';
+import {StudentComponent} from './extra-exercise/list-student/student/student.component';
 import {ListStudentComponent} from './extra-exercise/list-student/list-student.component';
 import {HackernewsExerciseComponent} from './SS04_Angular_Component&Template/exercise/hackernews-exercise/hackernews-exercise.component';
+import {NameCardComponent} from './SS05_Components_Interaction/practice/card/name-card/name-card.component';
+import {CardComponent} from './SS05_Components_Interaction/practice/card/card.component';
+import {ProgressComponent} from './SS05_Components_Interaction/practice/progress/progress.component';
+import {ProgressBarComponent} from './SS05_Components_Interaction/practice/progress/progress-bar/progress-bar.component';
+import {RateComponent} from './SS05_Components_Interaction/exercise/rate/rate.component';
+import {RatingBarComponent} from './SS05_Components_Interaction/exercise/rate/rating-bar/rating-bar.component';
+import {CountdownComponent} from './SS05_Components_Interaction/exercise/countdown/countdown.component';
+import {CountdownTimerComponent} from './SS05_Components_Interaction/exercise/countdown/countdown-timer/countdown-timer.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {TodoComponent} from './SS06_Angular_Form/practice/todo/todo.component';
+import {RegisterComponent} from './SS06_Angular_Form/exercise/register/register.component';
+import {LoginComponent} from './SS06_Angular_Form/exercise/login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,12 +40,25 @@ import {HackernewsExerciseComponent} from './SS04_Angular_Component&Template/exe
     LikesComponent,
     StudentComponent,
     ListStudentComponent,
-    HackernewsExerciseComponent
+    HackernewsExerciseComponent,
+    NameCardComponent,
+    CardComponent,
+    ProgressComponent,
+    ProgressBarComponent,
+    RateComponent,
+    RatingBarComponent,
+    CountdownComponent,
+    CountdownTimerComponent,
+    TodoComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
+    NgbModule,
+    ReactiveFormsModule,
     [RouterModule.forRoot([
         {path: 'SS03_Angular_Overview/practice/fontsize', component: FontsizeComponent},
         {path: 'SS03_Angular_Overview/practice/info_pet', component: InfoPetComponent},
@@ -42,9 +67,17 @@ import {HackernewsExerciseComponent} from './SS04_Angular_Component&Template/exe
         {path: 'extra-exercise', component: ExtraExerciseComponent},
         {path: 'extra-exercise/student', component: StudentComponent},
         {path: 'SS04_Angular_Component&Template/practice/hackernews', component: HackernewsComponent},
-        {path: 'SS04_Angular_Component&Template/exercise/hackernews-exercise', component: HackernewsExerciseComponent}
+        {path: 'SS04_Angular_Component&Template/exercise/hackernews-exercise', component: HackernewsExerciseComponent},
+        {path: 'SS05_Components_Interaction/practice/card', component: CardComponent},
+        {path: 'SS05_Components_Interaction/practice/progress', component: ProgressComponent},
+        {path: 'SS05_Components_Interaction/exercise/rating', component: RatingBarComponent},
+        {path: 'SS05_Components_Interaction/exercise/countdown', component: CountdownTimerComponent},
+        {path: 'SS06_Angular_Form/practice/todo', component: TodoComponent},
+        {path: 'SS06_Angular_Form/exercise/register', component: RegisterComponent},
+        {path: 'SS06_Angular_Form/exercise/login', component: LoginComponent}
       ]
-    )]
+    )],
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

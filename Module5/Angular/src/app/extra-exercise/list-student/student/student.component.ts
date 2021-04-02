@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IStudent} from '../../model/Student';
-import {studentDao} from '../../model/StudentDao';
+import {IStudent} from '../../../model/StudentIn';
 
 @Component({
   selector: 'app-student',
@@ -19,10 +18,6 @@ export class StudentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getStudent();
   }
 
-  getStudent() {
-    this.student = studentDao.find(e => e.id = 1);
-  }
 }
