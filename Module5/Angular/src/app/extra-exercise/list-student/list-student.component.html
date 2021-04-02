@@ -21,7 +21,8 @@
     <td *ngIf="student.mark>=5">Pass</td>
     <td *ngIf="student.mark<5">Fail</td>
     <td>
-      <button class="btn btn-outline-warning" (click)="change(student);openWindowCustomClass(content)">Detail</button>
+      <button class="btn btn-outline-warning" [routerLink]="['/detail/',student.id]">Detail</button>
+      <button class="btn btn-outline-info" (click)="change(student);openWindowCustomClass1(content1)">Edit</button>
       <button class="btn btn-outline-danger" (click)="change(student);openWindowCustomClass1(content1)">Delete</button>
     </td>
   </tr>
@@ -125,7 +126,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn btn-info" [disabled]="!createStudent.valid" (click)="create()">Create</button>
+      <button type="submit" class="btn btn-info" [disabled]="!createStudent.valid" (click)="save()">Create</button>
       <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
     </div>
   </form>

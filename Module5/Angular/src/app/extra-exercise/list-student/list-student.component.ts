@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {studentDao} from '../../model/StudentDao';
-import {IStudent} from '../../model/StudentIn';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {FormGroup, FormControl, Validators, AbstractControl} from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {StudentService} from '../../service/student.service';
+import {IStudent} from '../../model/Student';
 
 
 @Component({
@@ -11,13 +11,13 @@ import {FormGroup, FormControl, Validators, AbstractControl} from '@angular/form
   styleUrls: ['./list-student.component.scss']
 })
 export class ListStudentComponent implements OnInit {
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private studentService: StudentService) {
   }
 
   formControl = 'form-control';
   valid = 'is-valid';
   invalid = 'is-invalid';
-  students = studentDao;
+  students = this.studentService.getStudents();
   student = null;
 
   createStudent = new FormGroup({
@@ -43,27 +43,22 @@ export class ListStudentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  change(student) {
+  change(student: IStudent) {
     this.student = student;
   }
 
   delete(student: IStudent) {
-    const index = studentDao.indexOf(student);
-    studentDao.splice(index, 1);
+    this.studentService.deleteStudent(student);
   }
 
-  create() {
-    console.log(this.createStudent.value);
-    studentDao.push(this.createStudent.value);
+  save(){
+    this.studentService.saveStudent(this.createStudent.value);
   }
 
   getClass(property: string) {
-    if ((this.createStudent.get(property).invalid && this.createStudent.get(property).dirty) || this.createStudent.get(property).touched)
-    {
+    if ((this.createStudent.get(property).invalid && this.createStudent.get(property).dirty) || this.createStudent.get(property).touched) {
       return this.createStudent.get(property).valid ? this.valid : this.invalid;
-    }
-  else
-    {
+    } else {
       return '';
     }
   }

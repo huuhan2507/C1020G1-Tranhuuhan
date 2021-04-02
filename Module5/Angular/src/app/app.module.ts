@@ -27,6 +27,11 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TodoComponent} from './SS06_Angular_Form/practice/todo/todo.component';
 import {RegisterComponent} from './SS06_Angular_Form/exercise/register/register.component';
 import {LoginComponent} from './SS06_Angular_Form/exercise/login/login.component';
+import {TimelinesComponent} from './SS07_Service_Router/practice/timelines/timelines.component';
+import {DetailStudentComponent} from './extra-exercise/detail-student/detail-student.component';
+import {CreateStudentComponent} from './extra-exercise/create-student/create-student.component';
+import { YoutubePlayerComponent } from './SS07_Service_Router/practice/youtube-player/youtube-player.component';
+import { YoutubePlaylistComponent } from './SS07_Service_Router/practice/youtube-playlist/youtube-playlist.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +56,12 @@ import {LoginComponent} from './SS06_Angular_Form/exercise/login/login.component
     CountdownTimerComponent,
     TodoComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    TimelinesComponent,
+    CreateStudentComponent,
+    DetailStudentComponent,
+    YoutubePlayerComponent,
+    YoutubePlaylistComponent
   ],
   imports: [
     FormsModule,
@@ -74,7 +84,11 @@ import {LoginComponent} from './SS06_Angular_Form/exercise/login/login.component
         {path: 'SS05_Components_Interaction/exercise/countdown', component: CountdownTimerComponent},
         {path: 'SS06_Angular_Form/practice/todo', component: TodoComponent},
         {path: 'SS06_Angular_Form/exercise/register', component: RegisterComponent},
-        {path: 'SS06_Angular_Form/exercise/login', component: LoginComponent}
+        {path: 'SS06_Angular_Form/exercise/login', component: LoginComponent},
+        {path: 'SS07_Service_Router/practice/timeline', component: TimelinesComponent},
+        {path: 'youtube', component: YoutubePlaylistComponent},
+        {path: 'SS07_Service_Router/practice/timeline', component: TimelinesComponent},
+        {path: 'detail/:id', component: DetailStudentComponent}
       ]
     )],
     ReactiveFormsModule
