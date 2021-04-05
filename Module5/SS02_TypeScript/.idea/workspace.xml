@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6d39e6b4-cd40-4688-b244-65196a3283d5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Module1/1.nhập_môn_lập_trình/practice/123" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module1/1.nhập_môn_lập_trình/practice/123" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/case_study_module4/src/main/resources/templates/common/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/case_study_module4/src/main/resources/templates/common/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/case_study_module4/src/main/resources/templates/contract/createContractDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/case_study_module4/src/main/resources/templates/contract/createContractDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/case_study_module4/src/main/resources/templates/home/error403.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/case_study_module4/src/main/resources/templates/home/error403.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/controller/GiaoDichController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/controller/GiaoDichController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/entity/GiaoDich.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/entity/GiaoDich.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/entity/KhachHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/entity/KhachHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/entity/LoaiDichVu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/entity/LoaiDichVu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/repository/GiaoDichRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/repository/GiaoDichRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/repository/KhachHangRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/repository/KhachHangRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/repository/LoaiDichVuRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/repository/LoaiDichVuRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/service/GiaoDichService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/service/GiaoDichService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/service/impl/GiaoDichServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/test/src/main/java/com/example/service/impl/GiaoDichServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/test/src/main/resources/templates/common/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/test/src/main/resources/templates/common/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/test/src/main/resources/templates/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/test/src/main/resources/templates/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/test/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/test/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/test/src/main/resources/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/test/src/main/resources/templates/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module4/test/src/main/resources/templates/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Module4/test/src/main/resources/templates/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study_module5/furama/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../case_study_module5/furama/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study_module5/furama/src/app/layout/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../case_study_module5/furama/src/app/layout/footer/footer.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study_module5/furama/src/app/layout/header/header.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../case_study_module5/furama/src/app/layout/header/header.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../case_study_module5/furama/src/app/layout/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../case_study_module5/furama/src/app/layout/header/header.component.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1qfe3wo6rQcAdZSTMcqr2VM1GJz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6d39e6b4-cd40-4688-b244-65196a3283d5" name="Default Changelist" comment="" />
+      <created>1617474875778</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617474875778</updated>
+      <workItem from="1617474878014" duration="15000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

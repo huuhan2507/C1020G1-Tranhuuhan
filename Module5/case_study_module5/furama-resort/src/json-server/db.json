@@ -1,0 +1,54 @@
+{
+  "customer": [
+    {
+      "id": 1,
+      "name": "Trần Hữu Hân",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "code": "KH-0001",
+      "dateOfBirth": "22-12-2002",
+      "cardId": "221092423",
+      "phone": "0983482221",
+      "email": "huuhan2507@gmail.com",
+      "address": "Phú Yên"
+    },
+    {
+      "id": 2,
+      "name": "Trần Hữu Hiên",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "code": "KH-0002",
+      "dateOfBirth": "01-12-1996",
+      "cardId": "293210422",
+      "phone": "0974732123",
+      "email": "huuhien842@gmail.com",
+      "address": "Bình Định"
+    }
+  ],
+  "customerType": [
+    {
+      "id": 1,
+      "name": "Diamond"
+    },
+    {
+      "id": 2,
+      "name": "Platinum"
+    },
+    {
+      "id": 3,
+      "name": "Gold"
+    },
+    {
+      "id": 4,
+      "name": "Silver"
+    },
+    {
+      "id": 5,
+      "name": "Member"
+    }
+  ]
+}
