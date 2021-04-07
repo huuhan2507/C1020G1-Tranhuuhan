@@ -27,6 +27,16 @@ export class ListStudentComponent implements OnInit {
     mark: new FormControl('', [Validators.required, Validators.min(0), Validators.max(10)]),
     image: new FormControl()
   });
+  key = 'name';
+  reverse = false;
+  filter: string;
+  p = 1;
+
+  sort(key) {
+    this.key = key;
+    this.reverse = !this.reverse;
+  }
+
 
   openWindowCustomClass(content) {
     this.modalService.open(content, {windowClass: 'dark-modal'});
@@ -51,7 +61,7 @@ export class ListStudentComponent implements OnInit {
     this.studentService.deleteStudent(student);
   }
 
-  save(){
+  save() {
     this.studentService.saveStudent(this.createStudent.value);
   }
 

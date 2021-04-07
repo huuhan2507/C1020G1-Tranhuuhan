@@ -1,6 +1,9 @@
 <button class="btn btn-success" (click)="openWindowCustomClass2(content2)">Add Student</button>
 <br>
 <br>
+<nav class="navbar">
+  <input class="form-control" type="text" name="search" [(ngModel)]="filter">
+</nav>
 <table class="table table-dark table-hover">
   <thead>
   <tr>
@@ -13,9 +16,16 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor=" let student of students ">
-    <td>{{student.id}}</td>
-    <td>{{student.name}}</td>
+  <tr
+    *ngFor=" let student of students| orderBy: key : reverse|  filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index ">
+    <td (click)="sort('id')">{{student.id}}
+      <span class="glyphicon sort-icon" *ngIf="key =='id'"
+            [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    </td>
+    <td (click)="sort('name')">{{student.name}}
+      <span class="glyphicon sort-icon" *ngIf="key =='name'"
+            [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+    </td>
     <td>{{student.age}}</td>
     <td>{{student.mark}}</td>
     <td *ngIf="student.mark>=5">Pass</td>
@@ -27,6 +37,7 @@
     </td>
   </tr>
   </tbody>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </table>
 <ng-template #content let-modal>
   <div class="modal-header">

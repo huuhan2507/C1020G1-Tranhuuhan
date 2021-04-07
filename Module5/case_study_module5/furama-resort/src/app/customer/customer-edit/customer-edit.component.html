@@ -1,0 +1,108 @@
+<h1 style="color: green;text-align: center; font-size: 30px">Edit Customer</h1>
+<form  [formGroup]="editCustomer" (ngSubmit)="edit()">
+  <div class="form-row ml-5">
+    <div class="form-group col-6-md-2">
+      <div>
+        <input id="id" hidden formControlName="id">
+      </div>
+      <div>
+        <label for="code">Customer Code:</label>
+        <input [ngClass]="formControl+' '+getClass('code')" id="code" class="form-control" formControlName="code">
+        <div *ngIf="code.invalid && (code.dirty||code.touched)" class="text-danger">
+          <div [hidden]="!code.errors.required" class="text-danger">
+            Code cannot be left blank !
+          </div>
+          <div [hidden]="!code.errors.pattern" class="text-danger">
+            The code must be in the KH-XXXX format with X being 0-9
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="name">Customer Name:</label>
+        <input [ngClass]="formControl+' '+getClass('name')" id="name" class="form-control" formControlName="name">
+        <div *ngIf="name.invalid && (name.dirty||name.touched)" class="text-danger">
+          <div [hidden]="!name.errors.required" class="text-danger">
+            Name cannot be left blank !
+          </div>
+          <div [hidden]="!name.errors.pattern" class="text-danger">
+            Name in valid
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="card-id">Card Id:</label>
+        <input [ngClass]="formControl+' '+getClass('cardId')" id="card-id" class="form-control"
+               formControlName="cardId">
+        <div *ngIf="cardId.invalid && (cardId.dirty||cardId.touched)" class="text-danger">
+          <div [hidden]="!cardId.errors.required" class="text-danger">
+            Card cannot be left blank !
+          </div>
+          <div [hidden]="!cardId.errors.pattern" class="text-danger">
+            The card id must be in the XXXXXXXXX or XXXXXXXXXXXX format
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="email">Email: </label>
+        <input [ngClass]="formControl+' '+getClass('email')" id="email" class="form-control" formControlName="email">
+        <div *ngIf="email.invalid && (email.dirty||email.touched)" class="text-danger">
+          <div [hidden]="!email.errors.required" class="text-danger">
+            Email cannot be left blank !
+          </div>
+          <div [hidden]="!email.errors.pattern" class="text-danger">
+            The email id must be in the abcdef@.abc format
+          </div>
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-outline-info mt-3" [disabled]="!editCustomer.valid" type="submit">Save</button>
+        <button class="btn btn-outline-secondary ml-3 mt-3" mat-dialog-close >
+          Close
+        </button>
+      </div>
+    </div>
+    <div class="form-group ml-5" >
+      <label>Customer Type:</label>
+      <select formControlName="customerType" [ngClass]="formControl+' '+getClass('customerType')">
+        <option [ngClass]="formControl+' '+getClass('customerType')" *ngFor="let type of customerType"
+                [ngValue]="type">{{type.name}}</option>
+      </select>
+      <div *ngIf="customerTypeName.invalid && (customerTypeName.dirty||customerTypeName.touched)" class="text-danger">
+        Type Customer cannot be left blank !
+      </div>
+      <div>
+        <label>Date Of Birth:</label>
+        <mat-form-field>
+          <input [min]="minDate" [max]="maxDate" [ngClass]="formControl+' '+getClass('dateOfBirth')" formControlName="dateOfBirth"
+                 matInput [matDatepicker]="myDatepicker" placeholder="Select day of birth">
+          <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker style="width: 80%"></mat-datepicker>
+        </mat-form-field>
+        <div *ngIf="date.invalid && (date.dirty||date.touched)" class="text-danger">
+          Invalid date of birth, format is dd/mm/yyyy !
+        </div>
+      </div>
+      <div>
+
+        <label for="phone">Phone Number:</label>
+        <input [ngClass]="formControl+' '+getClass('phone')" id="phone" class="form-control" formControlName="phone">
+        <div *ngIf="phone.invalid && (phone.dirty||phone.touched)" class="text-danger">
+          <div [hidden]="!phone.errors.required" class="text-danger">
+            Card cannot be left blank !
+          </div>
+          <div [hidden]="!phone.errors.pattern" class="text-danger">
+            The card id must be in the (0|84+0)(90|91)XXXXXXX format
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="address">Address: </label>
+        <input [ngClass]="formControl+' '+getClass('address')" id="address" class="form-control" formControlName="address">
+        <div *ngIf="address.invalid && (address.dirty||address.touched)" class="text-danger">
+          Address cannot be left blank !
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>

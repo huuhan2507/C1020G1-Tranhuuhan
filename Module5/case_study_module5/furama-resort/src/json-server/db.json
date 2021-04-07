@@ -2,31 +2,255 @@
   "customer": [
     {
       "id": 1,
-      "name": "Trần Hữu Hân",
+      "name": "Tran Huu Han",
       "customerType": {
         "id": 1,
         "name": "Diamond"
       },
       "code": "KH-0001",
-      "dateOfBirth": "22-12-2002",
+      "dateOfBirth": "2002-12-12",
       "cardId": "221092423",
-      "phone": "0983482221",
+      "phone": "0913482221",
       "email": "huuhan2507@gmail.com",
-      "address": "Phú Yên"
+      "address": "Phu Yen"
     },
     {
       "id": 2,
-      "name": "Trần Hữu Hiên",
+      "name": "Nguyen Long Phin",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "code": "KH-0002",
+      "dateOfBirth": "1996-01-12",
+      "cardId": "293210422",
+      "phone": "0914732123",
+      "email": "longphin1212@gmail.com",
+      "address": "Da Nang"
+    },
+    {
+      "id": 3,
+      "name": "Tran Huu Kien",
       "customerType": {
         "id": 1,
         "name": "Diamond"
       },
-      "code": "KH-0002",
-      "dateOfBirth": "01-12-1996",
+      "code": "KH-0003",
+      "dateOfBirth": "1996-01-12",
       "cardId": "293210422",
-      "phone": "0974732123",
+      "phone": "0914732123",
+      "email": "huukien113@gmail.com",
+      "address": "Nghe An"
+    },
+    {
+      "id": 4,
+      "name": "Ho Anh Dung",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "code": "KH-0004",
+      "dateOfBirth": "1999-12-12",
+      "cardId": "293210422",
+      "phone": "0914732123",
+      "email": "anhdung1313@gmail.com",
+      "address": "Nghe An"
+    },
+    {
+      "id": 5,
+      "name": "Pham Truong Phuc",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "code": "KH-0005",
+      "dateOfBirth": "1996-01-12",
+      "cardId": "293210422",
+      "phone": "0914732123",
+      "email": "truongphuc189@gmail.com",
+      "address": "Da Nang"
+    },
+    {
+      "id": 6,
+      "name": "Huynh Ngoc Thinh",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "code": "KH-0006",
+      "dateOfBirth": "1996-01-12",
+      "cardId": "293210422",
+      "phone": "0914732123",
+      "email": "ngocthinh98@gmail.com",
+      "address": "Da Nang"
+    },
+    {
+      "id": 7,
+      "name": "Pham Hong Son",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "code": "KH-0007",
+      "dateOfBirth": "1996-01-12",
+      "cardId": "293210422",
+      "phone": "0914732123",
+      "email": "hongson1221@gmail.com",
+      "address": "Da Nang"
+    },
+    {
+      "id": 8,
+      "name": "Nguyen Viet Dung",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "code": "KH-0008",
+      "dateOfBirth": "1996-01-12",
+      "cardId": "293210422",
+      "phone": "0914732123",
+      "email": "nguyenvietdung12@gmail.com",
+      "address": "Bình Định"
+    },
+    {
+      "id": 9,
+      "name": "Tran Huynh Bao Thinh",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "code": "KH-0009",
+      "dateOfBirth": "1996-01-12",
+      "cardId": "293210422",
+      "phone": "0914732123",
+      "email": "baothinh871@gmail.com",
+      "address": "Da Nang"
+    },
+    {
+      "id": 10,
+      "name": "Tran Huu Hien",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "code": "KH-0010",
+      "dateOfBirth": "1996-01-12",
+      "cardId": "293210422",
+      "phone": "0914732123",
       "email": "huuhien842@gmail.com",
       "address": "Bình Định"
+    },
+    {
+      "id": 11,
+      "name": "Tran Huu Hien",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "code": "KH-0011",
+      "dateOfBirth": "1996-01-12",
+      "cardId": "293210422",
+      "phone": "0914732123",
+      "email": "huuhien842@gmail.com",
+      "address": "Bình Định"
+    },
+    {
+      "id": 12,
+      "name": "Tran Huu Hien",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "code": "KH-0012",
+      "dateOfBirth": "1996-01-12",
+      "cardId": "293210422",
+      "phone": "0914732123",
+      "email": "huuhien842@gmail.com",
+      "address": "Bình Định"
+    },
+    {
+      "id": 13,
+      "name": "Tran Huu Hien",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "code": "KH-0013",
+      "dateOfBirth": "1996-01-12",
+      "cardId": "293210422",
+      "phone": "0914732123",
+      "email": "huuhien842@gmail.com",
+      "address": "Bình Định"
+    },
+    {
+      "id": 14,
+      "name": "Tran Huu Hien",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "code": "KH-0014",
+      "dateOfBirth": "1996-01-12",
+      "cardId": "293210422",
+      "phone": "0914732123",
+      "email": "huuhien842@gmail.com",
+      "address": "Bình Định"
+    },
+    {
+      "id": 15,
+      "name": "Tran Huu Hien",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "code": "KH-0015",
+      "dateOfBirth": "1996-01-12",
+      "cardId": "293210422",
+      "phone": "0914732123",
+      "email": "huuhien842@gmail.com",
+      "address": "Bình Định"
+    },
+    {
+      "id": 16,
+      "name": "Tran Huu Hien",
+      "customerType": {
+        "id": 2,
+        "name": "Platinum"
+      },
+      "code": "KH-0016",
+      "dateOfBirth": "1996-01-12",
+      "cardId": "293210422",
+      "phone": "0914732123",
+      "email": "huuhien842@gmail.com",
+      "address": "Bình Định"
+    },
+    {
+      "id": 17,
+      "name": "Le Phuoc Thanh Cao",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "code": "KH-0017",
+      "dateOfBirth": "2021-04-02T00:00:00.000Z",
+      "cardId": "227381918",
+      "phone": "0911353556",
+      "email": "huuhan2507@gmail.com",
+      "address": "Da Nang"
+    },
+    {
+      "id": 18,
+      "name": "Han Tran",
+      "customerType": {
+        "id": 3,
+        "name": "Gold"
+      },
+      "code": "KH-0004",
+      "dateOfBirth": "2021-04-02T00:00:00.000Z",
+      "cardId": "228712312",
+      "phone": "0911353556",
+      "email": "huuhan2507@gmail.com",
+      "address": "Da Nang"
     }
   ],
   "customerType": [

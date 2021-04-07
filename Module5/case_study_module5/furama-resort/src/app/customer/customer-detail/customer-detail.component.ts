@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Customer} from '../../model/customer';
 import {CustomerService} from '../../service/customer.service';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-customer-detail',
@@ -10,14 +11,12 @@ import {CustomerService} from '../../service/customer.service';
 })
 export class CustomerDetailComponent implements OnInit {
   customerDetail: Customer;
-
-  constructor(private customerService: CustomerService, private routeCustomer: ActivatedRoute) {
+  constructor(private customerService: CustomerService,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   ngOnInit(): void {
-    let id;
-    this.routeCustomer.paramMap.subscribe((param: ParamMap) => id = parseFloat(param.get('id')));
-    this.customerService.getCustomerById(id).subscribe(data => this.customerDetail = data);
+    this.customerDetail = this.data.dataA;
   }
 
 }

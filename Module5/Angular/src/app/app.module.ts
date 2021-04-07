@@ -32,6 +32,9 @@ import {DetailStudentComponent} from './extra-exercise/detail-student/detail-stu
 import {CreateStudentComponent} from './extra-exercise/create-student/create-student.component';
 import { YoutubePlayerComponent } from './SS07_Service_Router/practice/youtube-player/youtube-player.component';
 import { YoutubePlaylistComponent } from './SS07_Service_Router/practice/youtube-playlist/youtube-playlist.component';
+import {Ng2OrderModule} from 'ng2-order-pipe';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -91,7 +94,10 @@ import { YoutubePlaylistComponent } from './SS07_Service_Router/practice/youtube
         {path: 'detail/:id', component: DetailStudentComponent}
       ]
     )],
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2OrderModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
