@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a =parseInt(Math.random()*100) ;
+    let b =parseInt( Math.random()*100);
+    let c = parseInt(Math.random()*100);
+    let min;
+    min = a;
+    if (isNaN(a) || isNaN(b) || isNaN(c)) {
+        alert("Du lieu ban nhap sai")
+    } else function Min() {
+        if (a < b && a < c) {
+            return ("Min la " + min);
+        } else if (b < c) {
+            min = b;
+            return ("Min la " + min);
+        } else min = c;
+        return ("Min la " + min);
+    }
+    let alertMin=Min();
+    alert(alertMin)
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/save}" method="post" th:object="${customer}">
+    <div class="form-group">
+        <input type="text" class="form-control" id="formId" hidden th:field="*{id}">
+    </div>
+    <div class="form-group">
+        <label for="formName">Name: </label>
+        <input type="text" class="form-control" id="formName" required th:field="*{name}">
+    </div>
+    <div class="form-group">
+        <label for="formAge">Age: </label>
+        <input type="text" class="form-control" id="formAge" required th:field="*{age}">
+    </div>
+    <div class="form-group">
+        <label for="formEmail">Email: </label>
+        <input type="text" class="form-control" id="formEmail" required th:field="*{email}">
+    </div>
+    <div class="form-group">
+        <label for="formPhone">Phone: </label>
+        <input type="text" class="form-control" id="formPhone" required th:field="*{phone}">
+    </div>
+    <button style="margin-left: 30px" type="submit" class="btn btn-primary" name="action" value="create">Save</button>
+    <a th:href="@{/}" style="margin-left: 30px" class="btn btn-secondary" role="button">Close
+    </a>
+</form>
+</body>
+</html>

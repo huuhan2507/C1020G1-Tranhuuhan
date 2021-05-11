@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+    <style>
+        legend{
+            font-size: 30px;
+
+        }
+    </style>
+</head>
+<body>
+<fieldset>
+    <legend>Information Product</legend>
+    <div>
+        <label>Product Id: </label>
+        <label th:text="${product.id}" ></label>
+    </div>
+    <div>
+        <label>Product Name: </label>
+        <label th:text="${product.name}" ></label>
+    </div>
+    <div>
+        <label>Product Amount: </label>
+        <label th:text="${product.amount}" ></label>
+    </div>
+    <div>
+        <label>Product Price: </label>
+        <label th:text="${product.price}" ></label>
+    </div>
+    <div>
+        <label>Product Status: </label>
+        <label th:text="${product.status}" ></label>
+    </div>
+
+</fieldset>
+
+
+</body>
+</html>

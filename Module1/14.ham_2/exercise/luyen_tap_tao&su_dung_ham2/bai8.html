@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="show()">
+<script>
+    let arrayA = [];
+
+    function show() {
+        for (let i = 1; i <= 10; i++) {
+            arrayA[i] = parseInt(prompt("Hay nhap so nguyen thu " + i));
+            if (isNaN(arrayA[i])) {
+                alert("Ban nhap du lieu sai");
+            }
+        }
+        arrayA.reverse();
+        alert(arrayA.join()) ;
+    }
+
+</script>
+</body>
+</html>

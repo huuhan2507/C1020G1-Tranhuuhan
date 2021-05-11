@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:object="${customer}">
+    <div class="form-group">
+        <label for="formName">Id: </label>
+        <input type="text" class="form-control" id="formId" readonly th:field="*{id}">
+    </div>
+    <div class="form-group">
+        <label for="formName">Name: </label>
+        <input type="text" class="form-control" id="formName" readonly th:field="*{name}">
+    </div>
+    <div class="form-group">
+        <label for="formPrice">Price: </label>
+        <input type="text" class="form-control" id="formPrice" readonly th:field="*{age}">
+    </div>
+    <div class="form-group">
+        <label for="formEmail">Amount: </label>
+        <input type="text" class="form-control" id="formEmail" readonly th:field="*{email}">
+    </div>
+    <div class="form-group">
+        <label for="formPhone">Amount: </label>
+        <input type="text" class="form-control" id="formPhone" readonly th:field="*{phone}">
+    </div>
+    <a th:href="@{/}" style="margin-left: 30px" class="btn btn-secondary" role="button">Close
+    </a>
+</form>
+
+
+</body>
+</html>

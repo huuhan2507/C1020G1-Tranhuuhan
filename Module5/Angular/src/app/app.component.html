@@ -1,4 +1,11 @@
 <router-outlet></router-outlet>
+
+
+
+<div class="webcam-image" *ngIf="webcamImage">
+  <img [src]="webcamImage.imageAsDataUrl" />
+</div>
+
 <h3>---------------------------------------------------------------------------------------------------------------</h3>
 <h1>Bài 3:</h1>
 <button routerLink="SS03_Angular_Overview/practice/fontsize">Thực Hành Font Size</button>
@@ -45,3 +52,4 @@
 <button routerLink="SS07_Service_Router/practice/timeline">Thực Hành Tính Thời Gian Sống</button>
 <h3>---------------------------------------------------------------------------------------------------------------</h3>
 <button routerLink="extra-exercise">Extra Exercise</button>
+<button routerLink="/camera">Camera</button>

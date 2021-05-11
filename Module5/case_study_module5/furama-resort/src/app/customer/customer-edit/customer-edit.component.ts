@@ -94,7 +94,7 @@ export class CustomerEditComponent implements OnInit {
 
   edit() {
     if (this.editCustomer.valid) {
-      this.customerService.editCustomer(this.editCustomer.value, this.customerId).subscribe(data => {
+      this.customerService.editCustomer(this.editCustomer.value).subscribe(data => {
         console.log('aaa');
         this.route.navigate(['customer']);
         this.dialogRef.close();

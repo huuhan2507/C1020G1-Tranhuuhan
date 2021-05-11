@@ -1,0 +1,88 @@
+<h1 style="color: green;text-align: center; font-size: 30px">Add Customer</h1>
+<form [formGroup]="formCreatePack" ngNoForm (ngSubmit)="create()">
+  <div class="form-row ml-5">
+    <div class="form-group col-6-md-2">
+      <div>
+        <input id="id" hidden formControlName="id">
+      </div>
+      <div>
+        <label for="code">Code:</label>
+        <input id="code" class="form-control" formControlName="code">
+        <div *ngIf="code.invalid && (code.dirty||code.touched)" class="text-danger">
+          <div [hidden]="!code.errors.required" class="text-danger">
+            Code cannot be left blank !
+          </div>
+          <div [hidden]="!code.errors.pattern" class="text-danger">
+            The code must be in the LH-XXXX format with<p>X being 0-9</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="amount">Amount:</label>
+        <input id="amount" class="form-control" formControlName="amount">
+        <div *ngIf="amount.invalid && (amount.dirty||amount.touched)" class="text-danger">
+          <div [hidden]="!amount.errors.required" class="text-danger">
+            Amount cannot be left blank !
+          </div>
+          <div [hidden]="!amount.errors.min" class="text-danger">
+            Amount invalid !
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button class="btn btn-outline-info mt-3" [disabled]="!formCreatePack.valid" type="submit">Create</button>
+        <button class="btn btn-outline-secondary ml-3 mt-3" routerLink="/package">
+          Close
+        </button>
+      </div>
+      <div class="form-group ml-5">
+        <label>Sản Phẩm:</label>
+        <select formControlName="product" class="form-control">
+          <option class="form-control" *ngFor="let pro of product"
+                  [ngValue]="pro">{{pro.name}}</option>
+        </select>
+        <div *ngIf="products.invalid && (products.dirty||products.touched)" class="text-danger">
+          Product cannot be left blank !
+        </div>
+      </div>
+      <div>
+        <label>Ngày Nhập Hàng :</label>
+        <mat-form-field>
+          <input class="form-control" formControlName="dateStart"
+                 matInput [matDatepicker]="myDatepicker" placeholder="Select day of birth">
+          <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker style="width: 80%"></mat-datepicker>
+        </mat-form-field>
+        <div *ngIf="dateStart.invalid && (dateStart.dirty||dateStart.touched)" class="text-danger">
+          Invalid !, format is dd/mm/yyyy !
+        </div>
+      </div>
+<!--      <div>-->
+<!--        <label>Ngày Sản Xuất :</label>-->
+<!--        <mat-form-field>-->
+<!--          <input  class="form-control" formControlName="dateStartPro"-->
+<!--                 matInput [matDatepicker]="myDatepicker" placeholder="Select day of birth">-->
+<!--          <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>-->
+<!--          <mat-datepicker #myDatepicker style="width: 80%"></mat-datepicker>-->
+<!--        </mat-form-field>-->
+<!--        <div *ngIf="dateStartPro.invalid && (dateStartPro.dirty||dateStartPro.touched)" class="text-danger">-->
+<!--          Invalid !, format is dd/mm/yyyy !-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <label>Ngày Hết Hạn :</label>-->
+<!--        <mat-form-field>-->
+<!--          <input class="form-control" formControlName="dateEndPro"-->
+<!--                 matInput [matDatepicker]="myDatepicker" placeholder="Select day of birth">-->
+<!--          <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>-->
+<!--          <mat-datepicker #myDatepicker style="width: 80%"></mat-datepicker>-->
+<!--        </mat-form-field>-->
+<!--        <div *ngIf="dateEndPro.invalid && (dateEndPro.dirty||dateEndPro.touched)" class="text-danger">-->
+<!--          Invalid !, format is dd/mm/yyyy !-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+  </div>
+</form>
+

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {WebcamInitError} from 'ngx-webcam';
 
 @Component({
   selector: 'app-select-color',
@@ -50,6 +51,12 @@ export class SelectColorComponent implements OnInit {
         this.color = 'background-color: gray';
         break;
       default:
+    }
+  }
+
+  handleInitError(error: WebcamInitError) {
+    if (error.mediaStreamError && error.mediaStreamError.name === 'NotAllowedError') {
+      console.warn('Camera access was not allowed by user!');
     }
   }
 }

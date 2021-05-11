@@ -33,7 +33,7 @@ export class CustomerAddComponent implements OnInit {
         id: new FormControl(),
         name: new FormControl('', [Validators.required, Validators.pattern('([A-Z][a-z]+)(([ ][A-Z][a-z]+)+)$')]),
         customerType: new FormControl('', [Validators.required]),
-        code: new FormControl('', [Validators.required, Validators.pattern('(KH-)[0-9]{4}')]),
+        code: new FormControl('', [Validators.required, Validators.pattern('(LH-)[0-9]{4}')]),
         dateOfBirth: new FormControl('', [Validators.required]),
         cardId: new FormControl('', [Validators.required, Validators.pattern('([0-9]{9}|[0-9]{12})')]),
         phone: new FormControl('', [Validators.required, Validators.pattern('((09)|(84[+]09))(0|1)[0-9]{7}')]),

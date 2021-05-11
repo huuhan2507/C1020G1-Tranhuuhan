@@ -1,0 +1,44 @@
+<h1 style="text-align: center; font-size: 40px; color: green; margin-top: 10px">Customer List</h1>
+<nav>
+  <button style="margin-left: 30px" class="btn btn-outline-info" routerLink="/package/create"><i
+    class="fas fa-edit"></i> NHẬP HÀNG
+  </button>
+  <form class="form-inline my-2 my-lg-0" style="margin-left: 1200px">
+    <input class="form-control mr-sm-2" type="search" name="keySearch" placeholder="Search..." aria-label="Search...">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i>Search</button>
+  </form>
+  <br>
+</nav>
+<table class="table table-dark table-hover">
+  <thead>
+  <tr>
+    <th>MÃ LÔ HÀNG</th>
+    <th>SẢN PHẨM</th>
+    <th>GiÁ</th>
+    <th>SỐ LƯỢNG</th>
+    <th>ĐƠN VỊ</th>
+    <th>NGÀY NHẬP HÀNG</th>
+    <th>NGÀY SẢN XUẤT</th>
+    <th>NGÀY HẾT HẠNG</th>
+    <th>ACTION</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let pack of packageList | paginate:{ itemsPerPage: 1, currentPage: p } ">
+    <td>{{pack.code}}</td>
+    <td>{{pack.product.name}}</td>
+    <td>{{pack.product.price}}</td>
+    <td>{{pack.product.unit}}</td>
+    <td>{{pack.amount}}</td>
+    <td>{{pack.dateStart}}</td>
+    <td>{{pack.dateStartPro}}</td>
+    <td>{{pack.dateEndPro}}</td>
+    <td>
+      <button class="btn btn-outline-danger " (click)="OpenDialogDelete(pack)">DELETE</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

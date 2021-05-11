@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="text"></p><br><br>
+<button onclick="kick()">Click vào</button>
+<br><br>
+<p id="text1"></p>
+<script>
+    let arrayA = [];
+    for (let i = 0; i < 6; i++) {
+        arrayA[i] = prompt("nhập phần tử thứ " + (i + 1));
+        document.getElementById("text").innerHTML = arrayA.join();
+    }
+
+    function kick() {
+        let count = 0;
+        let data = 0;
+        for (let i = 0; i < arrayA.length; i++) {
+            if (isFinite(arrayA[i])) {
+                count += 1;
+            }
+            data++;
+        }
+        document.getElementById("text1").innerHTML="Mảng có chiều dài là "+data +" và có " + count+" giá trị mảng là kí tự số "
+
+
+    }
+</script>
+
+</body>
+</html>

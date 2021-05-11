@@ -21,7 +21,8 @@ import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter'
 import {MatInputModule} from '@angular/material/input';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {CustomerService} from './service/customer.service';
-import {Ng2OrderModule} from "ng2-order-pipe";
+import {Ng2OrderModule} from 'ng2-order-pipe';
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import {Ng2OrderModule} from "ng2-order-pipe";
     CustomerDetailComponent,
     CustomerAddComponent,
     CustomerEditComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

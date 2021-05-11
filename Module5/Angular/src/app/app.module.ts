@@ -30,11 +30,13 @@ import {LoginComponent} from './SS06_Angular_Form/exercise/login/login.component
 import {TimelinesComponent} from './SS07_Service_Router/practice/timelines/timelines.component';
 import {DetailStudentComponent} from './extra-exercise/detail-student/detail-student.component';
 import {CreateStudentComponent} from './extra-exercise/create-student/create-student.component';
-import { YoutubePlayerComponent } from './SS07_Service_Router/practice/youtube-player/youtube-player.component';
-import { YoutubePlaylistComponent } from './SS07_Service_Router/practice/youtube-playlist/youtube-playlist.component';
+import {YoutubePlayerComponent} from './SS07_Service_Router/practice/youtube-player/youtube-player.component';
+import {YoutubePlaylistComponent} from './SS07_Service_Router/practice/youtube-playlist/youtube-playlist.component';
 import {Ng2OrderModule} from 'ng2-order-pipe';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {WebcamModule} from 'ngx-webcam';
+import {CamareComponent} from './camare/camare.component';
 
 @NgModule({
   declarations: [
@@ -64,10 +66,12 @@ import {NgxPaginationModule} from 'ngx-pagination';
     CreateStudentComponent,
     DetailStudentComponent,
     YoutubePlayerComponent,
-    YoutubePlaylistComponent
+    YoutubePlaylistComponent,
+    CamareComponent
   ],
   imports: [
     FormsModule,
+    WebcamModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
@@ -91,7 +95,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
         {path: 'SS07_Service_Router/practice/timeline', component: TimelinesComponent},
         {path: 'youtube', component: YoutubePlaylistComponent},
         {path: 'SS07_Service_Router/practice/timeline', component: TimelinesComponent},
-        {path: 'detail/:id', component: DetailStudentComponent}
+        {path: 'detail/:id', component: DetailStudentComponent},
+        {path: 'camera', component: CamareComponent}
       ]
     )],
     ReactiveFormsModule,

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <style>
+        .figure:hover{
+            border: 2px black solid;
+        }
+        .figure{
+            border: 1px black solid
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h4>Responsive Image Gallery</h4>
+            <h6>Resize the browser window to see the effect.</h6>
+        </div>
+    </div>
+    <div class="row" style="text-align: center"  >
+        <div class="col-lg-3 col-md-6" >
+            <figure class="figure">
+                <img src="img1.jpg" class="figure-img img-fluid rounded" alt="...">
+                <figcaption class="figure-caption">Add a description of the image here</figcaption>
+            </figure>
+        </div>
+        <div class="col-lg-3 col-md-6" >
+            <figure class="figure">
+                <img src="img2.jpg" class="figure-img img-fluid rounded" alt="...">
+                <figcaption class="figure-caption">Add a description of the image here</figcaption>
+            </figure>
+        </div>
+        <div class="col-lg-3 col-md-6" >
+            <figure class="figure">
+                <img src="img3.jpg" class="figure-img img-fluid rounded" alt="...">
+                <figcaption class="figure-caption">Add a description of the image here</figcaption>
+            </figure>
+        </div>
+        <div class="col-lg-3 col-md-6" >
+            <figure class="figure">
+                <img src="img4.jpg" class="figure-img img-fluid rounded" alt="...">
+                <figcaption class="figure-caption">Add a description of the image here</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <p>This example use media queries to re-arrange the images on different screen sizes: for screens larger than
+                700px wide, it will show four images side by side, for screens smaller than 700px, it will show two images
+                side by side. For screens smaller than 500px, the images will stack vertically (100%).</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

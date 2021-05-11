@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+</head>
+<body>
+<h1 style="text-align: center;font-size: 60px; color: green">Your Cart</h1>
+<table class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col">NO</th>
+        <th scope="col">NAME</th>
+        <th scope="col">DESCRIPTION</th>
+        <th scope="col">PRICE</th>
+        <th scope="col">DISCOUNT</th>
+        <th scope="col">AMOUNT</th>
+        <th scope="col">ACTION</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product,productStat : ${cart.getCarts()}">
+        <td th:text="${productStat.index+1}"></td>
+        <td th:text="${product.key.name}"></td>
+        <td th:text="${product.key.description}"></td>
+        <td th:text="${product.key.price}"></td>
+        <td th:text="${product.key.discount}"></td>
+        <td th:text="${product.getValue()}"></td>
+        <td><a th:href="@{/editcart/{id}(id=${product.key.id})}">
+            <button class="btn btn-success">Edit</button>
+        </a>
+            <a th:href="@{/deletecart/{id}(id=${product.key.id})}">
+                <button class="btn btn-success">Delete</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<h2 style="color: green;text-align: center" th:text="${'Total Money: '+ cart.totalMoney()}"></h2>
+<br><br>
+<div>
+    <a th:href="@{/deleteallcart}">
+        <button class="btn btn-info" style="width: 300px">Delete All</button>
+    </a>
+    <a th:href="@{/}">
+        <button class="btn btn-danger" style="width: 300px">Return Home Products</button>
+    </a>
+</div>
+<br><br>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
+</html>

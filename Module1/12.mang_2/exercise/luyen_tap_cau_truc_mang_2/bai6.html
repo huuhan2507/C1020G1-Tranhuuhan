@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let  n = prompt ( "nhập vào n" ) ;
+    let  array = new  Array ( n ) ;
+    for  ( let  i = 0 ; i < n ; i ++ ) {
+        array [ i ] = prompt ( "nhập thứ hạng phần tử" + i ) ;
+    }
+    alert ( "mảng trươc khi xử lí " + array ) ;
+    for  ( let  i = 0 ; i < array . length ; i ++ ) {
+        if  ( array [ i ] === "-" ) {
+            array [ i ] = "_" ;
+        }
+    }
+    alert ( "mảng sau khi xử lí " +  array ) ;
+
+</script>
+
+</body>
+</html>

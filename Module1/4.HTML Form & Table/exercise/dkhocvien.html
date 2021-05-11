@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>REGISTER STUDENT</title>
+</head>
+<style>
+    label {
+        color: blue
+    }
+</style>
+<body>
+<form method="get" action="dkhocvien.html"
+      style="background-color: palegoldenrod; width: 800px; height:600px; margin-left: 350px">
+    <div><h1 style="color: blue;background-color: cornflowerblue">REGISTER STUDENT</h1>
+        <label>Name</label>
+        <input type="text" name="Name" style="width: 300px"><br><br>
+        <label style="color: blue">Date bitrh</label>
+        <input type="text" name="datebitrh"><br><br>
+    </div>
+    <div>
+        <span><label>Gender</label>
+          <input type="radio" name="gender"> Homan
+          <input type="radio" name="gender"> Woman</span><br><br>
+    </div>
+    <div><label>Địa chỉ</label>
+        <input type="text" name="add" style="height: 40px; width: 270px"><br><br>
+
+        <label>Class</label>
+        <select>
+            <option>-Select Class-</option>
+        </select><br><br>
+    </div>
+    <div><label>Email</label>
+        <input type="text" name="email"><br><br>
+        <label>Điện thoại</label>
+        <input type="number"><br><br>
+        <input style="margin-left: 100px" type="submit" name="register" value="Register">
+        <input type="reset" name="Reset" value="Reset">
+    </div>
+
+</form>
+
+</body>
+</html>

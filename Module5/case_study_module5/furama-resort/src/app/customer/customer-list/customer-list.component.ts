@@ -6,6 +6,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {CustomerAddComponent} from '../customer-add/customer-add.component';
 import {CustomerEditComponent} from '../customer-edit/customer-edit.component';
 import {CustomerDetailComponent} from '../customer-detail/customer-detail.component';
+import {Router} from '@angular/router';
+import {LoadingComponent} from '../../loading/loading.component';
 
 
 @Component({
@@ -23,16 +25,20 @@ export class CustomerListComponent implements OnInit {
   page = 1;
   key = '';
   reverse = false;
-  sort(key){
+
+  sort(key) {
     this.key = key;
     this.reverse = !this.reverse;
   }
+
   constructor(
     private customerService: CustomerService,
     private modalService: NgbModal,
-    public dialog: MatDialog,
+    private dialog: MatDialog,
+    public router: Router,
   ) {
   }
+
   ngOnInit(): void {
     const limit = 5;
     this.customerService.pageCustomer(this.page, limit, this.keySearch).subscribe(data => this.customerList = data);
@@ -83,7 +89,9 @@ export class CustomerListComponent implements OnInit {
 
   search(keySearch) {
     this.keySearch = keySearch;
-    this.ngOnInit();
+    setTimeout(() => {
+      this.ngOnInit();
+    }, 1001);
   }
 
   openAddNewCus() {
@@ -98,6 +106,23 @@ export class CustomerListComponent implements OnInit {
       this.ngOnInit();
     });
   }
+
+  changeSearch() {
+    const dialogRef = this.dialog.open(LoadingComponent, {
+      width: '300px',
+      height: '200px',
+      disableClose: true
+    });
+    setTimeout(() => {
+      this.dialog.closeAll();
+    }, 1000);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
+    });
+  }
+
   openDialogEdit(customerId) {
     this.customerService.getCustomerById(customerId).subscribe(dataCustomer => {
       const dialogRef = this.dialog.open(CustomerEditComponent, {
@@ -111,6 +136,7 @@ export class CustomerListComponent implements OnInit {
       });
     });
   }
+
   openDialogView(customerId) {
     this.customerService.getCustomerById(customerId).subscribe(dataCustomer => {
       const dialogRef = this.dialog.open(CustomerDetailComponent, {
@@ -126,6 +152,7 @@ export class CustomerListComponent implements OnInit {
       });
     });
   }
+
 }
 
 

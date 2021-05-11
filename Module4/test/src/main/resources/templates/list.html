@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="~{common/layout::header}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div th:replace="~{common/layout::navbar}">
+</div>
+<body>
+<a style="margin-left: 30px" th:href="@{/taoGiaoDich}">
+    <button class="btn btn-info"><i class="material-icons">create</i>THÊM MỚI</button>
+</a>
+<div class="dropdown btn-group">
+    <select id="service" class="btn btn-success">
+        <option th:value="villa" >Đất</option>
+        <option th:value="house" >Nhà và Đất</option>
+    </select>
+</div>
+<label style="margin-left: 290px;font-size: 40px"> GIAO DỊCH NHÀ ĐẤT</label>
+<table  class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col">MÃ GIAO DICH</th>
+        <th scope="col">TÊN KHÁCH HÀNG</th>
+        <th scope="col">LOẠI DỊCH VỤ</th>
+        <th scope="col">NGÀY GIAO DỊCH</th>
+        <th scope="col">ĐƠN GIÁ</th>
+        <th scope="col">DIỆN TÍCH</th>
+        <th scope="col">CHỨC NĂNG</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="giaoDich,gdStat : ${giaoDichs}">
+        <td th:text="${giaoDich.maGiaoDich}"></td>
+        <td th:text="${giaoDich.khachHang.tenKhachHang}"></td>
+        <td th:text="${giaoDich.loaiDichVu.name}"></td>
+        <td th:text="${giaoDich.ngayGiaoDich}"></td>
+        <td th:text="${giaoDich.donGia}"></td>
+        <td th:text="${giaoDich.dienTich}"></td>
+        <td>
+            <a th:href="@{/giaoDich/view/{code}(code=${giaoDich.maGiaoDich})}">
+                <button class="btn btn-success"><i class="material-icons">visibility</i>View</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<div th:replace="~{common/layout::footer}">
+</div>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Giao Dịch</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <style>
+        .form-control {
+            width: 400px;
+        }
+        .form-group {
+            margin-left: 60px;
+        }
+    </style>
+</head>
+<body>
+<p style="color: green; font-size: 40px ; margin-left: 30px">Thông Tin Giao Dịch</p>
+<div class="form-group">
+    <label for="formId">Mã Giao Dịch: </label>
+    <input type="text" class="form-control" id="formId" readonly th:value="${giaoDich.maGiaoDich}">
+</div>
+<div class="form-group">
+    <label for="formCode">Tên Dịch Vụ: </label>
+    <input type="text" class="form-control" id="formCode" readonly th:value="${giaoDich.loaiDichVu.name}">
+</div>
+<div class="form-group">
+    <label for="formName">Ngày Giao Dịch: </label>
+    <input type="text" class="form-control" id="formName" readonly th:value="${giaoDich.ngayGiaoDich}">
+</div>
+<div class="form-group">
+    <label for="formBirthday">Đơn Giá: </label>
+    <input type="date" class="form-control" id="formBirthday" readonly th:value="${giaoDich.donGia}">
+</div>
+<div class="form-group">
+    <label for="formGender">Diện Tích :</label>
+    <input type="text" class="form-control" id="formGender" readonly th:value="${giaoDich.dienTich}">
+</div>
+<div class="form-group">
+    <label for="formCardId">Tên Khách Hàng: </label>
+    <input type="text" class="form-control" id="formCardId" readonly th:value="${giaoDich.khachHang.tenKhachHang}">
+</div>
+<div class="form-group">
+    <label for="formPhone">Số Điện Thoại: </label>
+    <input type="text" class="form-control" id="formPhone" readonly th:value="${giaoDich.khachHang.soDienThoai}">
+</div>
+<div class="form-group">
+    <label for="formEmail">Email: </label>
+    <input type="text" class="form-control" id="formEmail" readonly th:value="${giaoDich.khachHang.email}">
+</div>
+<button style="margin-left: 60px" type="submit" class="btn btn-danger" name="action" value="create">Delete</button>
+<a th:href="@{/giaodich}" style="margin-left: 30px" class="btn btn-secondary" role="button">Close
+</a>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
+</html>

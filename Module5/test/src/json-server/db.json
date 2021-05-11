@@ -1,0 +1,64 @@
+{
+  "package": [
+    {
+      "id": 2,
+      "code": "LH-0002",
+      "product": {
+        "id": 2,
+        "name": "Tiger",
+        "country": "Việt Nam",
+        "price": 11000,
+        "unit": "Thùng"
+      },
+      "amount": 5,
+      "dateStart": "20/11/2021",
+      "dateStartPro": "20/11/2020",
+      "dateEndPro": "20/11/2022"
+    },
+    {
+      "id": 3,
+      "product": {
+        "id": 2,
+        "name": "Oshi",
+        "country": "Việt Nam",
+        "price": 5000,
+        "unit": "Thùng"
+      },
+      "code": "LH-0004",
+      "amount": "100",
+      "dateStart": "2021-04-20T17:00:00.000Z",
+      "dateStartPro": "",
+      "dateEndPro": ""
+    }
+  ],
+  "product": [
+    {
+      "id": 1,
+      "name": "Sting",
+      "country": "Việt Nam",
+      "price": 10000,
+      "unit": "Thùng"
+    },
+    {
+      "id": 2,
+      "name": "Oshi",
+      "country": "Việt Nam",
+      "price": 5000,
+      "unit": "Thùng"
+    },
+    {
+      "id": 3,
+      "name": "Tiger",
+      "country": "Việt Nam",
+      "price": 11000,
+      "unit": "Thùng"
+    },
+    {
+      "id": 4,
+      "name": "Coca-cola",
+      "country": "Việt Nam",
+      "price": 9000,
+      "unit": "Thùng"
+    }
+  ]
+}

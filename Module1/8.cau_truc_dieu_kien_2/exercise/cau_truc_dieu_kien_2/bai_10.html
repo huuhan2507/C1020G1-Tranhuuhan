@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <input type="number" id="t1" placeholder="Nhập số KW tiêu thụ"><br><br>
+    <input type="number" id="t4" placeholder="Nhập số tiền KW"><br><br>
+    <input type="button" onclick="kick()" id="t3" value="Tính">
+    <h3 id="t2" style="color: #d61b06"></h3>
+</form>
+<script>
+    function kick() {
+        let a = parseInt(document.getElementById("t1").value);
+        let c = parseInt(document.getElementById("t4").value);
+        let b = a * c;
+        if (a > 0 && c > 0) {
+            document.getElementById("t2").innerHTML = "Số tiền điện cần đóng là:" + b
+        } else document.getElementById("t2").innerHTML = "Dữ liệu bạn nhập không lợp lệ"
+
+    }
+
+</script>
+</body>
+</html>
